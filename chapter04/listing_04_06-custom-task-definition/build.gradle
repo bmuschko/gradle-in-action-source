@@ -1,0 +1,61 @@
+ext.versionFile = file('version.properties')
+
+task loadVersion {
+   project.version = readVersion()	
+}
+
+ProjectVersion readVersion() {
+   logger.quiet 'Reading the version file.'
+
+   if(!versionFile.exists()) {
+      throw new GradleException("Required version file does not exit: $versionFile.canonicalPath")
+   }
+	
+   Properties versionProps = new Properties() 
+	
+   versionFile.withInputStream { stream ->
+      versionProps.load(stream)
+   }
+	
+   new ProjectVersion(versionProps.major.toInteger(), versionProps.minor.toInteger(), versionProps.release.toBoolean())
+}
+
+class ReleaseVersionTask extends DefaultTask {
+   @Input Boolean release
+   @OutputFile File destFile
+	
+   ReleaseVersionTask() {
+      group = 'versioning'
+      description = 'Makes project a release version.'
+   }
+	
+   @TaskAction
+   void start() {
+      project.version.release = true
+      ant.propertyfile(file: destFile) {
+         entry(key: 'release', type: 'string', operation: '=', value: 'true')
+      }
+   }
+}
+
+class ProjectVersion {
+	Integer major
+	Integer minor
+	Boolean release
+
+    ProjectVersion(Integer major, Integer minor) {
+	    this.major = major
+		this.minor = minor
+		this.release = Boolean.FALSE
+	}
+
+	ProjectVersion(Integer major, Integer minor, Boolean release) {
+	    this(major, minor)
+		this.release = release
+	}
+
+    @Override
+	String toString() {
+	    "$major.$minor${release ? '' : '-SNAPSHOT'}"
+	}
+}

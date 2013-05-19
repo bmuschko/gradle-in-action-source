@@ -1,0 +1,19 @@
+project(':repository') {
+	repositories {
+		mavenCentral()
+	}
+	
+    dependencies {
+	    compile project(':model')
+		testCompile 'junit:junit:4.11'
+    }
+
+	test {
+		systemProperty 'items', '20'
+		jvmArgs '-Xms128m', '-Xmx256m', '-XX:MaxPermSize=128m'
+		
+		testLogging {
+			showStandardStreams = true
+		}
+	}
+}

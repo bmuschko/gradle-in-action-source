@@ -1,0 +1,28 @@
+configurations {
+   cargo {
+      description = 'Classpath for Cargo Ant tasks.'
+	  visible = false
+   }
+}
+
+task deployToLocalTomcat << {
+	FileTree cargoDependencies = configurations.getByName('cargo').asFileTree
+	ant.taskdef(resource: 'cargo.tasks', classpath: cargoDependencies.asPath)
+
+	ant.cargo(containerId: 'tomcat7x', action: 'run', output: "$buildDir/output.log") {
+		configuration {
+			deployable(type: 'war', file: 'todo.war')
+		}
+		
+		zipUrlInstaller(installUrl: 'http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.32/bin/apache-tomcat-7.0.32.zip')
+	}
+}
+
+dependencies {
+   cargo 'org.codehaus.cargo:cargo-ant:1.+'
+}
+
+repositories {
+	mavenCentral()
+}
+

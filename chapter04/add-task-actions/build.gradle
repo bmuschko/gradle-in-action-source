@@ -1,0 +1,14 @@
+version = '0.1-SNAPSHOT'
+
+task printVersion {
+   doFirst {
+      println "Before reading the project version"
+   }
+
+   doLast {
+      println "Version: $version"
+   }
+}
+
+printVersion.doFirst { println "First action" }
+printVersion << { println "Last action" } 

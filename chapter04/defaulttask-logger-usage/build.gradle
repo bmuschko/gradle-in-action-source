@@ -1,0 +1,5 @@
+version = '0.1-SNAPSHOT'
+
+task printVersion << {
+   logger.quiet "Version: $version"
+}

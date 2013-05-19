@@ -1,0 +1,14 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	providedCompile 'javax.servlet:servlet-api:2.5',
+					'javax.servlet.jsp:jsp-api:2.1'
+	runtime 'javax.servlet:jstl:1.1.2',
+			'taglibs:standard:1.1.2'
+}

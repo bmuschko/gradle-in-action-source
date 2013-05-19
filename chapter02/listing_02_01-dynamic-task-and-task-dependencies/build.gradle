@@ -1,0 +1,17 @@
+task startSession << {
+   chant()
+}
+
+def chant() {
+   ant.echo 'Repeat after me...'
+}
+
+3.times { counter ->
+   task "yayGradle$counter" << {
+       println 'Gradle rocks'
+   }
+}
+
+yayGradle0.dependsOn startSession
+yayGradle2.dependsOn yayGradle1, yayGradle0
+task groupTherapy(dependsOn: yayGradle2)

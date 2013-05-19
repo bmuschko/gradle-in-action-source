@@ -1,0 +1,1 @@
+The file build-announcements.gradle needs to be copied to the directory <USER_HOME>/.gradle/init.d

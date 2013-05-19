@@ -1,0 +1,29 @@
+allprojects {
+	group = 'com.manning.gia'
+	version = '0.1'
+}
+
+subprojects {
+	apply plugin: 'java'
+}
+
+project(':repository') {
+	dependencies {
+		compile project(':model')	
+	}
+}
+
+project(':web') {
+	apply plugin: 'war'
+	apply plugin: 'jetty'
+	
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		compile project(':repository')
+		providedCompile 'javax.servlet:servlet-api:2.5'
+		runtime 'javax.servlet:jstl:1.1.2'
+	}
+}

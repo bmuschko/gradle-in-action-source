@@ -1,0 +1,5 @@
+gradle.projectsLoaded { Gradle gradle ->
+   gradle.rootProject {
+      apply plugin: 'build-announcements'                                
+   }
+}

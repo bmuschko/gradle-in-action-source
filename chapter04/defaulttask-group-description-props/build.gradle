@@ -1,0 +1,6 @@
+version = '0.1-SNAPSHOT'
+
+task printVersion(group: 'versioning', 
+                  description: 'Prints project version.') << {
+   logger.quiet "Version: $version"
+}

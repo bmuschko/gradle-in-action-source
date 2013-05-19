@@ -1,0 +1,94 @@
+apply plugin: 'war'
+ext.versionFile = file('version.properties')
+
+task loadVersion {
+   project.version = readVersion()	
+}
+
+ProjectVersion readVersion() {
+   logger.quiet 'Reading the version file.'
+
+   if(!versionFile.exists()) {
+      throw new GradleException("Required version file does not exit: $versionFile.canonicalPath")
+   }
+	
+   Properties versionProps = new Properties() 
+	
+   versionFile.withInputStream { stream ->
+      versionProps.load(stream)
+   }
+	
+   new ProjectVersion(versionProps.major.toInteger(), versionProps.minor.toInteger(), versionProps.release.toBoolean())
+}
+
+task makeReleaseVersion(group: 'versioning', description: 'Makes project a release version.') << {		
+   version.release = true
+   ant.propertyfile(file: versionFile) {
+      entry(key: 'release', type: 'string', operation: '=', value: 'true')	
+   }	
+}
+
+task createDistribution(type: Zip, dependsOn: makeReleaseVersion) {                         
+   from war.outputs.files
+
+   from(sourceSets*.allSource) {
+      into 'src'
+   }
+	
+   from(rootDir) {
+      include versionFile.name
+   }
+}
+
+task backupReleaseDistribution(type: Copy) {
+   from createDistribution.outputs.files
+   into "$buildDir/backup"
+}
+
+task release(dependsOn: backupReleaseDistribution) << {
+   logger.quiet 'Releasing the project...'
+}
+
+task incrementMajorVersion(group: 'versioning', description: 'Increments project major version.') << {
+   String currentVersion = version.toString()
+   ++version.major
+   String newVersion = version.toString()
+   logger.info "Incrementing major project version: $currentVersion -> $newVersion"
+
+   ant.propertyfile(file: versionFile) {
+      entry(key: 'major', type: 'int', operation: '+', value: 1)
+   }
+}
+
+task incrementMinorVersion(group: 'versioning', description: 'Increments project minor version.') << {
+   String currentVersion = version.toString()
+   ++version.minor
+   String newVersion = version.toString()
+   logger.info "Incrementing minor project version: $currentVersion -> $newVersion"
+
+   ant.propertyfile(file: versionFile) {
+      entry(key: 'minor', type: 'int', operation: '+', value: 1)
+   }
+}
+
+class ProjectVersion {
+	Integer major
+	Integer minor
+	Boolean release
+
+    ProjectVersion(Integer major, Integer minor) {
+	    this.major = major
+		this.minor = minor
+		this.release = Boolean.FALSE
+	}
+
+	ProjectVersion(Integer major, Integer minor, Boolean release) {
+	    this(major, minor)
+		this.release = release
+	}
+
+    @Override
+	String toString() {
+	    "$major.$minor${release ? '' : '-SNAPSHOT'}"
+	}
+}
