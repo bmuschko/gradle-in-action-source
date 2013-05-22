@@ -1,0 +1,36 @@
+ext {
+   apiUrl = 'https://api.cloudbees.com/api'
+   apiFormat = 'xml'
+   apiVersion = '1.0'
+}
+
+if(project.hasProperty('cloudbees.api.key')) {
+   ext.apiKey = project.property('cloudbees.api.key')
+}
+
+if(project.hasProperty('cloudbees.api.secret')) {
+   ext.secret = project.property('cloudbees.api.secret')	
+}
+
+import com.manning.gia.plugins.cloudbees.tasks.app.CloudBeesAppInfo
+import com.manning.gia.plugins.cloudbees.tasks.app.CloudBeesAppDeployWar
+
+task cloudBeesAppInfo(type: CloudBeesAppInfo) {
+	apiUrl = project.apiUrl
+	apiKey = project.apiKey
+	secret = project.secret
+	apiFormat = project.apiFormat
+	apiVersion = project.apiVersion
+	appId = project.hasProperty('appId') ? project.appId : null
+}
+
+task cloudBeesAppDeployWar(type: CloudBeesAppDeployWar) {
+	apiUrl = project.apiUrl
+	apiKey = project.apiKey
+	secret = project.secret
+	apiFormat = project.apiFormat
+	apiVersion = project.apiVersion
+	appId = project.hasProperty('appId') ? project.appId : null
+	message = project.hasProperty('message') ? project.message : null
+	warFile = project.hasProperty('warFile') ? file(project.warFile) : null
+}

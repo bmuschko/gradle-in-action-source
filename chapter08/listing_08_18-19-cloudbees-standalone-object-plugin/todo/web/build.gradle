@@ -1,0 +1,41 @@
+buildscript {
+    repositories {
+        maven { url "file://$projectDir/../../repo" }
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.manning.gia:cloudbees-plugin:1.0'
+    }
+}
+
+project(':web') {
+    apply plugin: 'war'
+    apply plugin: 'jetty'
+    apply plugin: 'cloudbees'
+
+    repositories {
+	    mavenCentral()
+    }
+
+    dependencies {
+	    compile project(':repository')
+	    providedCompile 'javax.servlet:servlet-api:2.5'
+	    runtime 'javax.servlet:jstl:1.1.2'
+    }
+
+    if(project.hasProperty('cloudbees.api.key')) {
+	   ext.apiKey = project.property('cloudbees.api.key')
+	}
+
+	if(project.hasProperty('cloudbees.api.secret')) {
+	   ext.secret = project.property('cloudbees.api.secret')	
+	}
+    
+    cloudBees {
+		apiUrl = 'https://api.cloudbees.com/api'
+		apiKey = project.apiKey
+		secret = project.secret
+		appId = 'gradle-in-action/todo'
+	}
+}

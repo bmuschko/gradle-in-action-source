@@ -1,0 +1,9 @@
+project(':repository') {
+	repositories {
+		mavenCentral()
+	}
+	
+    dependencies {
+	    compile project(':model')
+    }
+}

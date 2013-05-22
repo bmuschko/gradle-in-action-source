@@ -1,0 +1,25 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+archivesBaseName = 'cloudbees-plugin'
+group = 'com.manning.gia'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile localGroovy()
+    compile gradleApi()
+    compile 'com.cloudbees:cloudbees-api-client:1.4.0'
+    testCompile 'org.spockframework:spock-core:0.6-groovy-1.8'
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file://$projectDir/../repo")
+        }
+    }
+}
