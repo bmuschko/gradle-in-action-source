@@ -9,10 +9,10 @@ Starting with chapter 2, all source code can be run using the Gradle Wrapper whi
 
 ## Windows:
 
-    > cd gradle-in-action-source/chapter2/helloworld-task-doLast
+    > cd gradle-in-action-source/chapter02/helloworld-task-doLast
     > ../../gradlew.bat helloWorld
 
 ## *nix:
 
-    $ cd gradle-in-action-source/chapter2/helloworld-task-doLast 
+    $ cd gradle-in-action-source/chapter02/helloworld-task-doLast 
     $ ../../gradlew helloWorld
