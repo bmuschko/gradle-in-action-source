@@ -1,0 +1,69 @@
+project(':web') {
+    apply plugin: 'war'
+    apply plugin: 'jetty'
+	apply plugin: 'groovy'
+
+    repositories {
+	    mavenCentral()
+    }
+
+    configurations {
+		functTestCompile.extendsFrom testCompile
+		functTestRuntime.extendsFrom testRuntime
+    }
+
+    ext.seleniumGroup = 'org.seleniumhq.selenium'
+	ext.seleniumVersion = '2.32.0'
+
+    dependencies {
+	    compile project(':repository')
+	    providedCompile 'javax.servlet:servlet-api:2.5'
+	    runtime 'javax.servlet:jstl:1.1.2'
+        runtime 'taglibs:standard:1.1.2'
+	    testCompile 'org.codehaus.groovy:groovy:2.0.6'
+     	testCompile 'junit:junit:4.11'
+     	functTestCompile 'org.codehaus.geb:geb-junit4:0.7.2'
+        functTestCompile "$seleniumGroup:selenium-api:$seleniumVersion"
+		functTestRuntime "$seleniumGroup:selenium-firefox-driver:$seleniumVersion"
+    }
+
+	sourceSets {
+	    functionalTest {
+	        groovy.srcDir file('src/functTest/groovy')
+	        resources.srcDir file('src/functTest/resources')
+			compileClasspath = sourceSets.main.output + configurations.functTestCompile
+			runtimeClasspath = output + compileClasspath + configurations.functTestRuntime
+	    }
+	}
+
+    task functionalTest(type: Test) {	
+		testClassesDir = sourceSets.functionalTest.output.classesDir
+	    classpath = sourceSets.functionalTest.runtimeClasspath		
+		testReportDir = file("$testReportDir/functional")
+		testResultsDir = file("$testResultsDir/functional")
+		systemProperty 'geb.env', 'firefox'
+		systemProperty 'geb.build.reportsDir', reporting.file("$name/geb")
+	}
+	
+	ext {
+		functionalJettyStopPort = 8081
+		functionalJettyStopKey = 'stopKey'
+	}
+	
+	task functionalJettyRun(type: org.gradle.api.plugins.jetty.JettyRun) {
+		stopPort = functionalJettyStopPort
+		stopKey = functionalJettyStopKey
+		contextPath = 'todo'
+		daemon = true
+	}
+	
+	task functionalJettyStop(type: org.gradle.api.plugins.jetty.JettyStop) {
+		stopPort = functionalJettyStopPort
+		stopKey = functionalJettyStopKey
+	}
+	
+	functionalJettyRun.dependsOn functionalTestClasses
+	functionalTest.dependsOn functionalJettyRun
+	functionalJettyStop.dependsOn functionalTest
+	check.dependsOn functionalJettyStop
+}

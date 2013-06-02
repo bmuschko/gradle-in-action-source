@@ -1,0 +1,34 @@
+buildscript {
+	repositories {
+		maven {
+			url 'http://phildop.us/m2repo'
+    	}
+    	dependencies {
+    		classpath 'us.phildop:gradle-sublimetext-plugin:0.5'
+    	}
+  	}
+}
+
+allprojects {
+	apply plugin: 'sublimeText'
+	group = 'com.manning.gia'
+	version = '0.1'
+
+	sublimeText {
+		defaultFolderExcludePatterns = ['.gradle', 'build']
+	}
+}
+
+subprojects {
+	apply plugin: 'java'
+
+	sublimeText {
+		generateSublimeJavaClasspath = true
+		generateSublimeJavaSrcpath = true
+		addGradleCompile = true
+	}
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.5'
+}

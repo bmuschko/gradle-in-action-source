@@ -1,0 +1,51 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		classpath 'com.cloudbees:cloudbees-api-client:1.4.0'
+	}
+}
+
+ext {
+   apiUrl = 'https://api.cloudbees.com/api'
+   apiFormat = 'xml'
+   apiVersion = '1.0'
+}
+
+if(project.hasProperty('cloudbees.api.key')) {
+   ext.apiKey =	project.property('cloudbees.api.key')
+}
+
+if(project.hasProperty('cloudbees.api.secret')) {
+   ext.secret = project.property('cloudbees.api.secret')	
+}
+
+import com.cloudbees.api.ApplicationInfo
+import com.cloudbees.api.BeesClient
+
+task cloudBeesAppInfo(description: 'Returns the basic information about an application.', group: 'CloudBees') {
+	inputs.property('apiKey', apiKey)
+	inputs.property('secret', secret)
+	inputs.property('appId', appId)
+
+	doLast {
+		BeesClient client = new BeesClient(apiUrl, apiKey, secret, 'xml', '1.0')
+
+		ApplicationInfo info
+
+		try {
+			info = client.applicationInfo(appId)
+		}
+		catch(Exception e) {
+			throw new GradleException(e.message)
+		}
+
+		logger.quiet "Application id : $info.id"
+		logger.quiet "         title : $info.title"
+		logger.quiet "       created : $info.created"
+		logger.quiet "          urls : $info.urls"
+		logger.quiet "        status : $info.status"
+	}
+}

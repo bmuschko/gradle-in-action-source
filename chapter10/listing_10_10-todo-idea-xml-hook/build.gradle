@@ -1,0 +1,28 @@
+allprojects {
+	apply plugin: 'idea'
+	group = 'com.manning.gia'
+	version = '0.1'	
+}
+
+subprojects {
+	apply plugin: 'java'
+	
+	module {
+		downloadSources = true
+		downloadJavadoc = false
+	}
+}
+
+idea {
+	project {
+		name = 'todo'
+		jdkName = '1.6'
+		languageLevel = '1.6'
+		
+		ipr.withXml { provider ->
+			def node = provider.asNode()
+			def gradleSettings = node.appendNode('component', [name: 'GradleSettings'])
+			gradleSettings.appendNode('option', [name: 'linkedProjectPath', value: '$PROJECT_DIR$/build.gradle'])
+		}
+	}
+}

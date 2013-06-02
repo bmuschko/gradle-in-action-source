@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+   <profiles>
+      <profile>
+         <id>appserverConfig-dev</id>
+         <activation>
+            <property>
+               <name>env</name>
+               <value>dev</value>
+            </property>
+         </activation>
+         <properties>
+            <appserver.home>/path/to/dev/appserver</appserver.home>
+         </properties>
+      </profile>
+      <profile>
+         <id>appserverConfig-test</id>
+         <activation>
+            <property>
+               <name>env</name>
+               <value>test</value>
+            </property>
+         </activation>
+         <properties>
+            <appserver.home>/path/to/test/appserver</appserver.home>
+         </properties>
+      </profile>
+   </profiles>
+</settings>

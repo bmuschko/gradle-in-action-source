@@ -1,0 +1,33 @@
+allprojects {
+	apply plugin: 'eclipse'
+	group = 'com.manning.gia'
+	version = '0.1'
+}
+
+subprojects {
+	apply plugin: 'java'
+	
+	eclipse {
+		jdt {
+			sourceCompatibility = 1.6
+			targetCompatibility = 1.6
+		}
+		
+		classpath {
+			downloadSources = true
+			downloadJavadoc = false
+		}
+	}
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.5'
+}
+
+eclipse {
+	project {
+		name = 'todo'
+		comment = 'A task management application'
+		referencedProjects 'model', 'repository', 'web'
+	}
+}
