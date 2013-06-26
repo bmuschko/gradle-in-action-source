@@ -1,0 +1,18 @@
+{
+    "parentDir": "chapter02",
+    "projects":
+        [
+            {
+                "dir": "helloworld-task-doLast",
+                "tasks": ["helloWorld"]
+            },
+            {
+                "dir": "helloworld-task-left-shift",
+                "tasks": ["helloWorld"]
+            },
+            {
+                "dir": "listing_02_01-dynamic-task-and-task-dependencies",
+                "tasks": ["groupTherapy"]
+            }
+        ]
+}
