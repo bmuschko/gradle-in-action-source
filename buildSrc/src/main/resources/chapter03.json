@@ -1,0 +1,46 @@
+{
+    "parentDir": "chapter03",
+    "projects":
+        [
+            {
+                "dir": "listing_03_04-todo-app-changing-properties",
+                "tasks": ["clean", "build"]
+            },
+            {
+                "dir": "listing_03_05-todo-app-changing-project-layout",
+                "tasks": ["clean", "build"]
+            },
+            {
+                "dir": "todo-app",
+                "tasks": ["clean", "build"]
+            },
+            {
+                "dir": "todo-app-customized",
+                "tasks": ["clean", "build"]
+            },
+            {
+                "dir": "todo-app-external-dependency",
+                "tasks": ["clean", "build"]
+            },
+            {
+                "dir": "todo-webapp",
+                "tasks": ["clean", "build"]
+            },
+            {
+                "dir": "todo-webapp-customized",
+                "tasks": ["clean", "build"]
+            },
+            {
+                "dir": "todo-webapp-jetty",
+                "tasks": ["clean", "build"]
+            },
+            {
+                "dir": "todo-webapp-jetty-customized",
+                "tasks": ["clean", "build"]
+            },
+            {
+                "dir": "todo-webapp-wrapper",
+                "tasks": ["clean", "build"]
+            }
+        ]
+}
