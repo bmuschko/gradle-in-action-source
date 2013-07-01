@@ -35,10 +35,6 @@
                 "tasks": ["sublimeText"]
             },
             {
-                "dir": "listing_10_14-16-tooling-api/tooling-api-integ-test",
-                "tasks": ["clean", "build"]
-            },
-            {
                 "dir": "todo-eclipse",
                 "tasks": ["cleanEclipse", "eclipse"]
             },
