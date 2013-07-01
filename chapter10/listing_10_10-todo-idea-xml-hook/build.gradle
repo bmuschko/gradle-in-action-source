@@ -7,15 +7,16 @@ allprojects {
 subprojects {
 	apply plugin: 'java'
 	
-	module {
-		downloadSources = true
-		downloadJavadoc = false
-	}
+    idea {
+	    module {
+		    downloadSources = true
+		    downloadJavadoc = false
+        }
+    }
 }
 
 idea {
 	project {
-		name = 'todo'
 		jdkName = '1.6'
 		languageLevel = '1.6'
 		
