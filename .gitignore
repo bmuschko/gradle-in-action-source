@@ -12,5 +12,5 @@ bin
 .project
 .classpath
 .settings
-.sublime-project
-.sublime-workspace
+*.sublime-project
+*.sublime-workspace
