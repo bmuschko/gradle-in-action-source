@@ -1,0 +1,16 @@
+allprojects {
+	apply plugin: 'idea'
+	group = 'com.manning.gia'
+	version = '0.1'
+}
+
+subprojects {
+	apply plugin: 'java'
+	
+	ext.configDir = new File(rootDir, 'config')
+	apply from: "$rootDir/gradle/checkstyle.gradle"
+	
+	repositories {
+		mavenCentral()
+	}
+}

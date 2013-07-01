@@ -1,0 +1,36 @@
+apply plugin: 'sonar-runner'
+
+sonarRunner {
+    sonarProperties {
+		property 'sonar.projectName', 'todo'
+		property 'sonar.projectDescription', 'A task management application'
+    }
+}
+
+allprojects {
+	apply plugin: 'idea'
+	group = 'com.manning.gia'
+	version = '0.1'
+}
+
+subprojects {
+	apply plugin: 'java'	
+	apply from: "$rootDir/gradle/cobertura.gradle"
+	
+	repositories {
+		mavenCentral()
+	}
+	
+	sonarRunner {
+        sonarProperties {
+            property 'sonar.sourceEncoding', 'UTF-8'
+			property 'sonar.core.codeCoveragePlugin', 'cobertura'
+
+			tasks.withType(SourceTask) { task ->
+			    if(task.name == 'testCoberturaReport') {
+			        property 'sonar.cobertura.reportPath', new File(task.reportDir, 'coverage.xml')
+			    }
+			}
+        }
+    }
+}

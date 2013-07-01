@@ -1,0 +1,45 @@
+apply plugin: 'jdepend'
+
+def configDir = new File(rootDir, 'config')
+ext.jdependConfigDir = "$configDir/jdepend"
+
+jdepend {
+	toolVersion = '2.9.1'
+	ignoreFailures = true
+}
+
+tasks.withType(JDepend) {
+    reports {
+        text.enabled = false
+        xml.enabled = true
+    }
+}
+
+import com.manning.gia.XsltReport
+
+afterEvaluate {
+	plugins.withType(JDependPlugin) {
+    	sourceSets.each { sourceSet ->
+			createReportTask(sourceSet, 'html', 'jdepend.xsl')
+			createReportTask(sourceSet, 'dot', 'jdepend2dot.xsl')
+    	}	
+	}
+}
+
+def createReportTask(SourceSet sourceSet, String fileExtension, String xslFileName) {
+	String reportDir = "$reporting.baseDir/jdepend"
+	String capitalizedSourceSetName = sourceSet.name.capitalize()
+	String capitalizedFileExtension = fileExtension.capitalize()
+	String taskName = "jdepend${capitalizedSourceSetName}${capitalizedFileExtension}Report"
+    XsltReport reportTask = tasks.add(taskName, XsltReport)
+		
+	reportTask.with {
+	    description = "Generates a JDepend $capitalizedFileExtension report for ${sourceSet.name} classes."
+		dependsOn tasks."jdepend${capitalizedSourceSetName}"
+		inputFile = new File(reportDir, "${sourceSet.name}.xml")
+		xslStyleFile = new File(jdependConfigDir, xslFileName)
+		outputFile = new File(reportDir, "jdepend_${sourceSet.name}.$fileExtension")
+	}
+		
+	check.dependsOn reportTask	
+}

@@ -1,0 +1,15 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.eriwen:gradle-cobertura-plugin:1.0'
+    }
+}
+
+apply plugin: org.gradle.api.plugins.cobertura.CoberturaPlugin
+
+/*cobertura {
+    format = 'html'
+}*/

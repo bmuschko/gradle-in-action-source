@@ -1,0 +1,25 @@
+apply plugin: 'sonar-runner'
+
+sonarRunner {
+    sonarProperties {
+		property 'sonar.projectName', 'todo'
+		property 'sonar.projectDescription', 'A task management application'
+    }
+}
+
+allprojects {
+	apply plugin: 'idea'
+	group = 'com.manning.gia'
+	version = '0.1'
+}
+
+subprojects {
+	apply plugin: 'java'	
+	ext.configDir = new File(rootDir, 'config')
+	
+	sonarRunner {
+        sonarProperties {
+            property 'sonar.sourceEncoding', 'UTF-8'
+        }
+    }
+}
