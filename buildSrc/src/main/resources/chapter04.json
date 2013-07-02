@@ -1,0 +1,94 @@
+{
+    "parentDir": "chapter04",
+    "projects":
+        [
+            {
+                "dir": "add-task-actions",
+                "tasks": ["printVersion"]
+            },
+            {
+                "dir": "defaulttask-group-description-props",
+                "tasks": ["printVersion"]
+            },
+            {
+                "dir": "defaulttask-group-description-setter",
+                "tasks": ["printVersion"]
+            },
+            {
+                "dir": "defaulttask-logger-usage",
+                "tasks": ["printVersion"]
+            },
+            {
+                "dir": "extra-properties",
+                "tasks": ["tasks"]
+            },
+            {
+                "dir": "listing_04_01-task-dependencies",
+                "tasks": ["third"]
+            },
+            {
+                "dir": "listing_04_02-project-version-pogo",
+                "tasks": ["printVersion"]
+            },
+            {
+                "dir": "listing_04_03-configuration-task",
+                "tasks": ["printVersion"]
+            },
+            {
+                "dir": "listing_04_04-make-release-task",
+                "tasks": ["printVersion", "makeReleaseVersion"]
+            },
+            {
+                "dir": "listing_04_05-task-inputs-outputs",
+                "tasks": ["makeReleaseVersion"]
+            },
+            {
+                "dir": "listing_04_06-custom-task-definition",
+                "tasks": ["tasks"]
+            },
+            {
+                "dir": "listing_04_07-custom-task-usage",
+                "tasks": ["makeReleaseVersion"]
+            },
+            {
+                "dir": "listing_04_08-different-project-version-pogo",
+                "tasks": ["tasks"]
+            },
+            {
+                "dir": "listing_04_09-custom-task-reusability",
+                "tasks": ["makeReleaseVersion"]
+            },
+            {
+                "dir": "listing_04_10-built-in-tasks",
+                "tasks": ["makeReleaseVersion", "release"]
+            },
+            {
+                "dir": "listing_04_11-increment-minor-major-version",
+                "tasks": ["makeReleaseVersion", "incrementMajorVersion", "incrementMinorVersion", "release"]
+            },
+            {
+                "dir": "listing_04_12-task-rule",
+                "tasks": ["makeReleaseVersion", "incrementMajorVersion", "incrementMinorVersion", "release"]
+            },
+            {
+                "dir": "listing_04_13-task-graph-hook",
+                "tasks": ["incrementMajorVersion", "incrementMinorVersion", "release"]
+            },
+            {
+                "dir": "listing_04_14-task-graph-listener",
+                "tasks": ["incrementMajorVersion", "incrementMinorVersion", "release"]
+            },
+            {
+                "dir": "print-version-task-doFirst",
+                "tasks": ["printVersion"]
+            },
+            {
+                "dir": "print-version-task-doLast",
+                "tasks": ["printVersion"]
+            },
+            {
+                "dir": "project-description",
+                "tasks": ["tasks"]
+            }
+        ]
+}
