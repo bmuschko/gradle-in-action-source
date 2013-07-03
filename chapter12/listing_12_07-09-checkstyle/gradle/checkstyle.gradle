@@ -17,7 +17,7 @@ afterEvaluate {
 			String capitalizedSourceSetName = sourceSet.name.capitalize()
 			String reportTaskName = "checkstyle${capitalizedSourceSetName}Report"
 			String reportDir = "$reporting.baseDir/checkstyle"
-			XsltReport reportTask = tasks.add(reportTaskName, XsltReport)
+			XsltReport reportTask = tasks.create(reportTaskName, XsltReport)
 			
 			reportTask.with {
 				description = "Generates a Checkstyle HTML report for ${sourceSet.name} classes."
