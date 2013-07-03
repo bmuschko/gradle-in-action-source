@@ -1,8 +1,11 @@
 package com.manning.gia.sanitycheck.processing
 
+import groovy.util.logging.Slf4j
+
 import com.manning.gia.sanitycheck.input.TestSetReader
 import com.manning.gia.sanitycheck.input.JsonTestSetReader
 
+@Slf4j
 class JsonTestSetBuildBatchProcessor implements BuildBatchProcessor {
     BuildVerifier buildVerifier = new BuildVerifier()
 
@@ -14,6 +17,7 @@ class JsonTestSetBuildBatchProcessor implements BuildBatchProcessor {
             testSet.projects.each { project ->
                 File chapterDir = new File(rootDir, testSet.parentDir)
                 File fullProjectDir = new File(chapterDir, project.dir)
+                log.info "Testing build in directory '$fullProjectDir' with tasks $project.tasks"
                 buildVerifier.verifySuccessfulExecution(fullProjectDir, gradleVersion, project.tasks as String[])
             }
         }
