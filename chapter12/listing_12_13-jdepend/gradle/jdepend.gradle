@@ -31,7 +31,7 @@ def createReportTask(SourceSet sourceSet, String fileExtension, String xslFileNa
 	String capitalizedSourceSetName = sourceSet.name.capitalize()
 	String capitalizedFileExtension = fileExtension.capitalize()
 	String taskName = "jdepend${capitalizedSourceSetName}${capitalizedFileExtension}Report"
-    XsltReport reportTask = tasks.add(taskName, XsltReport)
+    XsltReport reportTask = tasks.create(taskName, XsltReport)
 		
 	reportTask.with {
 	    description = "Generates a JDepend $capitalizedFileExtension report for ${sourceSet.name} classes."
