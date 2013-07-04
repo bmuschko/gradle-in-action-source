@@ -8,7 +8,7 @@
             },
             {
                 "dir": "listing_06_02-todo-specific-project-behavior",
-                "tasks": [":model:build", ":model:build"]
+                "tasks": [":model:build"]
             },
             {
                 "dir": "listing_06_03-todo-project-dependencies",
