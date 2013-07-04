@@ -1,0 +1,42 @@
+{
+    "parentDir": "chapter06",
+    "projects":
+        [
+            {
+                "dir": "listing_06_01-todo-settings-file",
+                "tasks": ["projects"]
+            },
+            {
+                "dir": "listing_06_02-todo-specific-project-behavior",
+                "tasks": [":model:build", ":model:build"]
+            },
+            {
+                "dir": "listing_06_03-todo-project-dependencies",
+                "tasks": ["clean", "build"]
+            },
+            {
+                "dir": "listing_06_04-todo-cross-project-tasks",
+                "tasks": ["hello"]
+            },
+            {
+                "dir": "listing_06_05-todo-cross-project-task-dependencies",
+                "tasks": ["hello"]
+            },
+            {
+                "dir": "listing_06_06-todo-common-project-behavior",
+                "tasks": ["clean", "build"]
+            },
+            {
+                "dir": "listing_06_07-09-todo-individual-build-scripts",
+                "tasks": ["clean", "build"]
+            },
+            {
+                "dir": "listing_06_10-todo-custom-build-script-names",
+                "tasks": ["clean", "build"]
+            },
+            {
+                "dir": "todo-flat-hierarchy/master",
+                "tasks": ["clean", "build"]
+            }
+        ]
+}
