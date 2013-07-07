@@ -7,9 +7,9 @@ class BuildVerifier {
     static final String DEPRECATION_MESSAGE = 'Deprecated dynamic property'
     BuildRunner buildRunner = new BuildRunner()
 
-    void verifySuccessfulExecution(File projectDir, String gradleVersion, String... tasks) {
+    void verifySuccessfulExecution(File projectDir, String gradleVersion, String[] tasks, String[] args) {
         validateProjectDirectory(projectDir)
-        BuildResult buildResult = buildRunner.executeBuildScript(projectDir, gradleVersion, tasks)
+        BuildResult buildResult = buildRunner.executeBuildScript(projectDir, gradleVersion, tasks, args)
 
         if(!buildResult.output.contains(SUCCESS_MESSAGE)) {
             throw new BuildVerificationException("Build was not successful for script '$projectDir.canonicalPath' with tasks '${tasks.join(', ')}'.")

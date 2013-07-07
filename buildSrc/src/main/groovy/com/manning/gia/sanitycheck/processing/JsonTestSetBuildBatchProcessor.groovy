@@ -18,7 +18,7 @@ class JsonTestSetBuildBatchProcessor implements BuildBatchProcessor {
                 File chapterDir = new File(rootDir, testSet.parentDir)
                 File fullProjectDir = new File(chapterDir, project.dir)
                 log.info "Testing build in directory '$fullProjectDir' with tasks $project.tasks"
-                buildVerifier.verifySuccessfulExecution(fullProjectDir, gradleVersion, project.tasks as String[])
+                buildVerifier.verifySuccessfulExecution(fullProjectDir, gradleVersion, project.tasks as String[], project?.args as String[])
             }
         }
     }
