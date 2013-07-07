@@ -1,5 +1,5 @@
 def getMavenSettingsCredentials = {
-    File mavenSettings = new File('settings.xml')
+    File mavenSettings = new File(projectDir, 'settings.xml')
     def xmlSlurper = new XmlSlurper()
     xmlSlurper.parse(mavenSettings)
 }
