@@ -14,3 +14,4 @@ bin
 .settings
 *.sublime-project
 *.sublime-workspace
+.vagrant
