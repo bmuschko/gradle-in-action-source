@@ -1,6 +1,0 @@
-script: ./gradlew verifyListings
-
-jdk:
-  - oraclejdk7
-  - openjdk7
-  - openjdk6
