@@ -1,5 +1,6 @@
 package com.manning.gia.sanitycheck.processing
 
+import groovyx.gpars.GParsPool
 import groovy.util.logging.Slf4j
 
 import com.manning.gia.sanitycheck.input.TestSetReader
@@ -13,12 +14,14 @@ class JsonTestSetBuildBatchProcessor implements BuildBatchProcessor {
     void execute(File rootDir, String gradleVersion) {
         def testSets = parseTestSets()
 
-        testSets.each { testSet ->
-            testSet.projects.each { project ->
-                File chapterDir = new File(rootDir, testSet.parentDir)
-                File fullProjectDir = new File(chapterDir, project.dir)
-                log.info "Testing build in directory '$fullProjectDir' with tasks $project.tasks"
-                buildVerifier.verifySuccessfulExecution(fullProjectDir, gradleVersion, project.tasks as String[], project?.args as String[])
+        GParsPool.withPool {
+            testSets.eachParallel { testSet ->
+                testSet.projects.each { project ->
+                    File chapterDir = new File(rootDir, testSet.parentDir)
+                    File fullProjectDir = new File(chapterDir, project.dir)
+                    log.info "Testing build in directory '$fullProjectDir' with tasks $project.tasks"
+                    buildVerifier.verifySuccessfulExecution(fullProjectDir, gradleVersion, project.tasks as String[], project?.args as String[])
+                }
             }
         }
     }
