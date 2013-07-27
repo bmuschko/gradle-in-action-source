@@ -1,0 +1,53 @@
+repositories {
+	mavenCentral()
+}
+
+configurations {
+	googleClosure
+}
+
+dependencies {
+	googleClosure 'com.google.javascript:closure-compiler:v20130603'
+}
+
+import com.manning.gia.js.GoogleClosureMinifier
+
+ext {
+	jsSourceDir = "$webAppDir/js/app"
+	jsOutputDir = "$buildDir/js"
+	jsOptimize = project.hasProperty('jsOptimize')
+}
+
+def jsSourceFiles = fileTree(jsSourceDir).include('*.js')
+
+task minifyJs(type: GoogleClosureMinifier) {
+	inputFiles = jsSourceFiles
+	outputFile = file("$jsOutputDir/all-min.js")
+}
+
+war {
+    if(jsOptimize) {
+        dependsOn minifyJs
+
+        exclude 'js/app/*'
+
+        from(jsOutputDir) {
+            into 'js/app'
+            include 'all-min.js'
+        }
+
+        exclude 'jsp/app-js.jsp'
+
+        from("$webAppDir/jsp") {
+           include 'todo-list.jsp'
+           into 'jsp'
+           filter { String line ->
+                if(line.contains('<c:import url="app-js.jsp"/>')) {
+                    return '<c:import url="app-js-min.jsp"/>'
+                }
+
+                line
+            }
+        }
+    }
+}

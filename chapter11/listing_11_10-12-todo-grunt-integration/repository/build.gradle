@@ -1,0 +1,39 @@
+apply from: 'databaseSetup.gradle'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':model')
+    runtime 'com.h2database:h2:1.3.170'
+    testCompile 'junit:junit:4.11'
+}
+
+sourceSets {
+    integrationTest {
+        java.srcDir file('src/integTest/java')
+        resources.srcDir file('src/integTest/resources')
+        compileClasspath = sourceSets.main.output + configurations.testRuntime
+        runtimeClasspath = output + compileClasspath
+    }
+}
+
+task integrationTest(type: Test) {
+    description = 'Runs the integration tests.'
+    group = 'verification'
+    testClassesDir = sourceSets.integrationTest.output.classesDir
+    classpath = sourceSets.integrationTest.runtimeClasspath
+}
+
+tasks.withType(Test) {
+    testLogging {
+        showStandardStreams = true
+        exceptionFormat 'full'
+    }
+}
+
+startDatabase.dependsOn test
+integrationTest.dependsOn startAndPrepareDatabase
+stopDatabase.dependsOn integrationTest
+check.dependsOn stopDatabase

@@ -1,0 +1,63 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.eriwen:gradle-js-plugin:1.5.1'
+    }
+}
+
+apply plugin: com.eriwen.gradle.js.JsPlugin
+
+ext {
+    jsSourceDir = "$webAppDir/js/app"
+    jsOutputDir = "$buildDir/js"
+    jsOptimize = project.hasProperty('jsOptimize')
+}
+
+javascript.source {
+    app {
+        js {
+            srcDir jsSourceDir
+            include '*.js'
+            exclude '*.min.js'
+        }
+    }
+}
+
+combineJs {
+    source = javascript.source.app.js.files
+    dest = file("$jsOutputDir/all.js")
+}
+
+minifyJs {
+    source = combineJs
+    dest = file("$jsOutputDir/all-min.js")
+}
+
+war {
+    if(jsOptimize) {
+        dependsOn minifyJs
+
+        exclude 'js/app/*'
+
+        from(jsOutputDir) {
+            into 'js/app'
+            include 'all-min.js'
+        }
+
+        exclude 'jsp/app-js.jsp'
+
+        from("$webAppDir/jsp") {
+           include 'todo-list.jsp'
+           into 'jsp'
+           filter { String line ->
+                if(line.contains('<c:import url="app-js.jsp"/>')) {
+                    return '<c:import url="app-js-min.jsp"/>'
+                }
+
+                line
+            }
+        }
+    }
+}

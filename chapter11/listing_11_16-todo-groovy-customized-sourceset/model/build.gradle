@@ -1,0 +1,23 @@
+apply plugin: 'groovy'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {  
+    compile 'org.codehaus.groovy:groovy-all:2.1.5'
+}
+
+sourceSets {
+    main {
+       groovy {
+          srcDirs = ['src/groovy']
+       }
+    }
+
+    test {
+       groovy {
+          srcDirs = ['test/groovy']
+       }
+    }
+}

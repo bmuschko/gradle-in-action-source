@@ -1,0 +1,26 @@
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':repository')
+    providedCompile 'javax.servlet:servlet-api:2.5'
+    runtime 'javax.servlet:jstl:1.1.2'
+}
+
+task installGruntDependencies(type: Exec) {
+	inputs.file 'package.json'
+	outputs.dir 'node_modules'
+	
+	executable 'npm'
+	args 'install'
+}
+
+import com.manning.gia.js.Grunt
+
+task jsHint(type: Grunt, dependsOn: installGruntDependencies) {
+   commands = ['jshint']
+}

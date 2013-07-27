@@ -1,0 +1,25 @@
+repositories {
+	mavenCentral()
+}
+
+configurations {
+	googleClosure
+}
+
+dependencies {
+	googleClosure 'com.google.javascript:closure-compiler:v20130603'
+}
+
+import com.manning.gia.js.GoogleClosureMinifier
+
+ext {
+	jsSourceDir = "$webAppDir/js/app"
+	jsOutputDir = "$buildDir/js"
+}
+
+def jsSourceFiles = fileTree(jsSourceDir).include('*.js')
+
+task minifyJs(type: GoogleClosureMinifier) {
+	inputFiles = jsSourceFiles
+	outputFile = file("$jsOutputDir/all-min.js")
+}

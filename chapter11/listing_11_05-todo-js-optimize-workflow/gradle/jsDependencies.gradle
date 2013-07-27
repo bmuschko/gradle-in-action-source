@@ -1,0 +1,24 @@
+repositories {
+    ivy {
+        name 'JQuery'
+        url 'http://code.jquery.com'
+        layout 'pattern', {
+            artifact '[module]-[revision](.[classifier]).[ext]'
+        }
+    }
+}
+
+configurations {
+    jquery
+}
+
+dependencies {
+    jquery group: 'jquery', name: 'jquery', version: '1.10.0', classifier: 'min', ext: 'js'
+}
+
+task fetchExternalJs(type: Copy) {
+    from configurations.jquery
+    into "$webAppDir/js/ext"
+}
+
+[jettyRun, jettyRunWar, war]*.dependsOn fetchExternalJs

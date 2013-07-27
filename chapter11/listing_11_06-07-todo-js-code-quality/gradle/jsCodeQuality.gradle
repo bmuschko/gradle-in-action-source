@@ -1,0 +1,31 @@
+repositories {
+	mavenCentral()
+
+    ivy {
+        name 'JSHint'
+        url 'http://www.jshint.com/get'
+        layout 'pattern', {
+	        artifact '[module]-[revision](.[classifier]).[ext]'
+	    }
+    }
+}
+
+configurations {
+	rhino
+	jshint
+}
+
+dependencies {
+	rhino 'org.mozilla:rhino:1.7R4'
+	jshint 'jshint-rhino:jshint-rhino:2.1.4@js'
+}
+
+ext.jsSourceDir = "$webAppDir/js/app"
+def jsSourceFiles = fileTree(jsSourceDir).include('*.js')
+def jsHintArgs = configurations.jshint + jsSourceFiles
+
+task jsHint(type: JavaExec) {
+	classpath configurations.rhino
+	main 'org.mozilla.javascript.tools.shell.Main'
+	args jsHintArgs
+}

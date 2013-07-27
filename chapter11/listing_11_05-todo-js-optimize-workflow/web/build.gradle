@@ -1,0 +1,14 @@
+apply plugin: 'war'
+apply plugin: 'jetty'
+apply from: "$rootDir/gradle/jsDependencies.gradle"
+apply from: "$rootDir/gradle/jsOptimize.gradle"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':repository')
+    providedCompile 'javax.servlet:servlet-api:2.5'
+    runtime 'javax.servlet:jstl:1.1.2'
+}
