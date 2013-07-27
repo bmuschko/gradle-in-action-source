@@ -14,7 +14,7 @@ class JsonTestSetBuildBatchProcessor implements BuildBatchProcessor {
     void execute(File rootDir, String gradleVersion) {
         def testSets = parseTestSets()
 
-        GParsPool.withPool {
+        GParsPool.withPool(3) {
             testSets.eachParallel { testSet ->
                 testSet.projects.each { project ->
                     File chapterDir = new File(rootDir, testSet.parentDir)
