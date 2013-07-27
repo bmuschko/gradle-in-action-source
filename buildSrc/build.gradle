@@ -1,0 +1,7 @@
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.gpars:gpars:1.0.0'
+}
