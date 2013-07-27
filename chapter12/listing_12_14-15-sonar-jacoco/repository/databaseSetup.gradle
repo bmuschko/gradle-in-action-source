@@ -8,7 +8,7 @@ buildscript {
     }	
 }
 
-ext.h2TcpPort = 9099
+ext.h2TcpPort = PortFinder.findFreePort()
 ext.h2StartupBlockMs = 2000
 
 task startDatabase(type: H2DatabaseStarter) {
@@ -62,4 +62,39 @@ class H2DatabaseStarter extends DefaultTask {
 			org.h2.tools.Server.main('-tcp', '-tcpPort', tcpPort.toString())
 		} 
 	}
+}
+
+class PortFinder {
+    static final int MIN_PORT_NUMBER = 1024
+    static final int MAX_PORT_NUMBER = 49151
+  
+    static int findFreePort() {
+        for(i in MIN_PORT_NUMBER..MAX_PORT_NUMBER) {
+            if(available(i)) {
+                return i
+            } 
+            
+            throw new RuntimeException("Could not find an available port between $MIN_PORT_NUMBER and $MAX_PORT_NUMBER")
+        }
+    }
+
+    private static boolean available(final int port) {
+        ServerSocket serverSocket = null
+        DatagramSocket dataSocket = null
+       
+        try {
+            serverSocket = new ServerSocket(port)
+            serverSocket.reuseAddress = true
+            dataSocket = new DatagramSocket(port)
+            dataSocket.reuseAddress = true
+            return true
+        } 
+        catch(IOException e) {
+           return false
+        } 
+        finally {
+           dataSocket?.close()
+           serverSocket?.close()
+        }
+    }
 }
