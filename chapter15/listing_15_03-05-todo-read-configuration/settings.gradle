@@ -1,0 +1,3 @@
+include 'model', 'repository', 'web'
+
+findProject(':web').name = 'todo-web'

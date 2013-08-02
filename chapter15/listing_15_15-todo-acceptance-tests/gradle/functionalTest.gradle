@@ -1,0 +1,80 @@
+apply plugin: 'jetty'
+apply plugin: 'groovy'
+
+configurations {
+    functTestCompile.extendsFrom testCompile
+    functTestRuntime.extendsFrom testRuntime
+}
+
+ext.seleniumGroup = 'org.seleniumhq.selenium'
+ext.seleniumVersion = '2.32.0'
+
+dependencies {
+    providedCompile 'javax.servlet:servlet-api:2.5'
+    runtime 'javax.servlet:jstl:1.1.2'
+    testCompile 'org.codehaus.groovy:groovy:2.0.6'
+    testCompile 'junit:junit:4.11'
+    functTestCompile 'org.codehaus.geb:geb-junit4:0.7.2'
+    functTestCompile "$seleniumGroup:selenium-api:$seleniumVersion"
+    functTestRuntime "$seleniumGroup:selenium-firefox-driver:$seleniumVersion"
+}
+
+sourceSets {
+    functionalTest {
+        groovy.srcDir file('src/functTest/groovy')
+        resources.srcDir file('src/functTest/resources')
+        compileClasspath = sourceSets.main.output + configurations.functTestCompile
+        runtimeClasspath = output + compileClasspath + configurations.functTestRuntime
+    }
+}
+
+ext {
+    functionalTestReportDir = file("$testReportDir/functional")
+    functionalTestResultsDir = file("$testResultsDir/functional")
+    functionalCommonSystemProperties = ['geb.env': 'firefox', 'geb.build.reportsDir': reporting.file("$name/geb")]
+}
+
+ext {
+	functionalJettyHttpPort = 8050
+    functionalJettyStopPort = 8051
+    functionalJettyStopKey = 'stopKey'
+	functionalJettyContextPath = 'todo'
+}
+
+task localFunctionalTest(type: Test) {
+    testClassesDir = sourceSets.functionalTest.output.classesDir
+    classpath = sourceSets.functionalTest.runtimeClasspath
+    testReportDir = functionalTestReportDir
+    testResultsDir = functionalTestResultsDir
+    systemProperties functionalCommonSystemProperties
+    systemProperty 'geb.build.baseUrl', "http://localhost:$functionalJettyHttpPort/$functionalJettyContextPath/"
+}
+
+task functionalJettyRun(type: org.gradle.api.plugins.jetty.JettyRun) {
+	httpPort = functionalJettyHttpPort
+    stopPort = functionalJettyStopPort
+    stopKey = functionalJettyStopKey
+    contextPath = functionalJettyContextPath
+    daemon = true
+}
+
+task functionalJettyStop(type: org.gradle.api.plugins.jetty.JettyStop) {
+    stopPort = functionalJettyStopPort
+    stopKey = functionalJettyStopKey
+}
+
+functionalJettyRun.dependsOn functionalTestClasses
+localFunctionalTest.dependsOn functionalJettyRun
+functionalJettyStop.dependsOn localFunctionalTest
+task inContainerFunctionalTest(dependsOn: functionalJettyStop)
+
+task remoteFunctionalTest(type: Test) {
+    testClassesDir = sourceSets.functionalTest.output.classesDir
+    classpath = sourceSets.functionalTest.runtimeClasspath
+    testReportDir = functionalTestReportDir
+    testResultsDir = functionalTestResultsDir
+    systemProperties functionalCommonSystemProperties
+    systemProperty 'geb.build.baseUrl', "http://$config.tomcat.hostname:$config.tomcat.port/$config.tomcat.context/"
+}
+
+check.dependsOn inContainerFunctionalTest

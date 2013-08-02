@@ -1,0 +1,33 @@
+import com.manning.gia.vm.Vagrant
+
+ext.targetedVagrantProjectDir = file('../vagrant-tomcat-box')
+
+task vagrantUp(type: Vagrant) {
+	commands = ['up']
+	dir = targetedVagrantProjectDir
+}
+
+task vagrantDestroy(type: Vagrant) {
+	commands = ['destroy', '--force']
+	dir = targetedVagrantProjectDir
+}
+
+task vagrantSshConfig(type: Vagrant) {
+    commands = ['ssh-config']
+    dir = targetedVagrantProjectDir
+}
+
+task vagrantStatus(type: Vagrant) {
+    commands = ['status']
+    dir = targetedVagrantProjectDir
+}
+
+task vagrantSuspend(type: Vagrant) {
+    commands = ['suspend']
+    dir = targetedVagrantProjectDir
+}
+
+task vagrantResume(type: Vagrant) {
+    commands = ['resume']
+    dir = targetedVagrantProjectDir
+}

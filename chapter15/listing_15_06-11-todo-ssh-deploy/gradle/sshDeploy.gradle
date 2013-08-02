@@ -1,0 +1,77 @@
+import com.manning.gia.ssh.Scp
+import com.manning.gia.ssh.SshExec
+
+apply from: "$rootDir/gradle/downloadWar.gradle"
+
+ext {
+	warFile = configurations.todo.singleFile.name
+	tomcatRemoteDir = '/opt/apache-tomcat-7.0.42'
+	
+	userHome = System.properties['user.home']
+	vagrantKeyFile = "$userHome/.vagrant.d/insecure_private_key"
+	remoteTmpDir = "$config.server.username@$config.server.hostname:/tmp"
+}
+
+configurations {
+    jsch
+}
+
+dependencies {
+    jsch 'org.apache.ant:ant-jsch:1.9.1'
+}
+
+task copyWarToServer(type: Scp, dependsOn: fetchToDoWar) {
+    classpath = configurations.jsch
+    sourceFile = warFile
+    destination = remoteTmpDir
+    keyFile = vagrantKeyFile
+    port = config.server.sshPort
+}
+
+tasks.withType(SshExec) { task ->
+    task.classpath = configurations.jsch
+    task.host = config.server.hostname
+    task.username = config.server.username
+    task.keyFile = vagrantKeyFile
+    task.port = config.server.sshPort
+}
+
+task shutdownTomcat(type: SshExec, dependsOn: copyWarToServer) {
+    command = "sudo -u tomcat $tomcatRemoteDir/bin/shutdown.sh"
+        
+    doFirst {
+		logger.quiet "Shutting down remote Tomcat."
+	}
+}
+
+task deleteTomcatWebappsDir(type: SshExec, dependsOn: shutdownTomcat) {
+	command = "sudo -u tomcat rm -rf $tomcatRemoteDir/webapps/todo"
+}
+
+task deleteTomcatWorkDir(type: SshExec, dependsOn: shutdownTomcat) {
+	command = "sudo -u tomcat rm -rf $tomcatRemoteDir/work"
+}
+
+task deleteOldArtifacts(dependsOn: [deleteTomcatWebappsDir, deleteTomcatWorkDir]) {
+	doFirst {
+		logger.quiet "Deleting old WAR artifacts."
+	}
+}
+
+task copyWarToWebappsDir(type: SshExec, dependsOn: deleteOldArtifacts) {
+	command = "sudo -u tomcat cp /tmp/$warName $tomcatRemoteDir/webapps/todo.war"
+	
+	doFirst {
+		logger.quiet "Deploying WAR file to Tomcat."
+	}
+}
+
+task startupTomcat(type: SshExec, dependsOn: copyWarToWebappsDir) {
+	command = "sudo -u tomcat $tomcatRemoteDir/bin/startup.sh"
+	
+	doFirst {
+		logger.quiet "Starting up remote Tomcat."
+	}
+}
+
+task deployWar(dependsOn: startupTomcat)

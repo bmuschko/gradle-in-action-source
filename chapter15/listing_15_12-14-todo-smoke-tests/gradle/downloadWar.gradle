@@ -1,0 +1,20 @@
+repositories {
+    maven { 
+        url config.binaryRepository.releaseUrl 
+    }
+}
+
+configurations {
+    todo
+}
+
+dependencies {
+    todo group: project.group, name: project.name, version: project.version.toString(), ext: 'war'
+}
+
+ext.downloadDir = file("$buildDir/download/artifacts")
+
+task fetchToDoWar(type: Copy) {
+    from configurations.todo
+    into downloadDir
+}
