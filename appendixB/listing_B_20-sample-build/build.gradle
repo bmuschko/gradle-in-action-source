@@ -1,0 +1,11 @@
+apply plugin: 'java'
+
+version = '0.1'
+
+repositories {
+   mavenCentral()
+}
+
+dependencies {
+   compile 'commons-codec:commons-codec:1.6'
+}

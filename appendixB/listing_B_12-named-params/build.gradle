@@ -1,0 +1,9 @@
+class ProjectVersion {
+   Integer major
+   Integer minor
+}
+
+ProjectVersion projectVersion = new ProjectVersion(major: 1, minor: 10)
+assert projectVersion.minor == 10
+projectVersion.minor = 30
+assert projectVersion.minor == 30

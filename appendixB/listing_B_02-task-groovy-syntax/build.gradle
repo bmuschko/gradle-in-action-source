@@ -1,0 +1,12 @@
+task appendFilenames << {
+   def inputDirectory = new File('src')
+   def outputFile = new File(buildDir, 'allfiles.txt')
+   def outputDirectory = outputFile.parentFile
+
+   if(!outputDirectory.exists()) {
+      outputDirectory.mkdirs()
+   }
+
+   outputFile.createNewFile()
+   inputDirectory.eachFile { outputFile << "$it.name\n" }
+}

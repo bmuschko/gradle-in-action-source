@@ -1,0 +1,9 @@
+def buildTools = ['Ant', 'Maven', 'Gradle']
+assert buildTools.find { it == 'Gradle' } == 'Gradle'
+assert buildTools.every { it.length >= 4 } == false
+
+assert 'gradle'.capitalize() == 'Gradle'
+
+new File('build.gradle').eachLine { line ->
+   println line
+}                                                                           

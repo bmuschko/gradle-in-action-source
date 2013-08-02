@@ -1,0 +1,4 @@
+def version = 12
+assert version == 12
+version++
+assert version == 12

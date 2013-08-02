@@ -1,0 +1,13 @@
+class ProjectVersion {
+   Integer major
+   Integer minor
+}
+
+def incrementMajorProjectVersion = { ProjectVersion version ->
+   version.major++
+}
+
+ProjectVersion projectVersion = new ProjectVersion(major: 1, minor: 10)
+incrementMajorProjectVersion(projectVersion)
+assert projectVersion.major == 2
+

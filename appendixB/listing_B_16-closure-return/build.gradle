@@ -1,0 +1,8 @@
+class ProjectVersion {
+   Integer major
+   Integer minor
+}
+
+ProjectVersion projectVersion = new ProjectVersion(major: 1, minor: 10)
+def minorVersion = { projectVersion.minor }
+assert minorVersion() == 10

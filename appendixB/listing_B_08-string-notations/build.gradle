@@ -1,0 +1,8 @@
+def myString1 = 'This is a single-quoted String'
+def myString2 = "This is a double-quoted String"
+def myString3 = """
+   This
+   is a
+   multiline
+   String
+"""
