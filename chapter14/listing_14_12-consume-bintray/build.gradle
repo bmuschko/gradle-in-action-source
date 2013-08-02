@@ -1,0 +1,14 @@
+buildscript {
+   repositories {
+      maven {
+         name 'Bintray'
+         url 'http://jcenter.bintray.com'
+      }
+   }
+
+   dependencies {
+      classpath 'com.manning.gia:gradle-cloudbees-plugin:0.1'
+   }
+}
+
+apply plugin: 'cloudbees'

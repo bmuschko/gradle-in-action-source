@@ -1,0 +1,15 @@
+allprojects {
+	apply plugin: 'idea'
+	group = 'com.manning.gia'
+	version = '0.1'
+	
+	apply from: "$rootDir/gradle/versioning.gradle"
+}
+
+subprojects {
+	apply plugin: 'java'
+		
+	repositories {
+		mavenCentral()
+	}
+}
