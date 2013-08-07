@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class InMemoryToDoRepositoryTest {
 	private ToDoRepository inMemoryToDoRepository;
@@ -17,14 +17,21 @@ public class InMemoryToDoRepositoryTest {
 	}
 
 	@Test
-	public void testInsertToDoItem() {
-		ToDoItem newToDoItem = new ToDoItem();
-		newToDoItem.setName("Write unit tests");
-		Long newId = inMemoryToDoRepository.insert(newToDoItem);
-		assertNull(newId);
+	public void testInsertToDoItems() {
+		int items = System.getProperty("items") != null ? Integer.parseInt(System.getProperty("items")) : 1;
+		createAndInsertToDoItems(items);
+		List<ToDoItem> toDoItems = inMemoryToDoRepository.findAll();
+
+		assertEquals(items, toDoItems.size());
+	}
+	
+	private void createAndInsertToDoItems(int items) {
+		System.out.println("Creating " + items + " To Do items.");
 		
-		ToDoItem persistedToDoItem = inMemoryToDoRepository.findById(newId);
-		assertNotNull(persistedToDoItem);
-		assertEquals(newToDoItem, persistedToDoItem);
+		for(int i = 1; i <= items; i++) {
+			ToDoItem toDoItem = new ToDoItem();
+			toDoItem.setName("To Do task " + i);
+			inMemoryToDoRepository.insert(toDoItem);
+		}
 	}
 }
