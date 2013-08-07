@@ -9,6 +9,8 @@ project(':repository') {
     }
 
 	test {
+	    systemProperty 'items', '20'
+	    
 		testLogging {
 			showStandardStreams = true
 		}
