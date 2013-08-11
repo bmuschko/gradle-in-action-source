@@ -17,7 +17,7 @@ configurations {
 
 dependencies {
 	rhino 'org.mozilla:rhino:1.7R4'
-	jshint 'jshint-rhino:jshint-rhino:2.1.4@js'
+	jshint 'jshint-rhino:jshint-rhino:2.1.9@js'
 }
 
 ext.jsSourceDir = "$webAppDir/js/app"
