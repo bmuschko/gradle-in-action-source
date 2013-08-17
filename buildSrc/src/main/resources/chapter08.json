@@ -1,0 +1,61 @@
+{
+    "parentDir": "chapter08",
+    "projects":
+        [
+            {
+                "dir": "listing_08_01-buildscript-classpath",
+                "args": ["-b", "cloudbees.gradle"],
+                "tasks": ["tasks"]
+            },
+            {
+                "dir": "listing_08_02-cloudbees-app-info",
+                "args": ["-PappId=gradle-in-action/todo"],
+                "tasks": ["cloudBeesAppInfo"]
+            },
+            {
+                "dir": "listing_08_03-cloudbees-deploy-war",
+                "args": ["-PappId=gradle-in-action/todo", "-PwarFile=todo.war"],
+                "tasks": ["cloudBeesAppInfo"]
+            },
+            {
+                "dir": "listing_08_04-06-cloudbees-custom-tasks",
+                "args": ["-PappId=gradle-in-action/todo", "-PwarFile=todo.war"],
+                "tasks": ["cloudBeesAppInfo"]
+            },
+            {
+                "dir": "listing_08_07-08-cloudbees-refactored-tasks",
+                "args": ["-PappId=gradle-in-action/todo", "-PwarFile=todo.war"],
+                "tasks": ["cloudBeesAppInfo"]
+            },
+            {
+                "dir": "listing_08_09-cloudbees-task-testing",
+                "args": ["-PappId=gradle-in-action/todo", "-PwarFile=todo.war"],
+                "tasks": ["cloudBeesAppInfo"]
+            },
+            {
+                "dir": "listing_08_10-cloudbees-object-plugin",
+                "args": ["-PappId=gradle-in-action/todo", "-PwarFile=todo.war"],
+                "tasks": ["cloudBeesAppInfo"]
+            },
+            {
+                "dir": "listing_08_11-14-cloudbees-extensions",
+                "tasks": ["cloudBeesAppInfo"]
+            },
+            {
+                "dir": "listing_08_15-16-cloudbees-plugin-short-name",
+                "tasks": ["cloudBeesAppInfo"]
+            },
+            {
+                "dir": "listing_08_17-cloudbees-plugin-testing",
+                "tasks": ["cloudBeesAppInfo"]
+            },
+            {
+                "dir": "listing_08_18-19-cloudbees-standalone-object-plugin/plugin",
+                "tasks": ["uploadArchives"]
+            },
+            {
+                "dir": "listing_08_18-19-cloudbees-standalone-object-plugin/todo",
+                "tasks": [":web:cloudBeesAppInfo"]
+            }
+        ]
+}
