@@ -2,6 +2,7 @@ package com.manning.gia.sanitycheck.processing
 
 import groovy.util.logging.Slf4j
 
+import com.manning.gia.sanitycheck.input.Expectations
 import com.manning.gia.sanitycheck.input.TestSetReader
 import com.manning.gia.sanitycheck.input.JsonTestSetReader
 
@@ -18,7 +19,8 @@ class JsonTestSetBuildBatchProcessor implements BuildBatchProcessor {
                 File chapterDir = new File(rootDir, testSet.parentDir)
                 File fullProjectDir = new File(chapterDir, project.dir)
                 log.info "Testing build in directory '$fullProjectDir' with tasks $project.tasks"
-                buildVerifier.verifySuccessfulExecution(fullProjectDir, gradleVersion, project.tasks as String[], project?.args as String[])
+                Expectations expectations = createExpectations(project)                
+                buildVerifier.verifySuccessfulExecution(fullProjectDir, gradleVersion, project.tasks as String[], project?.args as String[], expectations)
             }
         }
     }
@@ -30,5 +32,16 @@ class JsonTestSetBuildBatchProcessor implements BuildBatchProcessor {
         chapterFiles.collect { chapterFile ->
             testSetReader.parse(getClass().getClassLoader().getResource(chapterFile).newReader('UTF-8'))
         }
+    }
+    
+    private Expectations createExpectations(project) {
+        Expectations expectations = new Expectations()
+        String parsedExpectedResult = project?.expectations?.result
+
+        if(parsedExpectedResult) {
+            expectations.result = Expectations.Result.getResultForName(parsedExpectedResult)
+        }
+
+        expectations
     }
 }
