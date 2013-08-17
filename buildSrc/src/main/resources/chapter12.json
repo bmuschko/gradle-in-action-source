@@ -12,18 +12,22 @@
             },
             {
                 "dir": "listing_12_07-09-checkstyle",
+                "args": ["-x", "stopDatabase"],
                 "tasks": ["clean", "build"]
             },
             {
                 "dir": "listing_12_10-11-pmd",
+                "args": ["-x", "stopDatabase"],
                 "tasks": ["clean", "build"]
             },
             {
                 "dir": "listing_12_12-findbugs",
+                "args": ["-x", "stopDatabase"],
                 "tasks": ["clean", "build"]
             },
             {
                 "dir": "listing_12_13-jdepend",
+                "args": ["-x", "stopDatabase"],
                 "tasks": ["clean", "build"]
             },
             {
