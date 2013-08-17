@@ -7,7 +7,7 @@ import java.util.List;
 import org.testng.annotations.*;
 import static org.testng.Assert.*;
 
-public class InMemoryToDoRepositoryTest {
+public class InMemoryToDoRepositoryNGTest {
 	private ToDoRepository inMemoryToDoRepository;
 
 	@BeforeClass

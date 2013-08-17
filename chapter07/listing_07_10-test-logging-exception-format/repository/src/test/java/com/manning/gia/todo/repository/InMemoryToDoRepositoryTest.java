@@ -21,7 +21,7 @@ public class InMemoryToDoRepositoryTest {
 		ToDoItem newToDoItem = new ToDoItem();
 		newToDoItem.setName("Write unit tests");
 		Long newId = inMemoryToDoRepository.insert(newToDoItem);
-		assertNull(newId);
+		assertNotNull(newId);
 		
 		ToDoItem persistedToDoItem = inMemoryToDoRepository.findById(newId);
 		assertNotNull(persistedToDoItem);
