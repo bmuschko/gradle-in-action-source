@@ -18,7 +18,7 @@ class CloudBeesAppDeployWar extends DefaultTask {
     @Input String message
     @InputFile File warFile
 	
-    CloudBeesDeployWar() {
+    CloudBeesAppDeployWar() {
         description = 'Deploys a new version of an application using a WAR file.'
         group = 'CloudBees'
     }

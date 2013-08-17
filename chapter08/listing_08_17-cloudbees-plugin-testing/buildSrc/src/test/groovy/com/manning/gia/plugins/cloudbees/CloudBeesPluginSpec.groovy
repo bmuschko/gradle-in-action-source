@@ -33,16 +33,16 @@ class CloudBeesPluginSpec extends Specification {
 		    Task appInfoTask = project.tasks.findByName(APP_INFO_TASK_NAME)
 			appInfoTask != null
 			appInfoTask.description == 'Returns the basic information about an application.'
-			appInfoTask.group = 'CloudBees'
-			appInfoTask.apiKey = 'myKey'
-			appInfoTask.secret = 'mySecret'
-			appInfoTask.appId = 'todo'
+			appInfoTask.group == 'CloudBees'
+			appInfoTask.apiKey == 'myKey'
+			appInfoTask.secret == 'mySecret'
+			appInfoTask.appId == 'todo'
 			Task appDeployWarTask = project.tasks.findByName(APP_DEPLOY_WAR_TASK_NAME)
 			appDeployWarTask != null
 			appDeployWarTask.description == 'Deploys a new version of an application using a WAR file.'
-			appDeployWarTask.group = 'CloudBees'
-			appDeployWarTask.apiKey = 'myKey'
-			appDeployWarTask.secret = 'mySecret'
-			appDeployWarTask.appId = 'todo'
+			appDeployWarTask.group == 'CloudBees'
+			appDeployWarTask.apiKey == 'myKey'
+			appDeployWarTask.secret == 'mySecret'
+			appDeployWarTask.appId == 'todo'
 	}
 }

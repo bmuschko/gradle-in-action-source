@@ -1,15 +1,1 @@
-ext {
-   apiUrl = 'https://api.cloudbees.com/api'
-   apiFormat = 'xml'
-   apiVersion = '1.0'
-}
-
-if(project.hasProperty('cloudbees.api.key')) {
-   ext.apiKey = project.property('cloudbees.api.key')
-}
-
-if(project.hasProperty('cloudbees.api.secret')) {
-   ext.secret = project.property('cloudbees.api.secret')	
-}
-
 apply plugin: com.manning.gia.plugins.cloudbees.CloudBeesPlugin
