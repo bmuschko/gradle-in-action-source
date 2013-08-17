@@ -1,0 +1,69 @@
+{
+    "parentDir": "chapter07",
+    "projects":
+        [
+            {
+                "dir": "listing_07_01-02-junit-test-failing",
+                "tasks": [":repository:test"],
+                "expectations": {
+                    "result": "failure"
+                }
+            },
+            {
+                "dir": "listing_07_01-02-junit-test-successful",
+                "tasks": [":repository:test"]
+            },
+            {
+                "dir": "listing_07_03-testng-test",
+                "tasks": [":repository:test"]
+            },
+            {
+                "dir": "listing_07_04-spock-test",
+                "tasks": [":repository:test"]
+            },
+            {
+                "dir": "listing_07_05-mixed-test-frameworks",
+                "tasks": [":repository:test"]
+            },
+            {
+                "dir": "listing_07_06-test-report-aggregation",
+                "tasks": [":repository:build"]
+            },
+            {
+                "dir": "listing_07_07-08-test-configuration",
+                "tasks": [":repository:test"]
+            },
+            {
+                "dir": "listing_07_09-test-logging-streams",
+                "tasks": [":repository:test"]
+            },
+            {
+                "dir": "listing_07_10-test-logging-exception-format",
+                "tasks": [":repository:test"]
+            },
+            {
+                "dir": "listing_07_11-test-logging-events",
+                "tasks": [":repository:test"]
+            },
+            {
+                "dir": "listing_07_12-parallel-test-execution",
+                "tasks": [":repository:test"]
+            },
+            {
+                "dir": "listing_07_13-test-lifecyle-hook",
+                "tasks": [":repository:test"]
+            },
+            {
+                "dir": "listing_07_14-test-listener",
+                "tasks": [":repository:test"]
+            },
+            {
+                "dir": "listing_07_15-16-integration-test-mixed",
+                "tasks": [":repository:build"]
+            }   ,
+            {
+                "dir": "listing_07_17-18-integration-test-separated",
+                "tasks": [":repository:build"]
+            }
+        ]
+}
