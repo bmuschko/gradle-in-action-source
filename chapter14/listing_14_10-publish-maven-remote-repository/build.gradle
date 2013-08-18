@@ -67,6 +67,7 @@ publishing {
 	publications {
 		plugin(MavenPublication) {
 			from components.java
+			artifactId 'cloudbees-plugin'
 			
 			pom.withXml {
 				def root = asNode()

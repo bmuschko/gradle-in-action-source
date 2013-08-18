@@ -60,7 +60,8 @@ apply plugin: 'maven-publish'
 publishing {
 	publications {
 		plugin(MavenPublication) {
-			from components.java			
+			from components.java
+			artifactId 'cloudbees-plugin'		
 		}
 	}
 }

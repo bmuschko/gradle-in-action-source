@@ -61,6 +61,7 @@ publishing {
 	publications {
 		plugin(MavenPublication) {
 			from components.java
+			artifactId 'cloudbees-plugin'
 			
 			artifact sourcesJar
 			artifact groovydocJar			

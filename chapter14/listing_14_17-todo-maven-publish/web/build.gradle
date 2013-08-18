@@ -34,12 +34,15 @@ apply plugin: 'maven-publish'
 ext {
    artifactoryBaseUrl = 'http://localhost:8081/artifactory'
    artifactoryReleaseRepoUrl = "$artifactoryBaseUrl/libs-release-local"
+   artifactoryUsername = project.hasProperty('artifactoryUsername') ? project.getProperty('artifactoryUsername') : null
+   artifactoryPassword = project.hasProperty('artifactoryPassword') ? project.getProperty('artifactoryPassword') : null
 }
 
 publishing {
    publications {
       toDoWebApp(MavenPublication) {
          from components.web
+         artifactId 'todo-web'
 
          pom.withXml {
 	        def root = asNode()
