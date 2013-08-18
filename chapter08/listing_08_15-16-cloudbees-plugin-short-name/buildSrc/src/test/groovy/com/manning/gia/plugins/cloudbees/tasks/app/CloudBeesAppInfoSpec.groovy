@@ -71,11 +71,27 @@ class CloudBeesAppInfoSpec extends Specification {
 	
 	private Properties getGradleProperties() {
 		def props = new Properties()
+		File gradlePropertiesFile = new File(System.getProperty('user.home'), '.gradle/gradle.properties')
 
-		new File(System.getProperty('user.home'), '.gradle/gradle.properties').withInputStream { 
-			stream -> props.load(stream) 
+        if(gradlePropertiesFile.exists()) {
+		    gradlePropertiesFile.withInputStream { 
+			    stream -> props.load(stream) 
+		    }
 		}
 		
+		addPropertyFromEnvVariable(props, 'cloudbeesApiKey')
+		addPropertyFromEnvVariable(props, 'cloudbeesApiSecret')
 		props
+	}
+	
+	private void addPropertyFromEnvVariable(Properties props, String key) {
+	    if(!props.containsKey(key)) {
+	        def env = System.getenv()
+	        String gradleEnvPropKey = "ORG_GRADLE_PROJECT_$key"
+	        
+	        if(env.containsKey(gradleEnvPropKey)) {
+	            props[key] = env[gradleEnvPropKey]
+	        }
+	    }
 	}
 }
