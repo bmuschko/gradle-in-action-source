@@ -7,7 +7,7 @@ buildscript {
    }
 
    dependencies {
-      classpath 'com.manning.gia:gradle-cloudbees-plugin:0.1'
+      classpath 'org.gradle.api.plugins:gradle-cloudbees-plugin:0.1'
    }
 }
 
