@@ -4,27 +4,27 @@
         [
             {
                 "dir": "listing_14_01-declaring-additional-artifacts",
-                "tasks": ["clean", "build"]
+                "tasks": ["clean", "assemble"]
             },
             {
                 "dir": "listing_14_02-03-declaring-distributions",
-                "tasks": ["clean", "build", "distZip", "docsDistTar"]
+                "tasks": ["clean", "assemble", "distZip", "docsDistTar"]
             },
             {
                 "dir": "listing_14_04-publish-maven-software-component",
-                "tasks": ["clean", "build", "publishToMavenLocal"]
+                "tasks": ["clean", "publishToMavenLocal"]
             },
             {
                 "dir": "listing_14_06-publish-maven-additional-artifacts",
-                "tasks": ["clean", "build", "publishToMavenLocal"]
+                "tasks": ["clean", "publishToMavenLocal"]
             },
             {
                 "dir": "listing_14_07-publish-maven-modify-pom",
-                "tasks": ["clean", "build", "publishToMavenLocal"]
+                "tasks": ["clean", "publishToMavenLocal"]
             },
             {
                 "dir": "listing_14_09-publish-maven-local-repository",
-                "tasks": ["clean", "build", "publishPluginPublicationToMyLocalRepository"]
+                "tasks": ["clean", "publishPluginPublicationToMyLocalRepository"]
             },
             {
                 "dir": "listing_14_12-consume-bintray",
@@ -40,7 +40,7 @@
             },
             {
                 "dir": "listing_14_17-todo-maven-publish",
-                "tasks": ["clean", "build", "publishToMavenLocal"]
+                "tasks": ["clean", "publishToMavenLocal"]
             }
         ]
 }
