@@ -36,6 +36,10 @@
             },
             {
                 "dir": "listing_14_16-todo-versioning-include-build-info",
+                "tasks": ["clean", "build"]
+            },
+            {
+                "dir": "listing_14_17-todo-maven-publish",
                 "tasks": ["clean", "publishToMavenLocal"]
             }
         ]
