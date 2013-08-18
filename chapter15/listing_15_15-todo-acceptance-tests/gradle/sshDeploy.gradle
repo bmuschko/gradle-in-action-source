@@ -4,11 +4,11 @@ import com.manning.gia.ssh.SshExec
 apply from: "$rootDir/gradle/downloadWar.gradle"
 
 ext {
-	warFile = configurations.todo.singleFile.name
+	warFile = configurations.todo.singleFile
 	tomcatRemoteDir = '/opt/apache-tomcat-7.0.42'
 	
 	userHome = System.properties['user.home']
-	vagrantKeyFile = "$userHome/.vagrant.d/insecure_private_key"
+	vagrantKeyFile = file("$userHome/.vagrant.d/insecure_private_key")
 	remoteTmpDir = "$config.server.username@$config.server.hostname:/tmp"
 }
 
@@ -59,7 +59,7 @@ task deleteOldArtifacts(dependsOn: [deleteTomcatWebappsDir, deleteTomcatWorkDir]
 }
 
 task copyWarToWebappsDir(type: SshExec, dependsOn: deleteOldArtifacts) {
-	command = "sudo -u tomcat cp /tmp/$warName $tomcatRemoteDir/webapps/todo.war"
+	command = "sudo -u tomcat cp /tmp/$warFile.name $tomcatRemoteDir/webapps/todo.war"
 	
 	doFirst {
 		logger.quiet "Deploying WAR file to Tomcat."
