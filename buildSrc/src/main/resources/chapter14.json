@@ -1,0 +1,42 @@
+{
+    "parentDir": "chapter14",
+    "projects":
+        [
+            {
+                "dir": "listing_14_01-declaring-additional-artifacts",
+                "tasks": ["clean", "assemble"]
+            },
+            {
+                "dir": "listing_14_02-03-declaring-distributions",
+                "tasks": ["clean", "assemble", "distZip", "docsDistTar"]
+            },
+            {
+                "dir": "listing_14_04-publish-maven-software-component",
+                "tasks": ["clean", "publishToMavenLocal"]
+            },
+            {
+                "dir": "listing_14_06-publish-maven-additional-artifacts",
+                "tasks": ["clean", "publishToMavenLocal"]
+            },
+            {
+                "dir": "listing_14_07-publish-maven-modify-pom",
+                "tasks": ["clean", "publishToMavenLocal"]
+            },
+            {
+                "dir": "listing_14_09-publish-maven-local-repository",
+                "tasks": ["clean", "publishPluginPublicationToMyLocalRepository"]
+            },
+            {
+                "dir": "listing_14_12-consume-bintray",
+                "tasks": ["tasks"]
+            },
+            {
+                "dir": "listing_14_13-15-todo-versioning-scheme",
+                "tasks": ["clean", "build"]
+            },
+            {
+                "dir": "listing_14_16-todo-versioning-include-build-info",
+                "tasks": ["clean", "build"]
+            }
+        ]
+}
