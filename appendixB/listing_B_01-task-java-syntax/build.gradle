@@ -1,5 +1,5 @@
 task appendFilenames << {
-   File inputDirectory = new File("src");
+   File inputDirectory = file("src");
    File outputFile = new File(getBuildDir(), "allfiles.txt");
    File outputDirectory = outputFile.getParentFile();
 

@@ -1,5 +1,5 @@
 task appendFilenames << {
-   def inputDirectory = new File('src')
+   def inputDirectory = file('src')
    def outputFile = new File(buildDir, 'allfiles.txt')
    def outputDirectory = outputFile.parentFile
 

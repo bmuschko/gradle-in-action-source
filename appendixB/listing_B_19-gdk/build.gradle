@@ -1,6 +1,6 @@
 def buildTools = ['Ant', 'Maven', 'Gradle']
 assert buildTools.find { it == 'Gradle' } == 'Gradle'
-assert buildTools.every { it.length >= 4 } == false
+assert buildTools.every { it.size() >= 4 } == false
 
 assert 'gradle'.capitalize() == 'Gradle'
 
