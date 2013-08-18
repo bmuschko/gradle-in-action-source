@@ -8,7 +8,7 @@
             },
             {
                 "dir": "listing_12_03-04-cobertura",
-                "tasks": ["clean", "build", "testCoberturaReport"]
+                "tasks": ["clean", ":repository:build", ":repository:testCoberturaReport"]
             },
             {
                 "dir": "listing_12_07-09-checkstyle",
@@ -40,7 +40,7 @@
             },
             {
                 "dir": "listing_12_17-sonar-cobertura",
-                "tasks": ["clean", "build"]
+                "tasks": ["clean", ":repository:build"]
             }
         ]
 }
