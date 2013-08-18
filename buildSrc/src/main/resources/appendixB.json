@@ -1,0 +1,81 @@
+{
+    "parentDir": "appendixB",
+    "projects":
+        [
+            {
+                "dir": "listing_B_01-task-java-syntax",
+                "tasks": ["appendFilenames"]
+            },
+            {
+                "dir": "listing_B_02-task-groovy-syntax",
+                "tasks": ["appendFilenames"]
+            },
+            {
+                "dir": "listing_B_05-power-assert",
+                "tasks": ["tasks"],
+                "expectations": {
+                    "result": "failure"
+                }
+            },
+            {
+                "dir": "listing_B_06-optional-typing",
+                "tasks": ["tasks"]
+            },
+            {
+                "dir": "listing_B_07-optional-parentheses",
+                "tasks": ["tasks"]
+            },
+            {
+                "dir": "listing_B_08-string-notations",
+                "tasks": ["tasks"]
+            },
+            {
+                "dir": "listing_B_09-gstrings",
+                "tasks": ["tasks"]
+            },
+            {
+                "dir": "listing_B_10-lists",
+                "tasks": ["tasks"]
+            },
+            {
+                "dir": "listing_B_11-maps",
+                "tasks": ["tasks"]
+            },
+            {
+                "dir": "listing_B_12-named-params",
+                "tasks": ["tasks"]
+            },
+            {
+                "dir": "listing_B_13-closure-implicit-param",
+                "tasks": ["tasks"]
+            },
+            {
+                "dir": "listing_B_14-closure-explicit-param",
+                "tasks": ["tasks"]
+            },
+            {
+                "dir": "listing_B_15-closure-multiple-untyped-params",
+                "tasks": ["tasks"]
+            },
+            {
+                "dir": "listing_B_16-closure-return",
+                "tasks": ["tasks"]
+            },
+            {
+                "dir": "listing_B_17-closure-method-param",
+                "tasks": ["tasks"]
+            },
+            {
+                "dir": "listing_B_18-closure-delegate",
+                "tasks": ["tasks"]
+            },
+            {
+                "dir": "listing_B_19-gdk",
+                "tasks": ["tasks"]
+            },
+            {
+                "dir": "listing_B_20-sample-build",
+                "tasks": ["clean", "build"]
+            }
+        ]
+}
