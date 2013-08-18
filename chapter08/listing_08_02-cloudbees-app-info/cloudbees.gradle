@@ -14,12 +14,12 @@ ext {
    apiVersion = '1.0'
 }
 
-if(project.hasProperty('cloudbees.api.key')) {
-   ext.apiKey =	project.property('cloudbees.api.key')
+if(project.hasProperty('cloudbeesApiKey')) {
+   ext.apiKey =	project.property('cloudbeesApiKey')
 }
 
-if(project.hasProperty('cloudbees.api.secret')) {
-   ext.secret = project.property('cloudbees.api.secret')	
+if(project.hasProperty('cloudbeesApiSecret')) {
+   ext.secret = project.property('cloudbeesApiSecret')	
 }
 
 import com.cloudbees.api.ApplicationInfo

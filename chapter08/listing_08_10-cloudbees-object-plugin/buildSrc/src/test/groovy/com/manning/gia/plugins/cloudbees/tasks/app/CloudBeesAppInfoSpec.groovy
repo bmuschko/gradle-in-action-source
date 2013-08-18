@@ -55,13 +55,13 @@ class CloudBeesAppInfoSpec extends Specification {
 		expect:
 			project.tasks.findByName(TASK_NAME) == null
 			Properties gradleProperties = getGradleProperties()
-			gradleProperties['cloudbees.api.key'] != null
-			gradleProperties['cloudbees.api.secret'] != null
+			gradleProperties['cloudbeesApiKey'] != null
+			gradleProperties['cloudbeesApiSecret'] != null
 		when:
 			Task task = project.task(TASK_NAME, type: CloudBeesAppInfo) {
 				appId = 'gradle-in-action/todo'
-                apiKey = gradleProperties['cloudbees.api.key']
-				secret = gradleProperties['cloudbees.api.secret']
+                apiKey = gradleProperties['cloudbeesApiKey']
+				secret = gradleProperties['cloudbeesApiSecret']
 			}
 
 			task.start()
