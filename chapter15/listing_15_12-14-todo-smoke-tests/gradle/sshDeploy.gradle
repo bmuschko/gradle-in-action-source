@@ -28,12 +28,12 @@ task copyWarToServer(type: Scp, dependsOn: fetchToDoWar) {
     port = config.server.sshPort
 }
 
-tasks.withType(SshExec) { task ->
-    task.classpath = configurations.jsch
-    task.host = config.server.hostname
-    task.username = config.server.username
-    task.keyFile = vagrantKeyFile
-    task.port = config.server.sshPort
+tasks.withType(SshExec) {
+    classpath = configurations.jsch
+    host = config.server.hostname
+    username = config.server.username
+    keyFile = vagrantKeyFile
+    port = config.server.sshPort
 }
 
 task shutdownTomcat(type: SshExec, dependsOn: copyWarToServer) {
