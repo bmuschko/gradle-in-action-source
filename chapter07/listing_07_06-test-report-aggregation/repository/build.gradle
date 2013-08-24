@@ -20,7 +20,7 @@ project(':repository') {
 	test.dependsOn testNG
 	
 	task aggregateTestReports(type: TestReport) {
-	    destinationDir = test.testReportDir
+	    destinationDir = test.reports.html.destination
 	    reportOn test, testNG
 	}
 	

@@ -13,16 +13,18 @@ project(':repository') {
 
 	test {
 		exclude '**/*IntegTest.class'
-		testReportDir = file("$testReportDir/unit")
-		testResultsDir = file("$testResultsDir/unit")
+		reports.html.destination = file("$reports.html.destination/unit")
+		reports.junitXml.destination = file("$reports.junitXml.destination/unit")
 	}
 
 	task integrationTest(type: Test) {
 		description = 'Runs the integration tests.'
 		group = 'verification'
 		include '**/*IntegTest.class'
-		testReportDir = file("$testReportDir/integration")
-		testResultsDir = file("$testResultsDir/integration")
+		reports.html.destination = file("$reports.html.destination/integration")
+		reports.junitXml.destination = file("$reports.junitXml.destination/integration")
+		dependsOn startDatabase
+	    finalizedBy stopDatabase
 	} 
 	
 	tasks.withType(Test) {
@@ -32,8 +34,5 @@ project(':repository') {
         }
     }
 
-	startDatabase.dependsOn test
-	integrationTest.dependsOn startAndPrepareDatabase
-	stopDatabase.dependsOn integrationTest
-	check.dependsOn stopDatabase
+	check.dependsOn integrationTest
 }

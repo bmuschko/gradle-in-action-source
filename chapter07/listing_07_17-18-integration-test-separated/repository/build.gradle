@@ -25,6 +25,8 @@ project(':repository') {
 		group = 'verification'
 		testClassesDir = sourceSets.integrationTest.output.classesDir
 	    classpath = sourceSets.integrationTest.runtimeClasspath
+	    dependsOn startDatabase
+	    finalizedBy stopDatabase
 	}
 
     tasks.withType(Test) {
@@ -34,8 +36,5 @@ project(':repository') {
         }
     }
 
-	startDatabase.dependsOn test
-	integrationTest.dependsOn startAndPrepareDatabase
-	stopDatabase.dependsOn integrationTest
-	check.dependsOn stopDatabase
+	check.dependsOn integrationTest
 }
