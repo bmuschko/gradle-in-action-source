@@ -23,7 +23,7 @@ project(':repository') {
 		include '**/*IntegTest.class'
 		reports.html.destination = file("$reports.html.destination/integration")
 		reports.junitXml.destination = file("$reports.junitXml.destination/integration")
-		dependsOn startDatabase
+		dependsOn startAndPrepareDatabase
 	    finalizedBy stopDatabase
 	} 
 	

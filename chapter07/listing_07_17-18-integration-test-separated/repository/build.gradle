@@ -25,7 +25,7 @@ project(':repository') {
 		group = 'verification'
 		testClassesDir = sourceSets.integrationTest.output.classesDir
 	    classpath = sourceSets.integrationTest.runtimeClasspath
-	    dependsOn startDatabase
+	    dependsOn startAndPrepareDatabase
 	    finalizedBy stopDatabase
 	}
 
