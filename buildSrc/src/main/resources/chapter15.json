@@ -20,7 +20,7 @@
             },
             {
                 "dir": "listing_15_15-todo-acceptance-tests",
-                "args": ["-x", "inContainerFunctionalTest"],
+                "args": ["-x", "localFunctionalTest"],
                 "tasks": ["clean", "build"]
             }
         ]
