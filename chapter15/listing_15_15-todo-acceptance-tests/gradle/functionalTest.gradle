@@ -29,8 +29,8 @@ sourceSets {
 }
 
 ext {
-    functionalTestReportDir = file("$testReportDir/functional")
-    functionalTestResultsDir = file("$testResultsDir/functional")
+    functionalTestReportDir = file("$test.reports.html.destination/functional")
+    functionalTestResultsDir = file("$test.reports.junitXml.destination/functional")
     functionalCommonSystemProperties = ['geb.env': 'firefox', 'geb.build.reportsDir': reporting.file("$name/geb")]
 }
 
@@ -39,15 +39,6 @@ ext {
     functionalJettyStopPort = 8051
     functionalJettyStopKey = 'stopKey'
 	functionalJettyContextPath = 'todo'
-}
-
-task localFunctionalTest(type: Test) {
-    testClassesDir = sourceSets.functionalTest.output.classesDir
-    classpath = sourceSets.functionalTest.runtimeClasspath
-    testReportDir = functionalTestReportDir
-    testResultsDir = functionalTestResultsDir
-    systemProperties functionalCommonSystemProperties
-    systemProperty 'geb.build.baseUrl', "http://localhost:$functionalJettyHttpPort/$functionalJettyContextPath/"
 }
 
 task functionalJettyRun(type: org.gradle.api.plugins.jetty.JettyRun) {
@@ -63,18 +54,24 @@ task functionalJettyStop(type: org.gradle.api.plugins.jetty.JettyStop) {
     stopKey = functionalJettyStopKey
 }
 
-functionalJettyRun.dependsOn functionalTestClasses
-localFunctionalTest.dependsOn functionalJettyRun
-functionalJettyStop.dependsOn localFunctionalTest
-task inContainerFunctionalTest(dependsOn: functionalJettyStop)
+task localFunctionalTest(type: Test) {
+    testClassesDir = sourceSets.functionalTest.output.classesDir
+    classpath = sourceSets.functionalTest.runtimeClasspath
+    reports.html.destination = functionalTestReportDir
+    reports.junitXml.destination = functionalTestResultsDir
+    systemProperties functionalCommonSystemProperties
+    systemProperty 'geb.build.baseUrl', "http://localhost:$functionalJettyHttpPort/$functionalJettyContextPath/"
+    dependsOn functionalJettyRun
+	finalizedBy functionalJettyStop
+}
+
+check.dependsOn localFunctionalTest
 
 task remoteFunctionalTest(type: Test) {
     testClassesDir = sourceSets.functionalTest.output.classesDir
     classpath = sourceSets.functionalTest.runtimeClasspath
-    testReportDir = functionalTestReportDir
-    testResultsDir = functionalTestResultsDir
+    reports.html.destination = functionalTestReportDir
+    reports.junitXml.destination = functionalTestResultsDir
     systemProperties functionalCommonSystemProperties
     systemProperty 'geb.build.baseUrl', "http://$config.tomcat.hostname:$config.tomcat.port/$config.tomcat.context/"
 }
-
-check.dependsOn inContainerFunctionalTest
