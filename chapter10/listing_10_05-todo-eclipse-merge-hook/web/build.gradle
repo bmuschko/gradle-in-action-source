@@ -30,22 +30,13 @@ project(':web') {
 		functTestRuntime "$seleniumGroup:selenium-firefox-driver:$seleniumVersion"
     }
 
-	sourceSets {
+    sourceSets {
 	    functionalTest {
 	        groovy.srcDir file('src/functTest/groovy')
 	        resources.srcDir file('src/functTest/resources')
 			compileClasspath = sourceSets.main.output + configurations.functTestCompile
 			runtimeClasspath = output + compileClasspath + configurations.functTestRuntime
 	    }
-	}
-
-    task functionalTest(type: Test) {	
-		testClassesDir = sourceSets.functionalTest.output.classesDir
-	    classpath = sourceSets.functionalTest.runtimeClasspath		
-		testReportDir = file("$testReportDir/functional")
-		testResultsDir = file("$testResultsDir/functional")
-		systemProperty 'geb.env', 'firefox'
-		systemProperty 'geb.build.reportsDir', reporting.file("$name/geb")
 	}
 	
 	ext {
@@ -65,10 +56,18 @@ project(':web') {
 		stopKey = functionalJettyStopKey
 	}
 	
-	functionalJettyRun.dependsOn functionalTestClasses
-	functionalTest.dependsOn functionalJettyRun
-	functionalJettyStop.dependsOn functionalTest
-	check.dependsOn functionalJettyStop
+	task functionalTest(type: Test) {	
+		testClassesDir = sourceSets.functionalTest.output.classesDir
+	    classpath = sourceSets.functionalTest.runtimeClasspath		
+		reports.html.destination = file("$reports.html.destination/functional")
+		reports.junitXml.destination = file("$reports.junitXml.destination/functional")
+		systemProperty 'geb.env', 'firefox'
+		systemProperty 'geb.build.reportsDir', reporting.file("$name/geb")
+		dependsOn functionalJettyRun
+		finalizedBy functionalJettyStop
+	}
+	
+	check.dependsOn functionalTest
 	
 	eclipse {
 		project {

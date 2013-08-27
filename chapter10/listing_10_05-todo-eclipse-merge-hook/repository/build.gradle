@@ -11,7 +11,7 @@ project(':repository') {
 		testCompile 'junit:junit:4.11'
     }
 
-	sourceSets {
+    sourceSets {
 	    integrationTest {
 	        java.srcDir file('src/integTest/java')
 	        resources.srcDir file('src/integTest/resources')
@@ -25,6 +25,8 @@ project(':repository') {
 		group = 'verification'
 		testClassesDir = sourceSets.integrationTest.output.classesDir
 	    classpath = sourceSets.integrationTest.runtimeClasspath
+	    dependsOn startAndPrepareDatabase
+	    finalizedBy stopDatabase
 	}
 
     tasks.withType(Test) {
@@ -34,10 +36,7 @@ project(':repository') {
         }
     }
 
-	startDatabase.dependsOn test
-	integrationTest.dependsOn startAndPrepareDatabase
-	stopDatabase.dependsOn integrationTest
-	check.dependsOn stopDatabase
+	check.dependsOn integrationTest
 	
 	eclipse {
 		project {
