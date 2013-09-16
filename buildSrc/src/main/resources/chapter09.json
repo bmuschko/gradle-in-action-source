@@ -19,7 +19,7 @@
                 "tasks": ["printAppServerHome"]
             },
             {
-                "dir": "migrating-ant-build/gradle",
+                "dir": "ant-build-avoid-task-clashes/gradle",
                 "tasks": ["cleanAnt"]
             }
         ]
