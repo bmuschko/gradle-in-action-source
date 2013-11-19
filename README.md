@@ -32,6 +32,10 @@ The book discusses how to integrate third-party functionality by writing custom 
 * [Gradle CloudBees plugin](https://github.com/bmuschko/gradle-cloudbees-plugin): A plugin that provides support for managing applications and databases on CloudBees RUN@cloud.
 * [Gradle Vagrant plugin](https://github.com/bmuschko/gradle-vagrant-plugin): A plugin for managing Vagrant boxes.
 
+Unfortunately, I could not cover all topics readers were interested in. Here's a list of example projects that should get you started:
+
+* [Gradle Android examples](https://github.com/bmuschko/gradle-android-examples): Gradle became the default build tool for Android projects. This repository demonstrates the most common uses cases for the [Gradle Android plugin](http://tools.android.com/tech-docs/new-build-system/user-guide).
+
 ## Continuous Integration
 
 Most of the source code listings are automatically executed with the help of the [Gradle tooling API](http://www.gradle.org/docs/current/userguide/embedding.html). Whenever there's a change to the code, a corresponding [Jenkins job](https://bmuschko.ci.cloudbees.com/job/gradle-in-action-source/) is triggered. Each build works through a list of predefined tasks for each chapter and verifies the expected outcome.
