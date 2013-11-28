@@ -1,6 +1,6 @@
 class ProjectVersion {
-   Integer major
-   Integer minor
+    Integer major
+    Integer minor
 }
 
 ProjectVersion projectVersion = new ProjectVersion(major: 1, minor: 10)

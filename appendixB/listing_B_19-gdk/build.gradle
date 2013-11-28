@@ -5,5 +5,5 @@ assert buildTools.every { it.size() >= 4 } == false
 assert 'gradle'.capitalize() == 'Gradle'
 
 new File('build.gradle').eachLine { line ->
-   println line
-}                                                                           
+    println line
+}

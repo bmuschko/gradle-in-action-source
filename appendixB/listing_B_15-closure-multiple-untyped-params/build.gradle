@@ -1,11 +1,11 @@
 class ProjectVersion {
-   Integer major
-   Integer minor
+    Integer major
+    Integer minor
 }
 
 def setFullProjectVersion = { projectVersion, major, minor ->
-   projectVersion.major = major
-   projectVersion.minor = minor
+    projectVersion.major = major
+    projectVersion.minor = minor
 }
 
 ProjectVersion projectVersion = new ProjectVersion(major: 1, minor: 10)

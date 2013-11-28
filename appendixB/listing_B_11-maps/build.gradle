@@ -9,5 +9,5 @@ assert inceptionYears.size() == 3
 assert inceptionYears['Gradle'] == 2009
 
 inceptionYears.each { buildTool, year ->
-   println "$buildTool was first released in $year"
+    println "$buildTool was first released in $year"
 }

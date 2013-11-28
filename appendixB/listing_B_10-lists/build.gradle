@@ -8,5 +8,5 @@ assert buildTools.size() == 3
 assert buildTools[2] == 'Gradle'
 
 buildTools.each { buildTool ->
-   println buildTool
+    println buildTool
 }

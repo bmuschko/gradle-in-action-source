@@ -1,19 +1,19 @@
 class ProjectVersion {
-   Integer major
-   Integer minor
+    Integer major
+    Integer minor
 
-   ProjectVersion(Integer major, Integer minor) {
-      this.major = major
-      this.minor = minor
-   }
+    ProjectVersion(Integer major, Integer minor) {
+        this.major = major
+        this.minor = minor
+    }
 }
+
+def buildTool = 'Gradle'
+assert buildTool.class == java.lang.String
 
 def initProjectVersion(major, minor) {
-   new ProjectVersion(major, minor)
+    new ProjectVersion(major, minor)
 }
 
-initProjectVersion(1, 2)
-initProjectVersion 1, 2
+assert initProjectVersion(1, 2).class == ProjectVersion
 
-println('Groovy is awesome!')
-println 'Groovy is awesome!'

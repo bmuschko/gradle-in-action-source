@@ -1,0 +1,19 @@
+class ProjectVersion {
+    Integer major
+    Integer minor
+
+    ProjectVersion(Integer major, Integer minor) {
+        this.major = major
+        this.minor = minor
+    }
+}
+
+def initProjectVersion(major, minor) {
+    new ProjectVersion(major, minor)
+}
+
+initProjectVersion(1, 2)
+initProjectVersion 1, 2
+
+println('Groovy is awesome!')
+println 'Groovy is awesome!'

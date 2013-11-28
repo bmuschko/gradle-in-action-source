@@ -1,0 +1,16 @@
+class ProjectVersion {
+    Integer major
+    Integer minor
+
+    void increment(Closure closure) {
+        closure.resolveStrategy = Closure.DELEGATE_ONLY
+        closure.delegate = this
+        closure()
+    }
+}
+
+ProjectVersion projectVersion = new ProjectVersion(major: 1, minor: 10)
+projectVersion.increment { major += 1 }
+assert projectVersion.major == 2
+projectVersion.increment { minor += 5 }
+assert projectVersion.minor == 15
