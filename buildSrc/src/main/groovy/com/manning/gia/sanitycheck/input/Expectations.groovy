@@ -5,7 +5,7 @@ class Expectations {
 
     static enum Result {
         SUCCESS('success'), FAILURE('failure')
-        
+
         private static final Map RESULTS
 
         static {
@@ -21,12 +21,12 @@ class Expectations {
         private Result(name) {
             this.name = name
         }
-        
+
         static Result getResultForName(String name) {
-            if(!RESULTS.containsKey(name)) {
+            if (!RESULTS.containsKey(name)) {
                 throw new IllegalArgumentException("Unsupported result expectation: $name")
             }
-            
+
             RESULTS[name]
         }
     }

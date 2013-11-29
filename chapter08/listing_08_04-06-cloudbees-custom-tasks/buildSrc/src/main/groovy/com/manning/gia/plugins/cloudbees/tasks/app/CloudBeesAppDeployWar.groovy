@@ -10,30 +10,30 @@ import org.gradle.api.tasks.TaskAction
 
 class CloudBeesAppDeployWar extends DefaultTask {
     @Input String apiUrl
-	@Input String apiKey
-	@Input String secret
-	@Input String apiFormat
-	@Input String apiVersion
+    @Input String apiKey
+    @Input String secret
+    @Input String apiFormat
+    @Input String apiVersion
     @Input String appId
     @Input String message
     @InputFile File warFile
-	
+
     CloudBeesAppDeployWar() {
         description = 'Deploys a new version of an application using a WAR file.'
         group = 'CloudBees'
     }
-	
+
     @TaskAction
-    void start() { 
+    void start() {
         logger.quiet "Deploying WAR '$warFile' to application ID '$appId' with message '$message'"
         BeesClient client = new BeesClient(apiUrl, apiKey, secret, apiFormat, apiVersion)
         ApplicationDeployArchiveResponse response
 
         try {
-           response = client.applicationDeployWar(appId, null, message, warFile, null, null)
+            response = client.applicationDeployWar(appId, null, message, warFile, null, null)
         }
-        catch(Exception e) {
-           throw new GradleException(e.message)
+        catch (Exception e) {
+            throw new GradleException(e.message)
         }
 
         logger.quiet "Application uploaded successfully to: '$response.url'"

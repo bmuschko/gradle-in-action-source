@@ -16,20 +16,20 @@ dependencies {
 }
 
 task sourcesJar(type: Jar) {
-	baseName 'cloudbees-plugin'
-	classifier 'sources'
-	from sourceSets.main.allSource
+    baseName 'cloudbees-plugin'
+    classifier 'sources'
+    from sourceSets.main.allSource
 }
 
 task groovydocJar(type: Jar, dependsOn: groovydoc) {
-	baseName 'cloudbees-plugin'
-	classifier 'groovydoc'
-	from groovydoc.destinationDir
+    baseName 'cloudbees-plugin'
+    classifier 'groovydoc'
+    from groovydoc.destinationDir
 }
 
 artifacts {
-	archives sourcesJar
-	archives groovydocJar
+    archives sourcesJar
+    archives groovydocJar
 }
 
 apply plugin: 'distribution'
@@ -38,30 +38,30 @@ distributions {
     main {
         baseName = archivesBaseName
 
-		contents {
-			from { libsDir }
-		}
+        contents {
+            from { libsDir }
+        }
     }
 
-	docs {
-		baseName = "$archivesBaseName-docs"
-		
-		contents {
-			from(libsDir) {
-				include sourcesJar.archiveName
-				include groovydocJar.archiveName
-			}
-		}
-	}
+    docs {
+        baseName = "$archivesBaseName-docs"
+
+        contents {
+            from(libsDir) {
+                include sourcesJar.archiveName
+                include groovydocJar.archiveName
+            }
+        }
+    }
 }
 
 apply plugin: 'maven-publish'
 
 publishing {
-	publications {
-		plugin(MavenPublication) {
-			from components.java
-			artifactId 'cloudbees-plugin'		
-		}
-	}
+    publications {
+        plugin(MavenPublication) {
+            from components.java
+            artifactId 'cloudbees-plugin'
+        }
+    }
 }

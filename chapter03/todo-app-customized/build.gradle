@@ -4,17 +4,17 @@ version = 0.1
 sourceCompatibility = 1.6
 
 sourceSets {
-	main {
-		java {
-			srcDirs = ['src']
-		}
-	}
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
 }
 
 buildDir = 'out'
 
 jar {
-	manifest {
-		attributes 'Main-Class': 'com.manning.gia.todo.ToDoApp'
-	}
+    manifest {
+        attributes 'Main-Class': 'com.manning.gia.todo.ToDoApp'
+    }
 }

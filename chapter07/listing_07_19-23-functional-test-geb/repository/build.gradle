@@ -1,10 +1,10 @@
 project(':repository') {
-	repositories {
-		mavenCentral()
-	}
-	
+    repositories {
+        mavenCentral()
+    }
+
     dependencies {
-	    compile project(':model')
-		testCompile 'junit:junit:4.11'
+        compile project(':model')
+        testCompile 'junit:junit:4.11'
     }
 }

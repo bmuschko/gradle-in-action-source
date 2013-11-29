@@ -1,59 +1,58 @@
 {
     "parentDir": "chapter11",
-    "projects":
-        [
-            {
-                "dir": "listing_11_01-todo-js-dependency-management",
-                "tasks": ["clean", "fetchExternalJs"]
-            },
-            {
-                "dir": "listing_11_02-04-todo-js-minification",
-                "tasks": ["clean", "minifyJs"]
-            },
-            {
-                "dir": "listing_11_05-todo-js-optimize-workflow",
-                "tasks": ["clean", "war"]
-            },
-            {
-                "dir": "listing_11_05-todo-js-optimize-workflow",
-                "tasks": ["clean", "war"],
-                "args": ["-PjsOptimize"]
-            },
-            {
-                "dir": "listing_11_06-07-todo-js-code-quality",
-                "tasks": ["clean", "jsHint"]
-            },
-            {
-                "dir": "listing_11_08-09-todo-js-plugin",
-                "tasks": ["clean", "minifyJs"]
-            },
-            {
-                "dir": "listing_11_13-todo-java-compiler-daemon",
-                "tasks": ["clean", "build"]
-            },
-            {
-                "dir": "listing_11_14-15-todo-groovy",
-                "tasks": ["clean", "build"]
-            },
-            {
-                "dir": "listing_11_16-todo-groovy-customized-sourceset",
-                "tasks": ["clean", "build"]
-            },
-            {
-                "dir": "listing_11_17-18-todo-groovy-joint-compilation",
-                "tasks": ["clean", "build"]
-            },
-            {
-                "dir": "listing_11_19-20-todo-scala",
-                "tasks": ["clean", "build"]
-            },
-            {
-                "dir": "listing_11_21-todo-scala-customized-sourceset",
-                "tasks": ["clean", "build"]
-            },
-            {
-                "dir": "listing_11_22-todo-scala-joint-compilation",
-                "tasks": ["clean", "build"]
-            }
-        ]
+    "projects": [
+        {
+            "dir": "listing_11_01-todo-js-dependency-management",
+            "tasks": ["clean", "fetchExternalJs"]
+        },
+        {
+            "dir": "listing_11_02-04-todo-js-minification",
+            "tasks": ["clean", "minifyJs"]
+        },
+        {
+            "dir": "listing_11_05-todo-js-optimize-workflow",
+            "tasks": ["clean", "war"]
+        },
+        {
+            "dir": "listing_11_05-todo-js-optimize-workflow",
+            "tasks": ["clean", "war"],
+            "args": ["-PjsOptimize"]
+        },
+        {
+            "dir": "listing_11_06-07-todo-js-code-quality",
+            "tasks": ["clean", "jsHint"]
+        },
+        {
+            "dir": "listing_11_08-09-todo-js-plugin",
+            "tasks": ["clean", "minifyJs"]
+        },
+        {
+            "dir": "listing_11_13-todo-java-compiler-daemon",
+            "tasks": ["clean", "build"]
+        },
+        {
+            "dir": "listing_11_14-15-todo-groovy",
+            "tasks": ["clean", "build"]
+        },
+        {
+            "dir": "listing_11_16-todo-groovy-customized-sourceset",
+            "tasks": ["clean", "build"]
+        },
+        {
+            "dir": "listing_11_17-18-todo-groovy-joint-compilation",
+            "tasks": ["clean", "build"]
+        },
+        {
+            "dir": "listing_11_19-20-todo-scala",
+            "tasks": ["clean", "build"]
+        },
+        {
+            "dir": "listing_11_21-todo-scala-customized-sourceset",
+            "tasks": ["clean", "build"]
+        },
+        {
+            "dir": "listing_11_22-todo-scala-joint-compilation",
+            "tasks": ["clean", "build"]
+        }
+    ]
 }

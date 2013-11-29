@@ -1,46 +1,45 @@
 {
     "parentDir": "chapter12",
-    "projects":
-        [
-            {
-                "dir": "listing_12_01-02-jacoco",
-                "tasks": ["clean", "build", "jacocoTestReport", "jacocoIntegrationTestReport"]
-            },
-            {
-                "dir": "listing_12_03-04-cobertura",
-                "tasks": ["clean", ":repository:test"]
-            },
-            {
-                "dir": "listing_12_07-09-checkstyle",
-                "args": ["-x", "stopDatabase"],
-                "tasks": ["clean", "build"]
-            },
-            {
-                "dir": "listing_12_10-11-pmd",
-                "args": ["-x", "stopDatabase"],
-                "tasks": ["clean", "build"]
-            },
-            {
-                "dir": "listing_12_12-findbugs",
-                "args": ["-x", "stopDatabase"],
-                "tasks": ["clean", "build"]
-            },
-            {
-                "dir": "listing_12_13-jdepend",
-                "args": ["-x", "stopDatabase"],
-                "tasks": ["clean", "build"]
-            },
-            {
-                "dir": "listing_12_14-15-sonar",
-                "tasks": ["clean", "build"]
-            },
-            {
-                "dir": "listing_12_14-15-sonar-jacoco",
-                "tasks": ["clean", "build"]
-            },
-            {
-                "dir": "listing_12_17-sonar-cobertura",
-                "tasks": ["clean", ":repository:test"]
-            }
-        ]
+    "projects": [
+        {
+            "dir": "listing_12_01-02-jacoco",
+            "tasks": ["clean", "build", "jacocoTestReport", "jacocoIntegrationTestReport"]
+        },
+        {
+            "dir": "listing_12_03-04-cobertura",
+            "tasks": ["clean", ":repository:test"]
+        },
+        {
+            "dir": "listing_12_07-09-checkstyle",
+            "args": ["-x", "stopDatabase"],
+            "tasks": ["clean", "build"]
+        },
+        {
+            "dir": "listing_12_10-11-pmd",
+            "args": ["-x", "stopDatabase"],
+            "tasks": ["clean", "build"]
+        },
+        {
+            "dir": "listing_12_12-findbugs",
+            "args": ["-x", "stopDatabase"],
+            "tasks": ["clean", "build"]
+        },
+        {
+            "dir": "listing_12_13-jdepend",
+            "args": ["-x", "stopDatabase"],
+            "tasks": ["clean", "build"]
+        },
+        {
+            "dir": "listing_12_14-15-sonar",
+            "tasks": ["clean", "build"]
+        },
+        {
+            "dir": "listing_12_14-15-sonar-jacoco",
+            "tasks": ["clean", "build"]
+        },
+        {
+            "dir": "listing_12_17-sonar-cobertura",
+            "tasks": ["clean", ":repository:test"]
+        }
+    ]
 }

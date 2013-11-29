@@ -1,46 +1,45 @@
 {
     "parentDir": "chapter10",
-    "projects":
-        [
-            {
-                "dir": "listing_10_01-03-todo-eclipse-customized",
-                "tasks": ["cleanEclipse", "eclipse"]
-            },
-            {
-                "dir": "listing_10_04-todo-eclipse-xml-hook",
-                "tasks": ["cleanEclipse", "eclipse"]
-            },
-            {
-                "dir": "listing_10_05-todo-eclipse-merge-hook",
-                "tasks": ["cleanEclipse", "eclipse"]
-            },
-            {
-                "dir": "listing_10_06-09-todo-idea-customized",
-                "tasks": ["cleanIdea", "idea"]
-            },
-            {
-                "dir": "listing_10_10-todo-idea-xml-hook",
-                "tasks": ["cleanIdea", "idea"]
-            },
-            {
-                "dir": "listing_10_11-todo-idea-merge-hook",
-                "tasks": ["cleanIdea", "idea"]
-            },
-            {
-                "dir": "listing_10_12-todo-sublime",
-                "tasks": ["sublimeText"]
-            },
-            {
-                "dir": "listing_10_13-todo-sublime-customized",
-                "tasks": ["sublimeText"]
-            },
-            {
-                "dir": "todo-eclipse",
-                "tasks": ["cleanEclipse", "eclipse"]
-            },
-            {
-                "dir": "todo-idea",
-                "tasks": ["cleanIdea", "idea"]
-            }
-        ]
+    "projects": [
+        {
+            "dir": "listing_10_01-03-todo-eclipse-customized",
+            "tasks": ["cleanEclipse", "eclipse"]
+        },
+        {
+            "dir": "listing_10_04-todo-eclipse-xml-hook",
+            "tasks": ["cleanEclipse", "eclipse"]
+        },
+        {
+            "dir": "listing_10_05-todo-eclipse-merge-hook",
+            "tasks": ["cleanEclipse", "eclipse"]
+        },
+        {
+            "dir": "listing_10_06-09-todo-idea-customized",
+            "tasks": ["cleanIdea", "idea"]
+        },
+        {
+            "dir": "listing_10_10-todo-idea-xml-hook",
+            "tasks": ["cleanIdea", "idea"]
+        },
+        {
+            "dir": "listing_10_11-todo-idea-merge-hook",
+            "tasks": ["cleanIdea", "idea"]
+        },
+        {
+            "dir": "listing_10_12-todo-sublime",
+            "tasks": ["sublimeText"]
+        },
+        {
+            "dir": "listing_10_13-todo-sublime-customized",
+            "tasks": ["sublimeText"]
+        },
+        {
+            "dir": "todo-eclipse",
+            "tasks": ["cleanEclipse", "eclipse"]
+        },
+        {
+            "dir": "todo-idea",
+            "tasks": ["cleanIdea", "idea"]
+        }
+    ]
 }

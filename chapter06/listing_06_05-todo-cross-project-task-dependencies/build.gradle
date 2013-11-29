@@ -4,47 +4,47 @@ group = projectIds.group
 version = projectIds.version
 
 task hello << {
-   println 'Hello from root project'
+    println 'Hello from root project'
 }
 
 project(':model') {
-	group = projectIds.group
-	version = projectIds.version
-	apply plugin: 'java'
-	
-	task hello(dependsOn: ':repository:hello') << {
-	    println 'Hello from model project'
-	}	
+    group = projectIds.group
+    version = projectIds.version
+    apply plugin: 'java'
+
+    task hello(dependsOn: ':repository:hello') << {
+        println 'Hello from model project'
+    }
 }
 
 project(':repository') {
-	group = projectIds.group
-	version = projectIds.version
-	apply plugin: 'java'
-	
-	dependencies {
+    group = projectIds.group
+    version = projectIds.version
+    apply plugin: 'java'
+
+    dependencies {
         compile project(':model')
-	}
-	
-	task hello << {
-		println 'Hello from repository project'
-	}
+    }
+
+    task hello << {
+        println 'Hello from repository project'
+    }
 }
 
 project(':web') {
-	group = projectIds.group
-	version = projectIds.version
-	apply plugin: 'java'
-	apply plugin: 'war'
-	apply plugin: 'jetty'
-	
-	repositories {
-		mavenCentral()
-	}
+    group = projectIds.group
+    version = projectIds.version
+    apply plugin: 'java'
+    apply plugin: 'war'
+    apply plugin: 'jetty'
 
-	dependencies {
-		compile project(':repository')
-		providedCompile 'javax.servlet:servlet-api:2.5'
-		runtime 'javax.servlet:jstl:1.1.2'
-	}
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile project(':repository')
+        providedCompile 'javax.servlet:servlet-api:2.5'
+        runtime 'javax.servlet:jstl:1.1.2'
+    }
 }

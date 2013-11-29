@@ -1,6 +1,6 @@
 repositories {
-    maven { 
-        url config.binaryRepository.releaseUrl 
+    maven {
+        url config.binaryRepository.releaseUrl
     }
 }
 

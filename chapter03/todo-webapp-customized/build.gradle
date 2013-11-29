@@ -3,12 +3,12 @@ apply plugin: 'war'
 apply plugin: 'jetty'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	providedCompile 'javax.servlet:servlet-api:2.5'
-	runtime 'javax.servlet:jstl:1.1.2'
+    providedCompile 'javax.servlet:servlet-api:2.5'
+    runtime 'javax.servlet:jstl:1.1.2'
 }
 
 webAppDirName = 'webfiles'

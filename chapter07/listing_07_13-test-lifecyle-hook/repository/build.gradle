@@ -1,19 +1,19 @@
 project(':repository') {
-	apply plugin: 'announce'
-	
-	repositories {
-		mavenCentral()
-	}
-	
-    dependencies {
-	    compile project(':model')
-		testCompile 'junit:junit:4.11'
+    apply plugin: 'announce'
+
+    repositories {
+        mavenCentral()
     }
 
-	test.afterSuite { TestDescriptor suite, TestResult result ->
-		if(!suite.parent && result.getTestCount() > 0) {
-			long elapsedTestTime = result.getEndTime() - result.getStartTime()
-		    announce.announce("Elapsed time for execution of ${result.getTestCount()} test(s): $elapsedTestTime ms", 'local')
-	    }
-	}
+    dependencies {
+        compile project(':model')
+        testCompile 'junit:junit:4.11'
+    }
+
+    test.afterSuite { TestDescriptor suite, TestResult result ->
+        if (!suite.parent && result.getTestCount() > 0) {
+            long elapsedTestTime = result.getEndTime() - result.getStartTime()
+            announce.announce("Elapsed time for execution of ${result.getTestCount()} test(s): $elapsedTestTime ms", 'local')
+        }
+    }
 }

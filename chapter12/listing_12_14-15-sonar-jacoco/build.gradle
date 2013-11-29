@@ -2,26 +2,26 @@ apply plugin: 'sonar-runner'
 
 sonarRunner {
     sonarProperties {
-		property 'sonar.projectName', 'todo'
-		property 'sonar.projectDescription', 'A task management application'
+        property 'sonar.projectName', 'todo'
+        property 'sonar.projectDescription', 'A task management application'
     }
 }
 
 allprojects {
-	apply plugin: 'idea'
-	group = 'com.manning.gia'
-	version = '0.1'
+    apply plugin: 'idea'
+    group = 'com.manning.gia'
+    version = '0.1'
 }
 
 subprojects {
-	apply plugin: 'java'	
-	apply from: "$rootDir/gradle/jacoco.gradle"
-	
-	repositories {
-		mavenCentral()
-	}
-	
-	sonarRunner {
+    apply plugin: 'java'
+    apply from: "$rootDir/gradle/jacoco.gradle"
+
+    repositories {
+        mavenCentral()
+    }
+
+    sonarRunner {
         sonarProperties {
             property 'sonar.sourceEncoding', 'UTF-8'
         }

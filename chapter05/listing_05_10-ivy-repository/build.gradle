@@ -1,22 +1,22 @@
 configurations {
-	spring
+    spring
 }
 
 dependencies {
-	spring group: 'org.springframework', name: 'org.springframework.core', version: '3.0.5.RELEASE', configuration: 'compile'
+    spring group: 'org.springframework', name: 'org.springframework.core', version: '3.0.5.RELEASE', configuration: 'compile'
 }
 
 repositories {
-   ivy {
-      url 'http://repository.springsource.com/ivy/bundles/release'
-      layout 'pattern', {
-         artifact '[organisation]/[module]/[revision]/[artifact]-[revision].[ext]'
-	     ivy '[organisation]/[module]/[revision]/ivy-[revision].xml'
-      }
-   }
+    ivy {
+        url 'http://repository.springsource.com/ivy/bundles/release'
+        layout 'pattern', {
+            artifact '[organisation]/[module]/[revision]/[artifact]-[revision].[ext]'
+            ivy '[organisation]/[module]/[revision]/ivy-[revision].xml'
+        }
+    }
 
-   ivy {
-      url 'http://repository.springsource.com/ivy/bundles/external'
-      layout 'maven'
-   }
+    ivy {
+        url 'http://repository.springsource.com/ivy/bundles/external'
+        layout 'maven'
+    }
 }

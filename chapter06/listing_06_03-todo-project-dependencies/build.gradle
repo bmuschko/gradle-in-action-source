@@ -4,35 +4,35 @@ group = projectIds.group
 version = projectIds.version
 
 project(':model') {
-	group = projectIds.group
-	version = projectIds.version
-	apply plugin: 'java'
+    group = projectIds.group
+    version = projectIds.version
+    apply plugin: 'java'
 }
 
 project(':repository') {
-	group = projectIds.group
-	version = projectIds.version
-	apply plugin: 'java'
-	
-	dependencies {
+    group = projectIds.group
+    version = projectIds.version
+    apply plugin: 'java'
+
+    dependencies {
         compile project(':model')
-	}
+    }
 }
 
 project(':web') {
-	group = projectIds.group
-	version = projectIds.version
-	apply plugin: 'java'
-	apply plugin: 'war'
-	apply plugin: 'jetty'
-	
-	repositories {
-		mavenCentral()
-	}
+    group = projectIds.group
+    version = projectIds.version
+    apply plugin: 'java'
+    apply plugin: 'war'
+    apply plugin: 'jetty'
 
-	dependencies {
-		compile project(':repository')
-		providedCompile 'javax.servlet:servlet-api:2.5'
-		runtime 'javax.servlet:jstl:1.1.2'
-	}
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile project(':repository')
+        providedCompile 'javax.servlet:servlet-api:2.5'
+        runtime 'javax.servlet:jstl:1.1.2'
+    }
 }

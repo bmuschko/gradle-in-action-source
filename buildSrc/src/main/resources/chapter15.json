@@ -1,27 +1,26 @@
 {
     "parentDir": "chapter15",
-    "projects":
-        [
-            {
-                "dir": "listing_15_01-02-vagrant-gradle-wrapper",
-                "tasks": ["tasks"]
-            },
-            {
-                "dir": "listing_15_03-05-todo-read-configuration",
-                "tasks": ["clean", "build", "deployWar"]
-            },
-            {
-                "dir": "listing_15_06-11-todo-ssh-deploy",
-                "tasks": ["clean", "build"]
-            },
-            {
-                "dir": "listing_15_12-14-todo-smoke-tests",
-                "tasks": ["clean", "build"]
-            },
-            {
-                "dir": "listing_15_15-todo-acceptance-tests",
-                "args": ["-x", "localFunctionalTest"],
-                "tasks": ["clean", "build"]
-            }
-        ]
+    "projects": [
+        {
+            "dir": "listing_15_01-02-vagrant-gradle-wrapper",
+            "tasks": ["tasks"]
+        },
+        {
+            "dir": "listing_15_03-05-todo-read-configuration",
+            "tasks": ["clean", "build", "deployWar"]
+        },
+        {
+            "dir": "listing_15_06-11-todo-ssh-deploy",
+            "tasks": ["clean", "build"]
+        },
+        {
+            "dir": "listing_15_12-14-todo-smoke-tests",
+            "tasks": ["clean", "build"]
+        },
+        {
+            "dir": "listing_15_15-todo-acceptance-tests",
+            "args": ["-x", "localFunctionalTest"],
+            "tasks": ["clean", "build"]
+        }
+    ]
 }

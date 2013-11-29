@@ -5,7 +5,7 @@ allprojects {
 
 subprojects {
     apply plugin: 'java'
-    
+
     tasks.withType(JavaCompile) {
         options.useAnt = false
         options.fork = true

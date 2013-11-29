@@ -11,23 +11,23 @@ import static groovyx.net.http.ContentType.TEXT
 class HttpSmokeTest extends DefaultTask {
     @Input
     String url
-    
+
     @Input
     String errorMessage
-    
+
     @TaskAction
     void letThereBeSmoke() {
         boolean success = isUp(url)
 
-        if(!success) {
-            throw new GradleException(errorMessage)    
+        if (!success) {
+            throw new GradleException(errorMessage)
         }
     }
-    
+
     private boolean isUp(String url) {
         def http = new HTTPBuilder(url)
         def responseStatus = http.get(contentType: TEXT) { resp, reader ->
-           resp.status
+            resp.status
         }
 
         responseStatus != HttpURLConnection.HTTP_OK

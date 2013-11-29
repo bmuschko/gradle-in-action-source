@@ -5,25 +5,26 @@ import com.manning.gia.todo.model.ToDoItem;
 import java.util.List;
 
 import org.testng.annotations.*;
+
 import static org.testng.Assert.*;
 
 public class InMemoryToDoRepositoryNGTest {
-	private ToDoRepository inMemoryToDoRepository;
+    private ToDoRepository inMemoryToDoRepository;
 
-	@BeforeClass
-	public void setUp() {
-		inMemoryToDoRepository = new InMemoryToDoRepository();
-	}
+    @BeforeClass
+    public void setUp() {
+        inMemoryToDoRepository = new InMemoryToDoRepository();
+    }
 
-	@Test
-	public void testToDoItem() {
-		ToDoItem newToDoItem = new ToDoItem();
-		newToDoItem.setName("Write unit tests");
-		Long newId = inMemoryToDoRepository.insert(newToDoItem);
-		assertNotNull(newId);
-		
-		ToDoItem persistedToDoItem = inMemoryToDoRepository.findById(newId);
-		assertNotNull(persistedToDoItem);
-		assertEquals(newToDoItem, persistedToDoItem);
-	}
+    @Test
+    public void testToDoItem() {
+        ToDoItem newToDoItem = new ToDoItem();
+        newToDoItem.setName("Write unit tests");
+        Long newId = inMemoryToDoRepository.insert(newToDoItem);
+        assertNotNull(newId);
+
+        ToDoItem persistedToDoItem = inMemoryToDoRepository.findById(newId);
+        assertNotNull(persistedToDoItem);
+        assertEquals(newToDoItem, persistedToDoItem);
+    }
 }

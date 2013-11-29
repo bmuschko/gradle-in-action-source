@@ -1,22 +1,22 @@
 project(':repository') {
-	repositories {
-		mavenCentral()
-	}
-	
-    dependencies {
-	    compile project(':model')
-		testCompile 'junit:junit:4.11'
+    repositories {
+        mavenCentral()
     }
 
-	test {
-		testLogging {
-			exceptionFormat 'full'
-			events 'passed', 'skipped', 'failed'
-		}
+    dependencies {
+        compile project(':model')
+        testCompile 'junit:junit:4.11'
+    }
 
-		forkEvery = 5
-		maxParallelForks = determineMaxParallelForks()
-	}
+    test {
+        testLogging {
+            exceptionFormat 'full'
+            events 'passed', 'skipped', 'failed'
+        }
+
+        forkEvery = 5
+        maxParallelForks = determineMaxParallelForks()
+    }
 }
 
 def determineMaxParallelForks() {

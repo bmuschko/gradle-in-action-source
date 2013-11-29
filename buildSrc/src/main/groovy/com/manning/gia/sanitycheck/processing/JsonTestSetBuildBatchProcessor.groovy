@@ -20,7 +20,7 @@ class JsonTestSetBuildBatchProcessor implements BuildBatchProcessor {
                 File chapterDir = new File(rootDir, testSet.parentDir)
                 File fullProjectDir = new File(chapterDir, project.dir)
                 log.quiet "Testing build in directory '$fullProjectDir' with tasks $project.tasks"
-                Expectations expectations = createExpectations(project)                
+                Expectations expectations = createExpectations(project)
                 buildVerifier.verifySuccessfulExecution(fullProjectDir, gradleVersion, project.tasks as String[], project?.args as String[], expectations)
             }
         }
@@ -34,12 +34,12 @@ class JsonTestSetBuildBatchProcessor implements BuildBatchProcessor {
             testSetReader.parse(getClass().getClassLoader().getResource(chapterFile).newReader('UTF-8'))
         }
     }
-    
+
     private Expectations createExpectations(project) {
         Expectations expectations = new Expectations()
         String parsedExpectedResult = project?.expectations?.result
 
-        if(parsedExpectedResult) {
+        if (parsedExpectedResult) {
             expectations.result = Expectations.Result.getResultForName(parsedExpectedResult)
         }
 

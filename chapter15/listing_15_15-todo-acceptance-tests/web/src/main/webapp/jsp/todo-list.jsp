@@ -81,8 +81,8 @@
     <p>Double-click to edit a todo</p>
     <c:if test="${not empty buildInfo}">
         <p>
-			Version <c:out value="${buildInfo.version}"/> (Built on: <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${buildInfo.timestamp}" />)
-	    </p>
+            Version <c:out value="${buildInfo.version}"/> (Built on: <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${buildInfo.timestamp}" />)
+        </p>
     </c:if>
 </div>
 </body>

@@ -14,11 +14,11 @@ class ProjectVersion {
     @Override
     String toString() {
         String fullVersion = "$major.$minor"
-	
-        if(build) {
+
+        if (build) {
             fullVersion += ".$build"
         }
-		
+
         fullVersion
     }
 }

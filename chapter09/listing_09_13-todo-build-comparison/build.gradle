@@ -1,25 +1,25 @@
 apply plugin: 'compare-gradle-builds'
 
 allprojects {
-	group = 'com.manning.gia'
-	version = '0.1'
+    group = 'com.manning.gia'
+    version = '0.1'
 }
 
 subprojects {
-	apply plugin: 'java'
+    apply plugin: 'java'
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '1.6'
 }
 
-compareGradleBuilds {  
-    sourceBuild {  
+compareGradleBuilds {
+    sourceBuild {
         projectDir = rootProject.projectDir
         gradleVersion = '1.6'
-    }  
-    targetBuild {  
-        projectDir = sourceBuild.projectDir  
+    }
+    targetBuild {
+        projectDir = sourceBuild.projectDir
         gradleVersion = '1.7'
-    }  
+    }
 }

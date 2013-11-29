@@ -1,7 +1,7 @@
 version = '0.1-SNAPSHOT'
 
 task printVersion {
-   doFirst {
-      println "Version: $version"
-   }
+    doFirst {
+        println "Version: $version"
+    }
 }

@@ -10,66 +10,66 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class InMemoryToDoRepository implements ToDoRepository {
-	private AtomicLong currentId = new AtomicLong();
-	private ConcurrentMap<Long, ToDoItem> toDos = new ConcurrentHashMap<Long, ToDoItem>();
+    private AtomicLong currentId = new AtomicLong();
+    private ConcurrentMap<Long, ToDoItem> toDos = new ConcurrentHashMap<Long, ToDoItem>();
 
-	@Override
-	public List<ToDoItem> findAll() {
-		List<ToDoItem> toDoItems = new ArrayList<ToDoItem>(toDos.values());
-		Collections.sort(toDoItems);
-		return toDoItems;
-	}
+    @Override
+    public List<ToDoItem> findAll() {
+        List<ToDoItem> toDoItems = new ArrayList<ToDoItem>(toDos.values());
+        Collections.sort(toDoItems);
+        return toDoItems;
+    }
 
-	@Override
-	public List<ToDoItem> findAllActive() {
-		List<ToDoItem> activeToDos = new ArrayList<ToDoItem>();
+    @Override
+    public List<ToDoItem> findAllActive() {
+        List<ToDoItem> activeToDos = new ArrayList<ToDoItem>();
 
-		synchronized(toDos) {
-			for(ToDoItem toDoItem : toDos.values()) {
-				if(!toDoItem.isCompleted()) {
-					activeToDos.add(toDoItem);
-				}
-			}
-		}
+        synchronized (toDos) {
+            for (ToDoItem toDoItem : toDos.values()) {
+                if (!toDoItem.isCompleted()) {
+                    activeToDos.add(toDoItem);
+                }
+            }
+        }
 
-		return activeToDos;
-	}
+        return activeToDos;
+    }
 
-	@Override
-	public List<ToDoItem> findAllCompleted() {
-		List<ToDoItem> completedToDos = new ArrayList<ToDoItem>();
+    @Override
+    public List<ToDoItem> findAllCompleted() {
+        List<ToDoItem> completedToDos = new ArrayList<ToDoItem>();
 
-		synchronized(toDos) {
-			for(ToDoItem toDoItem : toDos.values()) {
-				if(toDoItem.isCompleted()) {
-					completedToDos.add(toDoItem);
-				}
-			}
-		}
+        synchronized (toDos) {
+            for (ToDoItem toDoItem : toDos.values()) {
+                if (toDoItem.isCompleted()) {
+                    completedToDos.add(toDoItem);
+                }
+            }
+        }
 
-		return completedToDos;
-	}
+        return completedToDos;
+    }
 
-	@Override
-	public ToDoItem findById(Long id) {
-		return toDos.get(id);
-	}
+    @Override
+    public ToDoItem findById(Long id) {
+        return toDos.get(id);
+    }
 
-	@Override
-	public Long insert(ToDoItem toDoItem) {
-		Long id = currentId.incrementAndGet();
-		toDoItem.setId(id);
-		toDos.putIfAbsent(id, toDoItem);
-		return id;
-	}
+    @Override
+    public Long insert(ToDoItem toDoItem) {
+        Long id = currentId.incrementAndGet();
+        toDoItem.setId(id);
+        toDos.putIfAbsent(id, toDoItem);
+        return id;
+    }
 
-	@Override
-	public void update(ToDoItem toDoItem) {
-		toDos.replace(toDoItem.getId(), toDoItem);
-	}
+    @Override
+    public void update(ToDoItem toDoItem) {
+        toDos.replace(toDoItem.getId(), toDoItem);
+    }
 
-	@Override
-	public void delete(ToDoItem toDoItem) {
-		toDos.remove(toDoItem.getId());
-	}
+    @Override
+    public void delete(ToDoItem toDoItem) {
+        toDos.remove(toDoItem.getId());
+    }
 }

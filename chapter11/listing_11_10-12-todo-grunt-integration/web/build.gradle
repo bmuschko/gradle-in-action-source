@@ -12,15 +12,15 @@ dependencies {
 }
 
 task installGruntDependencies(type: Exec) {
-	inputs.file 'package.json'
-	outputs.dir 'node_modules'
-	
-	executable 'npm'
-	args 'install'
+    inputs.file 'package.json'
+    outputs.dir 'node_modules'
+
+    executable 'npm'
+    args 'install'
 }
 
 import com.manning.gia.js.Grunt
 
 task jsHint(type: Grunt, dependsOn: installGruntDependencies) {
-   commands = ['jshint']
+    commands = ['jshint']
 }

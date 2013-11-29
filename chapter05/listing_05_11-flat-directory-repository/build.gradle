@@ -1,38 +1,38 @@
 configurations {
-   cargo {
-      description = 'Classpath for Cargo Ant tasks.'
-	  visible = false
-   }
+    cargo {
+        description = 'Classpath for Cargo Ant tasks.'
+        visible = false
+    }
 }
 
 task deployToLocalTomcat << {
-	FileTree cargoDependencies = configurations.getByName('cargo').asFileTree
-	ant.taskdef(resource: 'cargo.tasks', classpath: cargoDependencies.asPath)
+    FileTree cargoDependencies = configurations.getByName('cargo').asFileTree
+    ant.taskdef(resource: 'cargo.tasks', classpath: cargoDependencies.asPath)
 
-	ant.cargo(containerId: 'tomcat7x', action: 'run', output: "$buildDir/output.log") {
-		configuration {
-			deployable(type: 'war', file: 'todo.war')
-		}
-		
-		zipUrlInstaller(installUrl: 'http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.32/bin/apache-tomcat-7.0.32.zip')
-	}
+    ant.cargo(containerId: 'tomcat7x', action: 'run', output: "$buildDir/output.log") {
+        configuration {
+            deployable(type: 'war', file: 'todo.war')
+        }
+
+        zipUrlInstaller(installUrl: 'http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.32/bin/apache-tomcat-7.0.32.zip')
+    }
 }
 
 dependencies {
-	cargo name: 'activation', version: '1.1'
-	cargo name: 'ant', version: '1.7.1'
-	cargo name: 'ant-launcher', version: '1.7.1'
-	cargo name: 'cargo-ant', version: '1.3.1'
-	cargo name: 'cargo-core-uberjar', version: '1.3.1'
-	cargo name: 'commons-discovery', version: '0.4'
-	cargo name: 'commons-logging', version: '1.0.4'
-	cargo name: 'dom4j', version: '1.4'
-	cargo name: 'isorelax', version: '20020414'
-	cargo ':jaxb-api:2.1', ':jaxb-impl:2.1.13', ':jaxen:1.0-FCS', ':jdom:1.0', ':msv:20020414',
-          ':relaxngDatatype:20020414', ':saxpath:1.0-FCS', ':stax-api:1.0-2', ':xercesImpl:2.8.1',
-	      ':xml-apis:1.3.03'
+    cargo name: 'activation', version: '1.1'
+    cargo name: 'ant', version: '1.7.1'
+    cargo name: 'ant-launcher', version: '1.7.1'
+    cargo name: 'cargo-ant', version: '1.3.1'
+    cargo name: 'cargo-core-uberjar', version: '1.3.1'
+    cargo name: 'commons-discovery', version: '0.4'
+    cargo name: 'commons-logging', version: '1.0.4'
+    cargo name: 'dom4j', version: '1.4'
+    cargo name: 'isorelax', version: '20020414'
+    cargo ':jaxb-api:2.1', ':jaxb-impl:2.1.13', ':jaxen:1.0-FCS', ':jdom:1.0', ':msv:20020414',
+            ':relaxngDatatype:20020414', ':saxpath:1.0-FCS', ':stax-api:1.0-2', ':xercesImpl:2.8.1',
+            ':xml-apis:1.3.03'
 }
 
 repositories {
-	flatDir(dir: "${System.properties['user.home']}/libs/cargo", name: 'Local libs directory')
+    flatDir(dir: "${System.properties['user.home']}/libs/cargo", name: 'Local libs directory')
 }

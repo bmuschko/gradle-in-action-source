@@ -14,9 +14,9 @@ class ToDoTest extends GebReportingTest {
     void theToDoHomepage() {
         to ToDoHomepage
 
-		$("form").name = 'Write functional tests'
-		$("form").name << Keys.ENTER
-		
-		waitFor { at ToDoInsert }
+        $("form").name = 'Write functional tests'
+        $("form").name << Keys.ENTER
+
+        waitFor { at ToDoInsert }
     }
 }

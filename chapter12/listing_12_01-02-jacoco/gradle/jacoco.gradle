@@ -1,15 +1,15 @@
 buildscript {
-    repositories { 
-		mavenCentral() 
-	}
-    
-	dependencies { 
-		classpath 'org.ajoberstar:gradle-jacoco:0.3.0' 
-	}
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.ajoberstar:gradle-jacoco:0.3.0'
+    }
 }
 
 apply plugin: org.ajoberstar.gradle.jacoco.plugins.JacocoPlugin
 
 jacoco {
-	integrationTestTaskName = 'integrationTest'
+    integrationTestTaskName = 'integrationTest'
 }

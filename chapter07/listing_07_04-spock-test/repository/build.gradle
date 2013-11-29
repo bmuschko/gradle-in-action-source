@@ -1,13 +1,13 @@
 project(':repository') {
-	apply plugin: 'groovy'
-	
-	repositories {
-		mavenCentral()
-	}
-	
+    apply plugin: 'groovy'
+
+    repositories {
+        mavenCentral()
+    }
+
     dependencies {
-	    compile project(':model')
-	    testCompile 'org.codehaus.groovy:groovy:2.0.6'
-		testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+        compile project(':model')
+        testCompile 'org.codehaus.groovy:groovy:2.0.6'
+        testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
     }
 }

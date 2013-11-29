@@ -1,23 +1,23 @@
 allprojects {
-	apply plugin: 'idea'
-	group = 'com.manning.gia'
-	version = '0.1'	
+    apply plugin: 'idea'
+    group = 'com.manning.gia'
+    version = '0.1'
 }
 
 subprojects {
-	apply plugin: 'java'
-	
+    apply plugin: 'java'
+
     idea {
         module {
-		    downloadSources = true
-		    downloadJavadoc = false
-	    }
+            downloadSources = true
+            downloadJavadoc = false
+        }
     }
 }
 
 idea {
-	project {
-		jdkName = '1.6'
-		languageLevel = '1.6'
-	}
+    project {
+        jdkName = '1.6'
+        languageLevel = '1.6'
+    }
 }

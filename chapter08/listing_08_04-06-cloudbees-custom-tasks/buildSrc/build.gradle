@@ -1,7 +1,7 @@
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-    compile 'com.cloudbees:cloudbees-api-client:1.4.0'	
+    compile 'com.cloudbees:cloudbees-api-client:1.4.0'
 }

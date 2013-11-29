@@ -16,18 +16,18 @@ dependencies {
 }
 
 task sourcesJar(type: Jar) {
-	baseName 'cloudbees-plugin'
-	classifier 'sources'
-	from sourceSets.main.allSource
+    baseName 'cloudbees-plugin'
+    classifier 'sources'
+    from sourceSets.main.allSource
 }
 
 task groovydocJar(type: Jar, dependsOn: groovydoc) {
-	baseName 'cloudbees-plugin'
-	classifier 'groovydoc'
-	from groovydoc.destinationDir
+    baseName 'cloudbees-plugin'
+    classifier 'groovydoc'
+    from groovydoc.destinationDir
 }
 
 artifacts {
-	archives sourcesJar
-	archives groovydocJar
+    archives sourcesJar
+    archives groovydocJar
 }

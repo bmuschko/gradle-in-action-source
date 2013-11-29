@@ -1,72 +1,72 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
-  <actions/>
-  <description></description>
-  <keepDependencies>false</keepDependencies>
-  <properties/>
-  <scm class="hudson.plugins.cloneworkspace.CloneWorkspaceSCM" plugin="clone-workspace-scm@0.5">
-    <parentJobName>todo-initial</parentJobName>
-    <criteria>Any</criteria>
-  </scm>
-  <canRoam>true</canRoam>
-  <disabled>false</disabled>
-  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
-  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers class="vector"/>
-  <concurrentBuild>false</concurrentBuild>
-  <builders>
-    <hudson.plugins.gradle.Gradle plugin="gradle@1.22">
-      <description></description>
-      <switches></switches>
-      <tasks>databaseIntegrationTest</tasks>
-      <rootBuildScriptDir></rootBuildScriptDir>
-      <buildFile></buildFile>
-      <useWrapper>true</useWrapper>
-      <makeExecutable>false</makeExecutable>
-      <fromRootBuildScriptDir>true</fromRootBuildScriptDir>
-    </hudson.plugins.gradle.Gradle>
-  </builders>
-  <publishers>
-    <hudson.tasks.junit.JUnitResultArchiver>
-      <testResults>**/build/test-results/integration/*.xml</testResults>
-      <keepLongStdio>false</keepLongStdio>
-      <testDataPublishers/>
-    </hudson.tasks.junit.JUnitResultArchiver>
-    <hudson.plugins.jacoco.JacocoPublisher plugin="jacoco@1.0.12">
-      <execPattern>**/build/jacoco/integrationTest.exec</execPattern>
-      <classPattern>**/build/classes</classPattern>
-      <sourcePattern>**/src/main/java</sourcePattern>
-      <inclusionPattern></inclusionPattern>
-      <exclusionPattern></exclusionPattern>
-      <minimumInstructionCoverage>0</minimumInstructionCoverage>
-      <minimumBranchCoverage>0</minimumBranchCoverage>
-      <minimumComplexityCoverage>0</minimumComplexityCoverage>
-      <minimumLineCoverage>0</minimumLineCoverage>
-      <minimumMethodCoverage>0</minimumMethodCoverage>
-      <minimumClassCoverage>0</minimumClassCoverage>
-      <maximumInstructionCoverage>100</maximumInstructionCoverage>
-      <maximumBranchCoverage>70</maximumBranchCoverage>
-      <maximumComplexityCoverage>70</maximumComplexityCoverage>
-      <maximumLineCoverage>70</maximumLineCoverage>
-      <maximumMethodCoverage>70</maximumMethodCoverage>
-      <maximumClassCoverage>70</maximumClassCoverage>
-    </hudson.plugins.jacoco.JacocoPublisher>
-    <hudson.plugins.parameterizedtrigger.BuildTrigger plugin="parameterized-trigger@2.17">
-      <configs>
-        <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
-          <configs>
-            <hudson.plugins.parameterizedtrigger.CurrentBuildParameters/>
-          </configs>
-          <projects>todo-code-quality, </projects>
-          <condition>SUCCESS</condition>
-          <triggerWithNoParameters>false</triggerWithNoParameters>
-        </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
-      </configs>
-    </hudson.plugins.parameterizedtrigger.BuildTrigger>
-  </publishers>
-  <buildWrappers>
-    <org.jenkinsci.plugins.buildnamesetter.BuildNameSetter plugin="build-name-setter@1.3">
-      <template>todo#${ENV,var=&quot;SOURCE_BUILD_NUMBER&quot;}</template>
-    </org.jenkinsci.plugins.buildnamesetter.BuildNameSetter>
-  </buildWrappers>
+    <actions/>
+    <description></description>
+    <keepDependencies>false</keepDependencies>
+    <properties/>
+    <scm class="hudson.plugins.cloneworkspace.CloneWorkspaceSCM" plugin="clone-workspace-scm@0.5">
+        <parentJobName>todo-initial</parentJobName>
+        <criteria>Any</criteria>
+    </scm>
+    <canRoam>true</canRoam>
+    <disabled>false</disabled>
+    <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+    <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+    <triggers class="vector"/>
+    <concurrentBuild>false</concurrentBuild>
+    <builders>
+        <hudson.plugins.gradle.Gradle plugin="gradle@1.22">
+            <description></description>
+            <switches></switches>
+            <tasks>databaseIntegrationTest</tasks>
+            <rootBuildScriptDir></rootBuildScriptDir>
+            <buildFile></buildFile>
+            <useWrapper>true</useWrapper>
+            <makeExecutable>false</makeExecutable>
+            <fromRootBuildScriptDir>true</fromRootBuildScriptDir>
+        </hudson.plugins.gradle.Gradle>
+    </builders>
+    <publishers>
+        <hudson.tasks.junit.JUnitResultArchiver>
+            <testResults>**/build/test-results/integration/*.xml</testResults>
+            <keepLongStdio>false</keepLongStdio>
+            <testDataPublishers/>
+        </hudson.tasks.junit.JUnitResultArchiver>
+        <hudson.plugins.jacoco.JacocoPublisher plugin="jacoco@1.0.12">
+            <execPattern>**/build/jacoco/integrationTest.exec</execPattern>
+            <classPattern>**/build/classes</classPattern>
+            <sourcePattern>**/src/main/java</sourcePattern>
+            <inclusionPattern></inclusionPattern>
+            <exclusionPattern></exclusionPattern>
+            <minimumInstructionCoverage>0</minimumInstructionCoverage>
+            <minimumBranchCoverage>0</minimumBranchCoverage>
+            <minimumComplexityCoverage>0</minimumComplexityCoverage>
+            <minimumLineCoverage>0</minimumLineCoverage>
+            <minimumMethodCoverage>0</minimumMethodCoverage>
+            <minimumClassCoverage>0</minimumClassCoverage>
+            <maximumInstructionCoverage>100</maximumInstructionCoverage>
+            <maximumBranchCoverage>70</maximumBranchCoverage>
+            <maximumComplexityCoverage>70</maximumComplexityCoverage>
+            <maximumLineCoverage>70</maximumLineCoverage>
+            <maximumMethodCoverage>70</maximumMethodCoverage>
+            <maximumClassCoverage>70</maximumClassCoverage>
+        </hudson.plugins.jacoco.JacocoPublisher>
+        <hudson.plugins.parameterizedtrigger.BuildTrigger plugin="parameterized-trigger@2.17">
+            <configs>
+                <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+                    <configs>
+                        <hudson.plugins.parameterizedtrigger.CurrentBuildParameters/>
+                    </configs>
+                    <projects>todo-code-quality,</projects>
+                    <condition>SUCCESS</condition>
+                    <triggerWithNoParameters>false</triggerWithNoParameters>
+                </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+            </configs>
+        </hudson.plugins.parameterizedtrigger.BuildTrigger>
+    </publishers>
+    <buildWrappers>
+        <org.jenkinsci.plugins.buildnamesetter.BuildNameSetter plugin="build-name-setter@1.3">
+            <template>todo#${ENV,var=&quot;SOURCE_BUILD_NUMBER&quot;}</template>
+        </org.jenkinsci.plugins.buildnamesetter.BuildNameSetter>
+    </buildWrappers>
 </project>

@@ -1,69 +1,68 @@
 {
     "parentDir": "chapter07",
-    "projects":
-        [
-            {
-                "dir": "listing_07_01-02-junit-test-failing",
-                "tasks": ["clean", ":repository:test"],
-                "expectations": {
-                    "result": "failure"
-                }
-            },
-            {
-                "dir": "listing_07_01-02-junit-test-successful",
-                "tasks": ["clean", ":repository:test"]
-            },
-            {
-                "dir": "listing_07_03-testng-test",
-                "tasks": ["clean", ":repository:test"]
-            },
-            {
-                "dir": "listing_07_04-spock-test",
-                "tasks": ["clean", ":repository:test"]
-            },
-            {
-                "dir": "listing_07_05-mixed-test-frameworks",
-                "tasks": ["clean", ":repository:test"]
-            },
-            {
-                "dir": "listing_07_06-test-report-aggregation",
-                "tasks": ["clean", ":repository:build"]
-            },
-            {
-                "dir": "listing_07_07-08-test-configuration",
-                "tasks": ["clean", ":repository:test"]
-            },
-            {
-                "dir": "listing_07_09-test-logging-streams",
-                "tasks": ["clean", ":repository:test"]
-            },
-            {
-                "dir": "listing_07_10-test-logging-exception-format",
-                "tasks": ["clean", ":repository:test"]
-            },
-            {
-                "dir": "listing_07_11-test-logging-events",
-                "tasks": ["clean", ":repository:test"]
-            },
-            {
-                "dir": "listing_07_12-parallel-test-execution",
-                "tasks": ["clean", ":repository:test"]
-            },
-            {
-                "dir": "listing_07_13-test-lifecyle-hook",
-                "tasks": ["clean", ":repository:test"]
-            },
-            {
-                "dir": "listing_07_14-test-listener",
-                "tasks": ["clean", ":repository:test"]
-            },
-            {
-                "dir": "listing_07_15-16-integration-test-mixed",
-                "tasks": ["clean", ":repository:build"]
-            }   ,
-            {
-                "dir": "listing_07_17-18-integration-test-separated",
-                "tasks": ["clean", ":repository:build"]
+    "projects": [
+        {
+            "dir": "listing_07_01-02-junit-test-failing",
+            "tasks": ["clean", ":repository:test"],
+            "expectations": {
+                "result": "failure"
             }
-        ]
+        },
+        {
+            "dir": "listing_07_01-02-junit-test-successful",
+            "tasks": ["clean", ":repository:test"]
+        },
+        {
+            "dir": "listing_07_03-testng-test",
+            "tasks": ["clean", ":repository:test"]
+        },
+        {
+            "dir": "listing_07_04-spock-test",
+            "tasks": ["clean", ":repository:test"]
+        },
+        {
+            "dir": "listing_07_05-mixed-test-frameworks",
+            "tasks": ["clean", ":repository:test"]
+        },
+        {
+            "dir": "listing_07_06-test-report-aggregation",
+            "tasks": ["clean", ":repository:build"]
+        },
+        {
+            "dir": "listing_07_07-08-test-configuration",
+            "tasks": ["clean", ":repository:test"]
+        },
+        {
+            "dir": "listing_07_09-test-logging-streams",
+            "tasks": ["clean", ":repository:test"]
+        },
+        {
+            "dir": "listing_07_10-test-logging-exception-format",
+            "tasks": ["clean", ":repository:test"]
+        },
+        {
+            "dir": "listing_07_11-test-logging-events",
+            "tasks": ["clean", ":repository:test"]
+        },
+        {
+            "dir": "listing_07_12-parallel-test-execution",
+            "tasks": ["clean", ":repository:test"]
+        },
+        {
+            "dir": "listing_07_13-test-lifecyle-hook",
+            "tasks": ["clean", ":repository:test"]
+        },
+        {
+            "dir": "listing_07_14-test-listener",
+            "tasks": ["clean", ":repository:test"]
+        },
+        {
+            "dir": "listing_07_15-16-integration-test-mixed",
+            "tasks": ["clean", ":repository:build"]
+        }   ,
+        {
+            "dir": "listing_07_17-18-integration-test-separated",
+            "tasks": ["clean", ":repository:build"]
+        }
+    ]
 }

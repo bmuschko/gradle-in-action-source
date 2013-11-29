@@ -11,6 +11,7 @@
 <section id="todoapp">
     <header id="header">
         <h1>todos</h1>
+
         <form action="<c:url value="insert"/>" method="POST">
             <input type="hidden" name="filter" value="${filter}"/>
             <input id="new-todo" name="name" placeholder="What needs to be done?" autofocus>
@@ -21,14 +22,18 @@
         <label for="toggle-all">Mark all as complete</label>
         <ul id="todo-list">
             <c:forEach var="toDoItem" items="${toDoItems}" varStatus="status">
-                <li id="toDoItem_${status.count}" class="<c:if test="${toDoItem.completed}">completed</c:if>" ondblclick="javascript:document.getElementById('toDoItem_${status.count}').className += ' editing';document.getElementById('toDoItemName_${status.count}').focus();">
+                <li id="toDoItem_${status.count}" class="<c:if test="${toDoItem.completed}">completed</c:if>"
+                    ondblclick="javascript:document.getElementById('toDoItem_${status.count}').className += ' editing';document.getElementById('toDoItemName_${status.count}').focus();">
                     <div class="view">
                         <form id="toggleForm_${status.count}" action="<c:url value="toggleStatus"/>" method="POST">
                             <input type="hidden" name="id" value="${toDoItem.id}"/>
                             <input type="hidden" name="filter" value="${filter}"/>
-                            <input class="toggle" name="toggle" type="checkbox" <c:if test="${toDoItem.completed}">checked</c:if> onchange="javascript:document.getElementById('toggleForm_${status.count}').submit();">
+                            <input class="toggle" name="toggle" type="checkbox"
+                                   <c:if test="${toDoItem.completed}">checked</c:if>
+                                   onchange="javascript:document.getElementById('toggleForm_${status.count}').submit();">
                         </form>
                         <label>${toDoItem.name}</label>
+
                         <form action="<c:url value="delete"/>" method="POST">
                             <input type="hidden" name="id" value="${toDoItem.id}"/>
                             <input type="hidden" name="filter" value="${filter}"/>
@@ -38,7 +43,8 @@
                     <form id="updateForm_${status.count}" action="<c:url value="update"/>" method="POST">
                         <input type="hidden" name="id" value="${toDoItem.id}"/>
                         <input type="hidden" name="filter" value="${filter}"/>
-                        <input class="edit" id="toDoItemName_${status.count}" name="name" value="${toDoItem.name}" onblur="javascript:document.getElementById('updateForm_${status.count}').submit();"/>
+                        <input class="edit" id="toDoItemName_${status.count}" name="name" value="${toDoItem.name}"
+                               onblur="javascript:document.getElementById('updateForm_${status.count}').submit();"/>
                     </form>
                 </li>
             </c:forEach>
@@ -46,7 +52,7 @@
     </section>
     <footer id="footer">
         <c:if test="${stats.all > 0}">
-            <span id="todo-count"><strong><c:out value="${stats.active}" /></strong>
+            <span id="todo-count"><strong><c:out value="${stats.active}"/></strong>
             <c:choose>
                 <c:when test="${stats.active == 1}">
                     item
@@ -58,19 +64,23 @@
             left</span>
             <ul id="filters">
                 <li>
-                    <a <c:if test="${filter == 'all'}">class="selected"</c:if> href="<c:url value="/all"/>">All</a>
+                    <a
+                            <c:if test="${filter == 'all'}">class="selected"</c:if> href="<c:url value="/all"/>">All</a>
                 </li>
                 <li>
-                    <a <c:if test="${filter == 'active'}">class="selected"</c:if> href="<c:url value="active"/>">Active</a>
+                    <a
+                            <c:if test="${filter == 'active'}">class="selected"</c:if> href="<c:url value="active"/>">Active</a>
                 </li>
                 <li>
-                    <a <c:if test="${filter == 'completed'}">class="selected"</c:if> href="<c:url value="completed"/>">Completed</a>
+                    <a
+                            <c:if test="${filter == 'completed'}">class="selected"</c:if>
+                            href="<c:url value="completed"/>">Completed</a>
                 </li>
             </ul>
             <c:if test="${stats.completed > 0}">
                 <form action="<c:url value="clearCompleted"/>" method="POST">
                     <input type="hidden" name="filter" value="${filter}"/>
-                    <button id="clear-completed">Clear completed (<c:out value="${stats.completed}" />)</button>
+                    <button id="clear-completed">Clear completed (<c:out value="${stats.completed}"/>)</button>
                 </form>
             </c:if>
         </c:if>

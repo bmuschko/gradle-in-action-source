@@ -1,29 +1,29 @@
 allprojects {
-	apply plugin: 'idea'
-	group = 'com.manning.gia'
-	version = '0.1'
-	
-	apply from: "$rootDir/gradle/versioning.gradle"
+    apply plugin: 'idea'
+    group = 'com.manning.gia'
+    version = '0.1'
+
+    apply from: "$rootDir/gradle/versioning.gradle"
 }
 
 subprojects {
-	apply plugin: 'java'
-	sourceCompatibility = '1.6'
-	targetCompatibility = '1.6'
-		
-	repositories {
-		mavenCentral()
-	}
+    apply plugin: 'java'
+    sourceCompatibility = '1.6'
+    targetCompatibility = '1.6'
+
+    repositories {
+        mavenCentral()
+    }
 }
 
 task loadConfiguration {
-	def env = project.hasProperty('env') ? project.getProperty('env') : 'local'
-	logger.quiet "Loading configuration for environment '$env'."
-	
-	def configFile = file("$rootDir/gradle/config/buildConfig.groovy")
-	def parsedConfig = new ConfigSlurper(env).parse(configFile.toURL())
-	
-	allprojects {
-		ext.config = parsedConfig
-	}
+    def env = project.hasProperty('env') ? project.getProperty('env') : 'local'
+    logger.quiet "Loading configuration for environment '$env'."
+
+    def configFile = file("$rootDir/gradle/config/buildConfig.groovy")
+    def parsedConfig = new ConfigSlurper(env).parse(configFile.toURL())
+
+    allprojects {
+        ext.config = parsedConfig
+    }
 }

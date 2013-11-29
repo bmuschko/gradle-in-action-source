@@ -1,25 +1,25 @@
 buildscript {
-	repositories {
-	   mavenCentral()
-	}
-	
-	dependencies {
-	   classpath 'com.cloudbees:cloudbees-api-client:1.4.0'
-	}
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.cloudbees:cloudbees-api-client:1.4.0'
+    }
 }
 
 ext {
-   apiUrl = 'https://api.cloudbees.com/api'
-   apiFormat = 'xml'
-   apiVersion = '1.0'
+    apiUrl = 'https://api.cloudbees.com/api'
+    apiFormat = 'xml'
+    apiVersion = '1.0'
 }
 
-if(project.hasProperty('cloudbeesApiKey')) {
-   ext.apiKey =	project.property('cloudbeesApiKey')
+if (project.hasProperty('cloudbeesApiKey')) {
+    ext.apiKey = project.property('cloudbeesApiKey')
 }
 
-if(project.hasProperty('cloudbeesApiSecret')) {
-   ext.secret = project.property('cloudbeesApiSecret')	
+if (project.hasProperty('cloudbeesApiSecret')) {
+    ext.secret = project.property('cloudbeesApiSecret')
 }
 
 import com.cloudbees.api.ApplicationDeployArchiveResponse
@@ -27,51 +27,51 @@ import com.cloudbees.api.ApplicationInfo
 import com.cloudbees.api.BeesClient
 
 task cloudBeesAppInfo(description: 'Returns the basic information about an application.', group: 'CloudBees') {
-	inputs.property('apiKey', apiKey)
-	inputs.property('secret', secret)
-	inputs.property('appId', appId) 
-	
-	doLast {
-		BeesClient client = new BeesClient(apiUrl, apiKey, secret, 'xml', '1.0')
+    inputs.property('apiKey', apiKey)
+    inputs.property('secret', secret)
+    inputs.property('appId', appId)
 
-		ApplicationInfo info
+    doLast {
+        BeesClient client = new BeesClient(apiUrl, apiKey, secret, 'xml', '1.0')
 
-		try {
-			info = client.applicationInfo(appId)
-		}
-		catch(Exception e) {
-			throw new GradleException(e.message)
-		}
+        ApplicationInfo info
 
-		logger.quiet "Application id : $info.id"
-		logger.quiet "         title : $info.title"
-		logger.quiet "       created : $info.created"
-		logger.quiet "          urls : $info.urls"
-		logger.quiet "        status : $info.status"
-	}
+        try {
+            info = client.applicationInfo(appId)
+        }
+        catch (Exception e) {
+            throw new GradleException(e.message)
+        }
+
+        logger.quiet "Application id : $info.id"
+        logger.quiet "         title : $info.title"
+        logger.quiet "       created : $info.created"
+        logger.quiet "          urls : $info.urls"
+        logger.quiet "        status : $info.status"
+    }
 }
 
 task cloudBeesDeployWar(description: 'Deploys a new version of an application using a WAR archive file.', group: 'CloudBees') {
-	inputs.property('apiKey', apiKey)
-	inputs.property('secret', secret)
-	inputs.property('appId', appId)
-	inputs.file file(warFile)
-	ext.message = project.hasProperty('message') ? project.property('message') : null
-	inputs.property('message', message)
-	
+    inputs.property('apiKey', apiKey)
+    inputs.property('secret', secret)
+    inputs.property('appId', appId)
+    inputs.file file(warFile)
+    ext.message = project.hasProperty('message') ? project.property('message') : null
+    inputs.property('message', message)
+
     doLast {
-	    logger.quiet "Deploying WAR '${file(warFile).canonicalPath}' to application ID '$appId' with message '$message'"
-	    BeesClient client = new BeesClient(apiUrl, apiKey, secret, apiFormat, apiVersion)
+        logger.quiet "Deploying WAR '${file(warFile).canonicalPath}' to application ID '$appId' with message '$message'"
+        BeesClient client = new BeesClient(apiUrl, apiKey, secret, apiFormat, apiVersion)
 
         ApplicationDeployArchiveResponse response
-	
-	    try {
-		    response = client.applicationDeployWar(appId, null, message, file(warFile), null, null)
-	    }
-	    catch(Exception e) {
-		    throw new GradleException(e.message)
+
+        try {
+            response = client.applicationDeployWar(appId, null, message, file(warFile), null, null)
         }
-	
-	    logger.quiet "Application uploaded successfully to: '$response.url'"
-	}
+        catch (Exception e) {
+            throw new GradleException(e.message)
+        }
+
+        logger.quiet "Application uploaded successfully to: '$response.url'"
+    }
 }

@@ -1,7 +1,7 @@
 project(':model') {
-	eclipse {
-		project {
-			comment = 'Data representation of To Do items'
-		}
-	}
+    eclipse {
+        project {
+            comment = 'Data representation of To Do items'
+        }
+    }
 }

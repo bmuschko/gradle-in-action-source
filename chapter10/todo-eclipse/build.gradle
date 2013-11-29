@@ -1,11 +1,11 @@
 allprojects {
-	apply plugin: 'eclipse'
-	group = 'com.manning.gia'
-	version = '0.1'
+    apply plugin: 'eclipse'
+    group = 'com.manning.gia'
+    version = '0.1'
 }
 
 subprojects {
-	apply plugin: 'java'
+    apply plugin: 'java'
 }
 
 task wrapper(type: Wrapper) {

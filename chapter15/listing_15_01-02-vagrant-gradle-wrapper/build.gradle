@@ -3,13 +3,13 @@ import com.manning.gia.vm.Vagrant
 ext.targetedVagrantProjectDir = file('../vagrant-tomcat-box')
 
 task vagrantUp(type: Vagrant) {
-	commands = ['up']
-	dir = targetedVagrantProjectDir
+    commands = ['up']
+    dir = targetedVagrantProjectDir
 }
 
 task vagrantDestroy(type: Vagrant) {
-	commands = ['destroy', '--force']
-	dir = targetedVagrantProjectDir
+    commands = ['destroy', '--force']
+    dir = targetedVagrantProjectDir
 }
 
 task vagrantSshConfig(type: Vagrant) {

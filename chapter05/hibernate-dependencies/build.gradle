@@ -1,9 +1,9 @@
 apply plugin: 'java'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	compile 'org.hibernate:hibernate-core:3.6.3.Final'
+    compile 'org.hibernate:hibernate-core:3.6.3.Final'
 }

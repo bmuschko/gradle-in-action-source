@@ -18,7 +18,7 @@ class BuildRunner {
             BuildLauncher buildLauncher = connection.newBuild()
             buildLauncher.forTasks(tasks)
 
-            if(args) {
+            if (args) {
                 buildLauncher.withArguments(args)
             }
 

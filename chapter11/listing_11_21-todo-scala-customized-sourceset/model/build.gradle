@@ -4,20 +4,20 @@ repositories {
     mavenCentral()
 }
 
-dependencies {  
+dependencies {
     compile 'org.scala-lang:scala-library:2.10.1'
 }
 
 sourceSets {
-   main {
-      scala {
-         srcDirs = ['src/scala']
-      }
-   }
+    main {
+        scala {
+            srcDirs = ['src/scala']
+        }
+    }
 
-   test {
-      scala {
-         srcDirs = ['test/scala']
-      }
-   }
+    test {
+        scala {
+            srcDirs = ['test/scala']
+        }
+    }
 }

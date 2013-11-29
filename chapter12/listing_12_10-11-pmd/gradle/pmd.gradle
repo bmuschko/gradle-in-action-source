@@ -1,7 +1,7 @@
 apply plugin: 'pmd'
 
 pmd {
-	ignoreFailures = true
+    ignoreFailures = true
 }
 
 tasks.withType(Pmd) {

@@ -1,45 +1,45 @@
 configurations {
-   cargo {
-      description = 'Classpath for Cargo Ant tasks.'
-	  visible = false
-   }
+    cargo {
+        description = 'Classpath for Cargo Ant tasks.'
+        visible = false
+    }
 }
 
 task deployToLocalTomcat << {
-	FileTree cargoDependencies = configurations.getByName('cargo').asFileTree
-	println configurations.getByName('cargo').asPath 
-	ant.taskdef(resource: 'cargo.tasks', classpath: cargoDependencies.asPath)
-	
-	ant.cargo(containerId: 'tomcat7x', action: 'run', output: "$buildDir/output.log") {
-		configuration {
-			deployable(type: 'war', file: 'todo.war')
-		}
-		
-		zipUrlInstaller(installUrl: 'http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.32/bin/apache-tomcat-7.0.32.zip')
-	}
+    FileTree cargoDependencies = configurations.getByName('cargo').asFileTree
+    println configurations.getByName('cargo').asPath
+    ant.taskdef(resource: 'cargo.tasks', classpath: cargoDependencies.asPath)
+
+    ant.cargo(containerId: 'tomcat7x', action: 'run', output: "$buildDir/output.log") {
+        configuration {
+            deployable(type: 'war', file: 'todo.war')
+        }
+
+        zipUrlInstaller(installUrl: 'http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.32/bin/apache-tomcat-7.0.32.zip')
+    }
 }
 
 task copyDependenciesToLocalDir(type: Copy) {
-	FileTree cargoDependencies = configurations.getByName('cargo').asFileTree
-	from cargoDependencies
-	into "${System.properties['user.home']}/libs/cargo"
+    FileTree cargoDependencies = configurations.getByName('cargo').asFileTree
+    from cargoDependencies
+    into "${System.properties['user.home']}/libs/cargo"
 }
 
 task printDependencies << {
-   configurations.cargo.incoming.resolutionResult.allDependencies { DependencyResult dependencyResult ->
-      ModuleVersionSelector selector = dependencyResult.requested
-      println "$selector.group:$selector.name:$selector.version ($selector)"
-   }
-}	
+    configurations.cargo.incoming.resolutionResult.allDependencies { DependencyResult dependencyResult ->
+        ModuleVersionSelector selector = dependencyResult.requested
+        println "$selector.group:$selector.name:$selector.version ($selector)"
+    }
+}
 
 ext.cargoGroup = 'org.codehaus.cargo'
 ext.cargoVersion = '1.3.1'
 
 dependencies {
-   cargo group: cargoGroup, name: 'cargo-core-uberjar', version: cargoVersion
-   cargo "$cargoGroup:cargo-ant:$cargoVersion"
+    cargo group: cargoGroup, name: 'cargo-core-uberjar', version: cargoVersion
+    cargo "$cargoGroup:cargo-ant:$cargoVersion"
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }

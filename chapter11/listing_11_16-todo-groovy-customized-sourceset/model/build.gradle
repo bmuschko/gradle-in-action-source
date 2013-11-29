@@ -4,20 +4,20 @@ repositories {
     mavenCentral()
 }
 
-dependencies {  
+dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.1.5'
 }
 
 sourceSets {
     main {
-       groovy {
-          srcDirs = ['src/groovy']
-       }
+        groovy {
+            srcDirs = ['src/groovy']
+        }
     }
 
     test {
-       groovy {
-          srcDirs = ['test/groovy']
-       }
+        groovy {
+            srcDirs = ['test/groovy']
+        }
     }
 }

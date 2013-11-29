@@ -1,9 +1,9 @@
 allprojects {
-	apply plugin: 'idea'
-	group = 'com.manning.gia'
-	version = '0.1'
+    apply plugin: 'idea'
+    group = 'com.manning.gia'
+    version = '0.1'
 }
 
 subprojects {
-	apply plugin: 'java'
+    apply plugin: 'java'
 }

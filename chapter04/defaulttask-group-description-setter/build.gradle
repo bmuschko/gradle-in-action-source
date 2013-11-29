@@ -1,10 +1,10 @@
 version = '0.1-SNAPSHOT'
 
 task printVersion {
-   group = 'versioning'
-   description = 'Prints project version.'
+    group = 'versioning'
+    description = 'Prints project version.'
 
-   doLast {
-      logger.quiet "Version: $version"
-   }
+    doLast {
+        logger.quiet "Version: $version"
+    }
 }

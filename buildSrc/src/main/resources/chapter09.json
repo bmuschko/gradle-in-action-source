@@ -1,26 +1,25 @@
 {
     "parentDir": "chapter09",
-    "projects":
-        [
-            {
-                "dir": "listing_09_01-04-ant-import/gradle",
-                "tasks": ["clean", "dist"]
-            },
-            {
-                "dir": "listing_09_05-06-migrating-ant-build/gradle",
-                "tasks": ["clean", "dist"]
-            },
-            {
-                "dir": "listing_09_07-provided-configuration",
-                "tasks": ["dependencies", "--configuration", "provided"]
-            },
-            {
-                "dir": "listing_09_08-09-read-maven-profile",
-                "tasks": ["printAppServerHome"]
-            },
-            {
-                "dir": "ant-build-avoid-task-clashes/gradle",
-                "tasks": ["cleanAnt"]
-            }
-        ]
+    "projects": [
+        {
+            "dir": "listing_09_01-04-ant-import/gradle",
+            "tasks": ["clean", "dist"]
+        },
+        {
+            "dir": "listing_09_05-06-migrating-ant-build/gradle",
+            "tasks": ["clean", "dist"]
+        },
+        {
+            "dir": "listing_09_07-provided-configuration",
+            "tasks": ["dependencies", "--configuration", "provided"]
+        },
+        {
+            "dir": "listing_09_08-09-read-maven-profile",
+            "tasks": ["printAppServerHome"]
+        },
+        {
+            "dir": "ant-build-avoid-task-clashes/gradle",
+            "tasks": ["cleanAnt"]
+        }
+    ]
 }

@@ -1,61 +1,60 @@
 {
     "parentDir": "chapter05",
-    "projects":
-        [
-            {
-                "dir": "cargo-dependencies-fail-on-version-conflict",
-                "tasks": ["dependencies"],
-                "expectations": {
-                    "result": "failure"
-                }
-            },
-            {
-                "dir": "cargo-dependencies-force",
-                "tasks": ["dependencies"]
-            },
-            {
-                "dir": "hibernate-dependencies",
-                "tasks": ["dependencies"]
-            },
-            {
-                "dir": "listing_05_01-defining-cargo-configuration",
-                "tasks": ["dependencies"]
-            },
-            {
-                "dir": "listing_05_02-accessing-cargo-configuration",
-                "tasks": ["dependencies"]
-            },
-            {
-                "dir": "listing_05_03-declaring-cargo-dependencies",
-                "tasks": ["dependencies"]
-            },
-            {
-                "dir": "listing_05_04-cargo-dependencies-single-exclusion",
-                "tasks": ["dependencies"]
-            },
-            {
-                "dir": "listing_05_05-cargo-dependencies-all-exclusion",
-                "tasks": ["dependencies"]
-            },
-            {
-                "dir": "listing_05_06-cargo-dependencies-dynamic-version",
-                "tasks": ["dependencies"]
-            },
-            {
-                "dir": "listing_05_07-copy-cargo-dependencies-to-directory",
-                "tasks": ["copyDependenciesToLocalDir"]
-            },
-            {
-                "dir": "listing_05_10-ivy-repository",
-                "tasks": ["dependencies"]
-            },
-            {
-                "dir": "listing_05_11-flat-directory-repository",
-                "tasks": ["dependencies"]
-            },
-            {
-                "dir": "listing_05_12-printing-cargo-dependencies",
-                "tasks": ["printDependencies"]
+    "projects": [
+        {
+            "dir": "cargo-dependencies-fail-on-version-conflict",
+            "tasks": ["dependencies"],
+            "expectations": {
+                "result": "failure"
             }
-        ]
+        },
+        {
+            "dir": "cargo-dependencies-force",
+            "tasks": ["dependencies"]
+        },
+        {
+            "dir": "hibernate-dependencies",
+            "tasks": ["dependencies"]
+        },
+        {
+            "dir": "listing_05_01-defining-cargo-configuration",
+            "tasks": ["dependencies"]
+        },
+        {
+            "dir": "listing_05_02-accessing-cargo-configuration",
+            "tasks": ["dependencies"]
+        },
+        {
+            "dir": "listing_05_03-declaring-cargo-dependencies",
+            "tasks": ["dependencies"]
+        },
+        {
+            "dir": "listing_05_04-cargo-dependencies-single-exclusion",
+            "tasks": ["dependencies"]
+        },
+        {
+            "dir": "listing_05_05-cargo-dependencies-all-exclusion",
+            "tasks": ["dependencies"]
+        },
+        {
+            "dir": "listing_05_06-cargo-dependencies-dynamic-version",
+            "tasks": ["dependencies"]
+        },
+        {
+            "dir": "listing_05_07-copy-cargo-dependencies-to-directory",
+            "tasks": ["copyDependenciesToLocalDir"]
+        },
+        {
+            "dir": "listing_05_10-ivy-repository",
+            "tasks": ["dependencies"]
+        },
+        {
+            "dir": "listing_05_11-flat-directory-repository",
+            "tasks": ["dependencies"]
+        },
+        {
+            "dir": "listing_05_12-printing-cargo-dependencies",
+            "tasks": ["printDependencies"]
+        }
+    ]
 }

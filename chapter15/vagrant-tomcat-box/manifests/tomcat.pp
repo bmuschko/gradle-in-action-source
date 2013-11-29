@@ -47,25 +47,25 @@ class tomcat7::prereqs {
 }
 
 class tomcat7 {
- 	include tomcat7::prereqs
- 	$tomcat_version = "7.0.42"
+  include tomcat7::prereqs
+  $tomcat_version = "7.0.42"
   $tomcat_name = "apache-tomcat-${tomcat_version}"
   $tomcat_download_url = "http://archive.apache.org/dist/tomcat/tomcat-7/v${tomcat_version}/bin/${tomcat_name}.tar.gz"
   $tomcat_install_dir = "/opt/tomcat/${tomcat_name}"
 
-	exec {
-		"download_tomcat7":
-			cwd => "/tmp",
-			command => "/usr/bin/wget http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.42/bin/apache-tomcat-7.0.42.tar.gz",
-			creates => "/tmp/apache-tomcat-7.0.42.tar.gz";
+  exec {
+    "download_tomcat7":
+      cwd => "/tmp",
+      command => "/usr/bin/wget http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.42/bin/apache-tomcat-7.0.42.tar.gz",
+      creates => "/tmp/apache-tomcat-7.0.42.tar.gz";
 
-		"unpack_tomcat7":
-			cwd => "/opt",
-			command => "/bin/tar -zxf /tmp/apache-tomcat-7.0.42.tar.gz",
-			creates => "/opt/apache-tomcat-7.0.42",
-			require => Exec["download_tomcat7"]
-	}
-	
+    "unpack_tomcat7":
+      cwd => "/opt",
+      command => "/bin/tar -zxf /tmp/apache-tomcat-7.0.42.tar.gz",
+      creates => "/opt/apache-tomcat-7.0.42",
+      require => Exec["download_tomcat7"]
+  }
+
   file { "/opt/apache-tomcat-7.0.42":
     recurse => true,
     owner => 'tomcat',

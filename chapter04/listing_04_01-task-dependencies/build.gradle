@@ -4,7 +4,7 @@ task first << { println "first" }
 task second << { println "second" }
 
 task printVersion(dependsOn: [second, first]) << {
-   logger.quiet "Version: $version"
+    logger.quiet "Version: $version"
 }
 
 task third << { println "third" }

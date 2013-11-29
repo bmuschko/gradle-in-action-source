@@ -8,7 +8,7 @@ init {
     }
 
     doLast {
-	    logger.quiet "Starting from a clean slate."
+        logger.quiet "Starting from a clean slate."
     }
 }
 
@@ -17,16 +17,16 @@ ant.properties.build = "$buildDir/classes"
 ant.properties.dist = "$buildDir/libs"
 
 task sourcesJar(type: Jar) {
-	baseName = 'my-app'
-	classifier = 'sources'
-	version = ant.properties.version
-	destinationDir = file(ant.properties.dist)
-	from new File(ant.properties.src, 'main/java')
+    baseName = 'my-app'
+    classifier = 'sources'
+    version = ant.properties.version
+    destinationDir = file(ant.properties.dist)
+    from new File(ant.properties.src, 'main/java')
 }
 
 dist.dependsOn sourcesJar
 
 compile {
-	inputs.dir file(ant.properties.src)
-	outputs.dir file(ant.properties.build)
+    inputs.dir file(ant.properties.src)
+    outputs.dir file(ant.properties.build)
 }

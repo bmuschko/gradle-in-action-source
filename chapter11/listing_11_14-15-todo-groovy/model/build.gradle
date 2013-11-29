@@ -4,6 +4,6 @@ repositories {
     mavenCentral()
 }
 
-dependencies {  
+dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.1.5'
 }

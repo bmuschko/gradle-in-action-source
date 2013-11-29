@@ -1,18 +1,18 @@
 project(':repository') {
-	repositories {
-		mavenCentral()
-	}
-	
-    dependencies {
-	    compile project(':model')
-		testCompile 'junit:junit:4.11'
+    repositories {
+        mavenCentral()
     }
 
-	test {
-	    systemProperty 'items', '20'
-	    
-		testLogging {
-			showStandardStreams = true
-		}
-	}
+    dependencies {
+        compile project(':model')
+        testCompile 'junit:junit:4.11'
+    }
+
+    test {
+        systemProperty 'items', '20'
+
+        testLogging {
+            showStandardStreams = true
+        }
+    }
 }

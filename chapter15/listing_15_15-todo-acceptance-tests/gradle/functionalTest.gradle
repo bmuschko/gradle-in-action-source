@@ -35,14 +35,14 @@ ext {
 }
 
 ext {
-	functionalJettyHttpPort = 8050
+    functionalJettyHttpPort = 8050
     functionalJettyStopPort = 8051
     functionalJettyStopKey = 'stopKey'
-	functionalJettyContextPath = 'todo'
+    functionalJettyContextPath = 'todo'
 }
 
 task functionalJettyRun(type: org.gradle.api.plugins.jetty.JettyRun) {
-	httpPort = functionalJettyHttpPort
+    httpPort = functionalJettyHttpPort
     stopPort = functionalJettyStopPort
     stopKey = functionalJettyStopKey
     contextPath = functionalJettyContextPath
@@ -62,7 +62,7 @@ task localFunctionalTest(type: Test) {
     systemProperties functionalCommonSystemProperties
     systemProperty 'geb.build.baseUrl', "http://localhost:$functionalJettyHttpPort/$functionalJettyContextPath/"
     dependsOn functionalJettyRun
-	finalizedBy functionalJettyStop
+    finalizedBy functionalJettyStop
 }
 
 check.dependsOn localFunctionalTest

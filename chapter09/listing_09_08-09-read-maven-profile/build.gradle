@@ -5,11 +5,11 @@ def getMavenSettingsCredentials = {
 }
 
 task printAppServerHome << {
-	def env = project.hasProperty('env') ? project.getProperty('env') : 'dev'
-	logger.quiet "Using environment '$env'"
-	def settings = getMavenSettingsCredentials()
-	def allProfiles = settings.profiles.profile
-	def profile = allProfiles.find { it.activation.property.name == 'env' && it.activation.property.value == env }
-	def appServerHome = profile.properties.'appserver.home'
-	println "The $env server's home directory: $appServerHome"
+    def env = project.hasProperty('env') ? project.getProperty('env') : 'dev'
+    logger.quiet "Using environment '$env'"
+    def settings = getMavenSettingsCredentials()
+    def allProfiles = settings.profiles.profile
+    def profile = allProfiles.find { it.activation.property.name == 'env' && it.activation.property.value == env }
+    def appServerHome = profile.properties.'appserver.home'
+    println "The $env server's home directory: $appServerHome"
 }

@@ -19,32 +19,32 @@
 
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:output method="text"/>
-<xsl:template match="JDepend">
-<Root-Element>
-digraph g {
-        graph [
-	    rankdir = "LR"
-	];
-	node [
-	    fontsize = "12"
-	    fontname = "Courier"
-	    shape = "ellipse"
-	];
-	edge[];
-	<xsl:apply-templates select="Packages"/>
-}
-</Root-Element>
-</xsl:template>
+    <xsl:output method="text"/>
+    <xsl:template match="JDepend">
+        <Root-Element>
+            digraph g {
+            graph [
+            rankdir = "LR"
+            ];
+            node [
+            fontsize = "12"
+            fontname = "Courier"
+            shape = "ellipse"
+            ];
+            edge[];
+            <xsl:apply-templates select="Packages"/>
+            }
+        </Root-Element>
+    </xsl:template>
 
-<xsl:template match="Packages">
-    <xsl:apply-templates select="Package" mode="node"/>
-</xsl:template>
+    <xsl:template match="Packages">
+        <xsl:apply-templates select="Package" mode="node"/>
+    </xsl:template>
 
-<xsl:template match="Package" mode="node">
-    <xsl:text>"</xsl:text><xsl:value-of select="@name"/> <xsl:text>" [
+    <xsl:template match="Package" mode="node">
+        <xsl:text>"</xsl:text><xsl:value-of select="@name"/> <xsl:text>" [
         label="</xsl:text><xsl:value-of
-	select="@name"/><xsl:text> | Total Classes: </xsl:text><xsl:value-of select="Stats/TotalClasses/."/>
+            select="@name"/><xsl:text> | Total Classes: </xsl:text><xsl:value-of select="Stats/TotalClasses/."/>
 	<xsl:text>"
 	shape="record"
 	color=".99 </xsl:text>
@@ -60,16 +60,17 @@ digraph g {
 	style=filled
     ];
     </xsl:text>
-    <xsl:apply-templates select="DependsUpon"/>
-</xsl:template>
+        <xsl:apply-templates select="DependsUpon"/>
+    </xsl:template>
 
-<xsl:template match="Package" mode="edge">
-    <xsl:text>"</xsl:text><xsl:value-of select="../../@name"/> <xsl:text>" -&gt; "</xsl:text><xsl:value-of select="."/><xsl:text>"
+    <xsl:template match="Package" mode="edge">
+        <xsl:text>"</xsl:text><xsl:value-of select="../../@name"/>
+        <xsl:text>" -&gt; "</xsl:text><xsl:value-of select="."/><xsl:text>"
     </xsl:text>
-</xsl:template>
+    </xsl:template>
 
-<xsl:template match="DependsUpon">
-    <xsl:apply-templates select="Package" mode="edge"/>
-</xsl:template>
+    <xsl:template match="DependsUpon">
+        <xsl:apply-templates select="Package" mode="edge"/>
+    </xsl:template>
 
 </xsl:stylesheet>

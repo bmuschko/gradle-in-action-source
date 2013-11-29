@@ -1,16 +1,16 @@
 project(':repository') {
-	repositories {
-		mavenCentral()
-	}
-	
-    dependencies {
-	    compile project(':model')
-		testCompile 'junit:junit:4.11'
+    repositories {
+        mavenCentral()
     }
 
-	test {
-		testLogging {
-		    events 'started', 'passed', 'skipped', 'failed'
-		}
-	}
+    dependencies {
+        compile project(':model')
+        testCompile 'junit:junit:4.11'
+    }
+
+    test {
+        testLogging {
+            events 'started', 'passed', 'skipped', 'failed'
+        }
+    }
 }

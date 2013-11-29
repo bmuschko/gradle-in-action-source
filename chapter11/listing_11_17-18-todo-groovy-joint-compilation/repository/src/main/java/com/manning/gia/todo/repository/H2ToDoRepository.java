@@ -19,18 +19,16 @@ public class H2ToDoRepository implements ToDoRepository {
             stmt = conn.createStatement();
             rs = stmt.executeQuery("SELECT id, name, completed from todo_item");
 
-            while(rs.next()) {
+            while (rs.next()) {
                 ToDoItem toDoItem = new ToDoItem();
                 toDoItem.setId(rs.getLong("id"));
                 toDoItem.setName(rs.getString("name"));
                 toDoItem.setCompleted(rs.getBoolean("completed"));
                 toDoItems.add(toDoItem);
             }
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             closeConnection(conn);
             closeStatement(stmt);
             closeResultSet(rs);
@@ -51,18 +49,16 @@ public class H2ToDoRepository implements ToDoRepository {
             stmt = conn.createStatement();
             rs = stmt.executeQuery("SELECT id, name, completed FROM todo_item WHERE completed = 0");
 
-            while(rs.next()) {
+            while (rs.next()) {
                 ToDoItem toDoItem = new ToDoItem();
                 toDoItem.setId(rs.getLong("id"));
                 toDoItem.setName(rs.getString("name"));
                 toDoItem.setCompleted(rs.getBoolean("completed"));
                 activeToDos.add(toDoItem);
             }
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             closeConnection(conn);
             closeStatement(stmt);
             closeResultSet(rs);
@@ -83,18 +79,16 @@ public class H2ToDoRepository implements ToDoRepository {
             stmt = conn.createStatement();
             rs = stmt.executeQuery("SELECT id, name, completed FROM todo_item WHERE completed = 1");
 
-            while(rs.next()) {
+            while (rs.next()) {
                 ToDoItem toDoItem = new ToDoItem();
                 toDoItem.setId(rs.getLong("id"));
                 toDoItem.setName(rs.getString("name"));
                 toDoItem.setCompleted(rs.getBoolean("completed"));
                 completedToDos.add(toDoItem);
             }
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             closeConnection(conn);
             closeStatement(stmt);
             closeResultSet(rs);
@@ -116,17 +110,15 @@ public class H2ToDoRepository implements ToDoRepository {
             stmt.setLong(1, id);
             rs = stmt.executeQuery();
 
-            if(rs.first()) {
+            if (rs.first()) {
                 toDoItem = new ToDoItem();
                 toDoItem.setId(rs.getLong("id"));
                 toDoItem.setName(rs.getString("name"));
                 toDoItem.setCompleted(rs.getBoolean("completed"));
             }
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             closeConnection(conn);
             closeStatement(stmt);
             closeResultSet(rs);
@@ -151,14 +143,12 @@ public class H2ToDoRepository implements ToDoRepository {
 
             rs = stmt.getGeneratedKeys();
 
-            if(rs.next()) {
+            if (rs.next()) {
                 newId = rs.getLong(1);
             }
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             closeConnection(conn);
             closeStatement(stmt);
             closeResultSet(rs);
@@ -180,11 +170,9 @@ public class H2ToDoRepository implements ToDoRepository {
             stmt.setBoolean(2, toDoItem.isCompleted());
             stmt.setLong(3, toDoItem.getId());
             stmt.executeUpdate();
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             closeConnection(conn);
             closeStatement(stmt);
             closeResultSet(rs);
@@ -202,11 +190,9 @@ public class H2ToDoRepository implements ToDoRepository {
             stmt = conn.prepareStatement("DELETE FROM todo_item WHERE id = ?");
             stmt.setLong(1, toDoItem.getId());
             stmt.executeUpdate();
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             closeConnection(conn);
             closeStatement(stmt);
             closeResultSet(rs);
@@ -219,29 +205,29 @@ public class H2ToDoRepository implements ToDoRepository {
     }
 
     private void closeConnection(Connection connection) {
-        if(connection != null) {
+        if (connection != null) {
             try {
                 connection.close();
+            } catch (SQLException e) {
             }
-            catch(SQLException e) {}
         }
     }
 
     private void closeStatement(Statement statement) {
-        if(statement != null) {
+        if (statement != null) {
             try {
                 statement.close();
+            } catch (SQLException e) {
             }
-            catch(SQLException e) {}
         }
     }
 
     private void closeResultSet(ResultSet resultSet) {
-        if(resultSet != null) {
+        if (resultSet != null) {
             try {
                 resultSet.close();
+            } catch (SQLException e) {
             }
-            catch(SQLException e) {}
         }
-}
+    }
 }

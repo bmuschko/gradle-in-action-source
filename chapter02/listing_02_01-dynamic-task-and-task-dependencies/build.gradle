@@ -1,15 +1,15 @@
 task startSession << {
-   chant()
+    chant()
 }
 
 def chant() {
-   ant.echo 'Repeat after me...'
+    ant.echo 'Repeat after me...'
 }
 
 3.times { counter ->
-   task "yayGradle$counter" << {
-       println 'Gradle rocks'
-   }
+    task "yayGradle$counter" << {
+        println 'Gradle rocks'
+    }
 }
 
 yayGradle0.dependsOn startSession

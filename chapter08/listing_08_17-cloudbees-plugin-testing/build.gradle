@@ -1,20 +1,20 @@
-if(project.hasProperty('cloudbeesApiKey')) {
-   ext.apiKey = project.property('cloudbeesApiKey')
+if (project.hasProperty('cloudbeesApiKey')) {
+    ext.apiKey = project.property('cloudbeesApiKey')
 }
 
-if(project.hasProperty('cloudbeesApiSecret')) {
-   ext.secret = project.property('cloudbeesApiSecret')	
+if (project.hasProperty('cloudbeesApiSecret')) {
+    ext.secret = project.property('cloudbeesApiSecret')
 }
 
 apply plugin: 'cloudbees'
 
 cloudBees {
-	apiUrl = 'https://api.cloudbees.com/api'
-	apiKey = project.apiKey
-	secret = project.secret
-	appId = 'gradle-in-action/todo'
+    apiUrl = 'https://api.cloudbees.com/api'
+    apiKey = project.apiKey
+    secret = project.secret
+    appId = 'gradle-in-action/todo'
 }
 
 task hello(dependsOn: 'cloudBeesAppInfo') << {
-	println "hello"
+    println "hello"
 }

@@ -1,23 +1,23 @@
 repositories {
-	mavenCentral()
+    mavenCentral()
 
     ivy {
         name 'JSHint'
-        url 'http://www.jshint.com/get'
+        url 'http://repository-gradle-in-action.forge.cloudbees.com/release'
         layout 'pattern', {
-	        artifact '[module]-[revision](.[classifier]).[ext]'
-	    }
+            artifact '[organization]/[module]/[module]-[revision](.[classifier]).[ext]'
+        }
     }
 }
 
 configurations {
-	rhino
-	jshint
+    rhino
+    jshint
 }
 
 dependencies {
-	rhino 'org.mozilla:rhino:1.7R4'
-	jshint 'jshint-rhino:jshint-rhino:2.1.11@js'
+    rhino 'org.mozilla:rhino:1.7R4'
+    jshint 'jshint-rhino:jshint-rhino:2.1.11@js'
 }
 
 ext.jsSourceDir = "$webAppDir/js/app"
@@ -25,7 +25,7 @@ def jsSourceFiles = fileTree(jsSourceDir).include('*.js')
 def jsHintArgs = configurations.jshint + jsSourceFiles
 
 task jsHint(type: JavaExec) {
-	classpath configurations.rhino
-	main 'org.mozilla.javascript.tools.shell.Main'
-	args jsHintArgs
+    classpath configurations.rhino
+    main 'org.mozilla.javascript.tools.shell.Main'
+    args jsHintArgs
 }

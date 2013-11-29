@@ -8,23 +8,24 @@ import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.Optional
 
 class XsltReport extends DefaultTask {
-	@InputFile File inputFile
-	@InputFile File xslStyleFile
-	@Input @Optional Map<String, String> params = [:]
-	@OutputFile File outputFile
-	
-	XsltReport() {
-		onlyIf {
-			inputFile.exists()
-		}		
-	} 
+    @InputFile File inputFile
+    @InputFile File xslStyleFile
+    @Input
+    @Optional Map<String, String> params = [:]
+    @OutputFile File outputFile
 
-	@TaskAction
-	void start() {
-		ant.xslt(in: inputFile, style: xslStyleFile, out: outputFile) {
-			params.each { key, value ->
-				ant.param(name: key, expression: value)
-			}
-		}
-	}
+    XsltReport() {
+        onlyIf {
+            inputFile.exists()
+        }
+    }
+
+    @TaskAction
+    void start() {
+        ant.xslt(in: inputFile, style: xslStyleFile, out: outputFile) {
+            params.each { key, value ->
+                ant.param(name: key, expression: value)
+            }
+        }
+    }
 }

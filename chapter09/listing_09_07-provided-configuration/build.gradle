@@ -1,24 +1,24 @@
 apply plugin: 'java'
 
 configurations {
-   provided
-   testProvided.extendsFrom provided
+    provided
+    testProvided.extendsFrom provided
 }
 
 sourceSets {
-   main {
-      compileClasspath += configurations.provided
-   }
+    main {
+        compileClasspath += configurations.provided
+    }
 
-   test {
-      compileClasspath += configurations.testProvided
-   }
+    test {
+        compileClasspath += configurations.testProvided
+    }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	provided 'mysql:mysql-connector-java:5.1.8'
+    provided 'mysql:mysql-connector-java:5.1.8'
 }

@@ -2,8 +2,8 @@ apply plugin: 'findbugs'
 
 findbugs {
     toolVersion = '2.0.1'
-	ignoreFailures = true
-	effort = 'max'
+    ignoreFailures = true
+    effort = 'max'
 }
 
 tasks.withType(FindBugs) {

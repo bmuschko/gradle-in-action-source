@@ -3,7 +3,7 @@ apply plugin: 'checkstyle'
 ext.checkstyleConfigDir = "$configDir/checkstyle"
 
 checkstyle {
-	toolVersion = '5.6'
+    toolVersion = '5.6'
     configFile = new File(checkstyleConfigDir, 'sun_checks.xml')
     ignoreFailures = true
     showViolations = false
@@ -12,22 +12,22 @@ checkstyle {
 import com.manning.gia.XsltReport
 
 afterEvaluate {
-	plugins.withType(CheckstylePlugin) {
-    	sourceSets.each { sourceSet ->
-			String capitalizedSourceSetName = sourceSet.name.capitalize()
-			String reportTaskName = "checkstyle${capitalizedSourceSetName}Report"
-			String reportDir = "$reporting.baseDir/checkstyle"
-			XsltReport reportTask = tasks.create(reportTaskName, XsltReport)
-			
-			reportTask.with {
-				description = "Generates a Checkstyle HTML report for ${sourceSet.name} classes."
-			    dependsOn tasks."checkstyle${capitalizedSourceSetName}"
-			    inputFile = new File(reportDir, "${sourceSet.name}.xml")
-			    xslStyleFile = new File(checkstyleConfigDir, 'checkstyle-noframes.xsl')
-			    outputFile = new File(reportDir, "checkstyle_${sourceSet.name}.html")
-			}
-			
-			check.dependsOn reportTaskName
-    	}	
-	}
+    plugins.withType(CheckstylePlugin) {
+        sourceSets.each { sourceSet ->
+            String capitalizedSourceSetName = sourceSet.name.capitalize()
+            String reportTaskName = "checkstyle${capitalizedSourceSetName}Report"
+            String reportDir = "$reporting.baseDir/checkstyle"
+            XsltReport reportTask = tasks.create(reportTaskName, XsltReport)
+
+            reportTask.with {
+                description = "Generates a Checkstyle HTML report for ${sourceSet.name} classes."
+                dependsOn tasks."checkstyle${capitalizedSourceSetName}"
+                inputFile = new File(reportDir, "${sourceSet.name}.xml")
+                xslStyleFile = new File(checkstyleConfigDir, 'checkstyle-noframes.xsl')
+                outputFile = new File(reportDir, "checkstyle_${sourceSet.name}.html")
+            }
+
+            check.dependsOn reportTaskName
+        }
+    }
 }

@@ -1,7 +1,7 @@
 configurations {
-   cargo {
-      description = 'Classpath for Cargo Ant tasks.'
-	  visible = false
-   }
+    cargo {
+        description = 'Classpath for Cargo Ant tasks.'
+        visible = false
+    }
 }
 
