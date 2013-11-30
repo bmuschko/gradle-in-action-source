@@ -1,17 +1,15 @@
-project(':repository') {
-    apply plugin: 'announce'
+apply plugin: 'announce'
 
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        compile project(':model')
-        testCompile 'junit:junit:4.11'
-    }
-
-    test.addTestListener(new NotificationTestListener(project))
+repositories {
+    mavenCentral()
 }
+
+dependencies {
+    compile project(':model')
+    testCompile 'junit:junit:4.11'
+}
+
+test.addTestListener(new NotificationTestListener(project))
 
 class NotificationTestListener implements TestListener {
     final Project project

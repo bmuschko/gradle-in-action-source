@@ -1,38 +1,36 @@
-project(':repository') {
-    apply from: 'databaseSetup.gradle'
+apply from: 'databaseSetup.gradle'
 
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        compile project(':model')
-        runtime 'com.h2database:h2:1.3.170'
-        testCompile 'junit:junit:4.11'
-    }
-
-    test {
-        exclude '**/*IntegTest.class'
-        reports.html.destination = file("$reports.html.destination/unit")
-        reports.junitXml.destination = file("$reports.junitXml.destination/unit")
-    }
-
-    task integrationTest(type: Test) {
-        description = 'Runs the integration tests.'
-        group = 'verification'
-        include '**/*IntegTest.class'
-        reports.html.destination = file("$reports.html.destination/integration")
-        reports.junitXml.destination = file("$reports.junitXml.destination/integration")
-        dependsOn startAndPrepareDatabase
-        finalizedBy stopDatabase
-    }
-
-    tasks.withType(Test) {
-        testLogging {
-            showStandardStreams = true
-            exceptionFormat 'full'
-        }
-    }
-
-    check.dependsOn integrationTest
+repositories {
+    mavenCentral()
 }
+
+dependencies {
+    compile project(':model')
+    runtime 'com.h2database:h2:1.3.170'
+    testCompile 'junit:junit:4.11'
+}
+
+test {
+    exclude '**/*IntegTest.class'
+    reports.html.destination = file("$reports.html.destination/unit")
+    reports.junitXml.destination = file("$reports.junitXml.destination/unit")
+}
+
+task integrationTest(type: Test) {
+    description = 'Runs the integration tests.'
+    group = 'verification'
+    include '**/*IntegTest.class'
+    reports.html.destination = file("$reports.html.destination/integration")
+    reports.junitXml.destination = file("$reports.junitXml.destination/integration")
+    dependsOn startAndPrepareDatabase
+    finalizedBy stopDatabase
+}
+
+tasks.withType(Test) {
+    testLogging {
+        showStandardStreams = true
+        exceptionFormat 'full'
+    }
+}
+
+check.dependsOn integrationTest

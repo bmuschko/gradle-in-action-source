@@ -1,9 +1,7 @@
-project(':repository') {
-    repositories {
-        mavenCentral()
-    }
+repositories {
+    mavenCentral()
+}
 
-    dependencies {
-        compile project(':model')
-    }
+dependencies {
+    compile project(':model')
 }

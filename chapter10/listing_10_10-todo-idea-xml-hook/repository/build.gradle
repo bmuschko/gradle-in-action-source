@@ -1,48 +1,46 @@
-project(':repository') {
-    apply from: 'databaseSetup.gradle'
+apply from: 'databaseSetup.gradle'
 
-    repositories {
-        mavenCentral()
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':model')
+    runtime 'com.h2database:h2:1.3.170'
+    testCompile 'junit:junit:4.11'
+}
+
+sourceSets {
+    integrationTest {
+        java.srcDir file('src/integTest/java')
+        resources.srcDir file('src/integTest/resources')
+        compileClasspath = sourceSets.main.output + configurations.testRuntime
+        runtimeClasspath = output + compileClasspath
     }
+}
 
-    dependencies {
-        compile project(':model')
-        runtime 'com.h2database:h2:1.3.170'
-        testCompile 'junit:junit:4.11'
+task integrationTest(type: Test) {
+    description = 'Runs the integration tests.'
+    group = 'verification'
+    testClassesDir = sourceSets.integrationTest.output.classesDir
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    dependsOn startAndPrepareDatabase
+    finalizedBy stopDatabase
+}
+
+tasks.withType(Test) {
+    testLogging {
+        showStandardStreams = true
+        exceptionFormat 'full'
     }
+}
 
-    sourceSets {
-        integrationTest {
-            java.srcDir file('src/integTest/java')
-            resources.srcDir file('src/integTest/resources')
-            compileClasspath = sourceSets.main.output + configurations.testRuntime
-            runtimeClasspath = output + compileClasspath
-        }
-    }
+check.dependsOn integrationTest
 
-    task integrationTest(type: Test) {
-        description = 'Runs the integration tests.'
-        group = 'verification'
-        testClassesDir = sourceSets.integrationTest.output.classesDir
-        classpath = sourceSets.integrationTest.runtimeClasspath
-        dependsOn startAndPrepareDatabase
-        finalizedBy stopDatabase
-    }
-
-    tasks.withType(Test) {
-        testLogging {
-            showStandardStreams = true
-            exceptionFormat 'full'
-        }
-    }
-
-    check.dependsOn integrationTest
-
-    idea {
-        module {
-            sourceSets.integrationTest.allSource.srcDirs.each {
-                testSourceDirs += it
-            }
+idea {
+    module {
+        sourceSets.integrationTest.allSource.srcDirs.each {
+            testSourceDirs += it
         }
     }
 }

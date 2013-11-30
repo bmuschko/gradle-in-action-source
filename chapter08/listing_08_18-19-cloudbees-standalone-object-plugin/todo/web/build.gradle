@@ -9,33 +9,31 @@ buildscript {
     }
 }
 
-project(':web') {
-    apply plugin: 'war'
-    apply plugin: 'jetty'
-    apply plugin: 'cloudbees'
+apply plugin: 'war'
+apply plugin: 'jetty'
+apply plugin: 'cloudbees'
 
-    repositories {
-        mavenCentral()
-    }
+repositories {
+    mavenCentral()
+}
 
-    dependencies {
-        compile project(':repository')
-        providedCompile 'javax.servlet:servlet-api:2.5'
-        runtime 'javax.servlet:jstl:1.1.2'
-    }
+dependencies {
+    compile project(':repository')
+    providedCompile 'javax.servlet:servlet-api:2.5'
+    runtime 'javax.servlet:jstl:1.1.2'
+}
 
-    if (project.hasProperty('cloudbeesApiKey')) {
-        ext.apiKey = project.property('cloudbeesApiKey')
-    }
+if (project.hasProperty('cloudbeesApiKey')) {
+    ext.apiKey = project.property('cloudbeesApiKey')
+}
 
-    if (project.hasProperty('cloudbeesApiSecret')) {
-        ext.secret = project.property('cloudbeesApiSecret')
-    }
+if (project.hasProperty('cloudbeesApiSecret')) {
+    ext.secret = project.property('cloudbeesApiSecret')
+}
 
-    cloudBees {
-        apiUrl = 'https://api.cloudbees.com/api'
-        apiKey = project.apiKey
-        secret = project.secret
-        appId = 'gradle-in-action/todo'
-    }
+cloudBees {
+    apiUrl = 'https://api.cloudbees.com/api'
+    apiKey = project.apiKey
+    secret = project.secret
+    appId = 'gradle-in-action/todo'
 }

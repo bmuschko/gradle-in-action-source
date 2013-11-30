@@ -1,21 +1,19 @@
-project(':repository') {
-    apply plugin: 'groovy'
+apply plugin: 'groovy'
 
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        compile project(':model')
-        testCompile 'junit:junit:4.11'
-        testCompile 'org.testng:testng:6.8'
-        testCompile 'org.codehaus.groovy:groovy:2.0.6'
-        testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
-    }
-
-    task testNG(type: Test) {
-        useTestNG()
-    }
-
-    test.dependsOn testNG
+repositories {
+    mavenCentral()
 }
+
+dependencies {
+    compile project(':model')
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.testng:testng:6.8'
+    testCompile 'org.codehaus.groovy:groovy:2.0.6'
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+}
+
+task testNG(type: Test) {
+    useTestNG()
+}
+
+test.dependsOn testNG

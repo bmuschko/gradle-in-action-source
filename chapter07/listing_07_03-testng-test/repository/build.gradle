@@ -1,14 +1,12 @@
-project(':repository') {
-    repositories {
-        mavenCentral()
-    }
+repositories {
+    mavenCentral()
+}
 
-    dependencies {
-        compile project(':model')
-        testCompile 'org.testng:testng:6.8'
-    }
+dependencies {
+    compile project(':model')
+    testCompile 'org.testng:testng:6.8'
+}
 
-    test {
-        useTestNG()
-    }
+test {
+    useTestNG()
 }

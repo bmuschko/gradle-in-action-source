@@ -1,16 +1,14 @@
-project(':repository') {
-    repositories {
-        mavenCentral()
-    }
+repositories {
+    mavenCentral()
+}
 
-    dependencies {
-        compile project(':model')
-        testCompile 'junit:junit:4.11'
-    }
+dependencies {
+    compile project(':model')
+    testCompile 'junit:junit:4.11'
+}
 
-    test {
-        testLogging {
-            exceptionFormat 'full'
-        }
+test {
+    testLogging {
+        exceptionFormat 'full'
     }
 }
