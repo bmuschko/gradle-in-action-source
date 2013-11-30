@@ -14,7 +14,3 @@ cloudBees {
     secret = project.secret
     appId = 'gradle-in-action/todo'
 }
-
-task hello(dependsOn: 'cloudBeesAppInfo') << {
-    println "hello"
-}

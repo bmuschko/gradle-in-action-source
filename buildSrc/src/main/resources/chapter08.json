@@ -50,7 +50,7 @@
         },
         {
             "dir": "listing_08_18-19-cloudbees-standalone-object-plugin/plugin",
-            "tasks": ["uploadArchives"]
+            "tasks": ["clean", "build", "uploadArchives"]
         },
         {
             "dir": "listing_08_18-19-cloudbees-standalone-object-plugin/todo",

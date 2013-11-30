@@ -14,10 +14,10 @@ class CloudBeesPlugin implements Plugin<Project> {
     }
 
     private void addTasks(Project project) {
-        project.tasks.withType(CloudBeesTask).whenTaskAdded { CloudBeesTask task ->
-            task.apiUrl = 'https://api.cloudbees.com/api'
-            task.apiKey = project.property('cloudbeesApiKey')
-            task.secret = project.property('cloudbeesApiSecret')
+        project.tasks.withType(CloudBeesTask) {
+            apiUrl = 'https://api.cloudbees.com/api'
+            apiKey = project.property('cloudbeesApiKey')
+            secret = project.property('cloudbeesApiSecret')
         }
 
         addAppTasks(project)

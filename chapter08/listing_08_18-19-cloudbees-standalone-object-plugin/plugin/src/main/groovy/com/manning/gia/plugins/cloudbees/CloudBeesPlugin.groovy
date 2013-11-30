@@ -17,30 +17,26 @@ class CloudBeesPlugin implements Plugin<Project> {
     }
 
     private void addTasks(Project project) {
-        project.tasks.withType(CloudBeesTask).whenTaskAdded { CloudBeesTask task ->
+        project.tasks.withType(CloudBeesTask) {
             def extension = project.extensions.findByName(EXTENSION_NAME)
-            task.conventionMapping.apiUrl = { extension.apiUrl }
-            task.conventionMapping.apiKey = { extension.apiKey }
-            task.conventionMapping.secret = { extension.secret }
+            conventionMapping.apiUrl = { extension.apiUrl }
+            conventionMapping.apiKey = { extension.apiKey }
+            conventionMapping.secret = { extension.secret }
         }
 
         addAppTasks(project)
     }
 
     private void addAppTasks(Project project) {
-        project.tasks.withType(CloudBeesAppInfo).whenTaskAdded { task ->
-            task.conventionMapping.appId = { getAppId(project) }
+        project.task('cloudBeesAppInfo', type: CloudBeesAppInfo) {
+            conventionMapping.appId = { getAppId(project) }
         }
 
-        project.task('cloudBeesAppInfo', type: CloudBeesAppInfo)
-
-        project.tasks.withType(CloudBeesAppDeployWar).whenTaskAdded { task ->
-            task.conventionMapping.appId = { getAppId(project) }
-            task.conventionMapping.message = { project.hasProperty('message') ? project.message : null }
-            task.conventionMapping.warFile = { getWarFile(project) }
+        project.task('cloudBeesAppDeployWar', type: CloudBeesAppDeployWar) {
+            conventionMapping.appId = { getAppId(project) }
+            conventionMapping.message = { project.hasProperty('message') ? project.message : null }
+            conventionMapping.warFile = { getWarFile(project) }
         }
-
-        project.task('cloudBeesAppDeployWar', type: CloudBeesAppDeployWar)
     }
 
     private String getAppId(Project project) {
