@@ -31,13 +31,15 @@ compile {
     outputs.dir file(ant.properties.build)
 }
 
-task downloadReleaseDocumentation << {
+task downloadReleaseDocumentation {
     logging.level = LogLevel.INFO
     ext.repoUrl = 'https://repository-gradle-in-action.forge.cloudbees.com/release'
 
-    ant.get(dest: ant.properties.build) {
-        url(url: "$repoUrl/files/README.txt")
-        url(url: "$repoUrl/files/RELEASE_NOTES.txt")
+    doLast {
+        ant.get(dest: ant.properties.build) {
+            url(url: "$repoUrl/files/README.txt")
+            url(url: "$repoUrl/files/RELEASE_NOTES.txt")
+        }
     }
 }
 
