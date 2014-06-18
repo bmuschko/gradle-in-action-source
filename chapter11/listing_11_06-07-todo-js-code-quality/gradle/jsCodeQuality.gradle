@@ -3,7 +3,7 @@ repositories {
 
     ivy {
         name 'JSHint'
-        url 'http://repository-gradle-in-action.forge.cloudbees.com/release'
+        url 'http://repository-bmuschko.forge.cloudbees.com/release'
         layout 'pattern', {
             artifact '[organization]/[module]/[module]-[revision](.[classifier]).[ext]'
         }
