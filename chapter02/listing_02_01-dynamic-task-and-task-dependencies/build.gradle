@@ -6,8 +6,8 @@ def chant() {
     ant.echo 'Repeat after me...'
 }
 
-3.times { counter ->
-    task "yayGradle$counter" << {
+3.times {
+    task "yayGradle$it" << {
         println 'Gradle rocks'
     }
 }
