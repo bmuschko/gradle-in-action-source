@@ -37,8 +37,8 @@ task downloadReleaseDocumentation {
 
     doLast {
         ant.get(dest: ant.properties.build) {
-            url(url: "$repoUrl/files/README.txt")
-            url(url: "$repoUrl/files/RELEASE_NOTES.txt")
+            url(url: "$repoUrl/files/readme.txt")
+            url(url: "$repoUrl/files/release_notes.txt")
         }
     }
 }
