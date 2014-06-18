@@ -33,7 +33,7 @@ compile {
 
 task downloadReleaseDocumentation {
     logging.level = LogLevel.INFO
-    ext.repoUrl = 'https://repository-gradle-in-action.forge.cloudbees.com/release'
+    ext.repoUrl = 'http://repository-bmuschko.forge.cloudbees.com/release'
 
     doLast {
         ant.get(dest: ant.properties.build) {
