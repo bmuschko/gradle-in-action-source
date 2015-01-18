@@ -38,4 +38,4 @@ Unfortunately, I could not cover all topics readers were interested in. Here's a
 
 ## Continuous Integration
 
-Most of the source code listings are automatically executed with the help of the [Gradle tooling API](http://www.gradle.org/docs/current/userguide/embedding.html). Whenever there's a change to the code, a corresponding [Jenkins job](https://bmuschko.ci.cloudbees.com/job/gradle-in-action-source/) is triggered. Each build works through a list of predefined tasks for each chapter and verifies the expected outcome.
+Most of the source code listings are automatically executed with the help of the [Gradle tooling API](http://www.gradle.org/docs/current/userguide/embedding.html). Whenever there's a change to the code, a corresponding [job](https://snap-ci.com/bmuschko/gradle-in-action-source/branch/master) is triggered. Each build works through a list of predefined tasks for each chapter and verifies the expected outcome.
