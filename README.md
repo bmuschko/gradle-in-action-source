@@ -1,6 +1,6 @@
 # Source code for ["Gradle in Action"](http://www.manning.com/muschko/)
 
-[![Build Status](https://bmuschko.ci.cloudbees.com/buildStatus/icon?job=gradle-in-action-source)](https://bmuschko.ci.cloudbees.com/job/gradle-in-action-source/)
+[![Build Status](https://snap-ci.com/bmuschko/gradle-in-action-source/branch/master/build_image)](https://snap-ci.com/bmuschko/gradle-in-action-source/branch/master)
 
 ## Building the code
 
