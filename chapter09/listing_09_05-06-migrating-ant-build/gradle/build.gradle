@@ -33,7 +33,7 @@ compile {
 
 task downloadReleaseDocumentation {
     logging.level = LogLevel.INFO
-    ext.repoUrl = 'http://repository-bmuschko.forge.cloudbees.com/release'
+    ext.repoUrl = 'https://github.com/bmuschko/gradle-in-action-source/tree/master/chapter09/listing_09_05-06-migrating-ant-build'
 
     doLast {
         ant.get(dest: ant.properties.build) {
