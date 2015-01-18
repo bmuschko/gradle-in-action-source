@@ -3,7 +3,7 @@ repositories {
 
     ivy {
         name 'JSHint'
-        url 'http://repository-bmuschko.forge.cloudbees.com/release'
+        url 'https://github.com/bmuschko/gradle-in-action-source/tree/master/chapter11/listing_11_06-07-todo-js-code-quality/ivy-repo'
         layout 'pattern', {
             artifact '[organization]/[module]/[module]-[revision](.[classifier]).[ext]'
         }
