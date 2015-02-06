@@ -12,9 +12,9 @@ init {
     }
 }
 
-ext.buildDir = '../ant/build'
-ant.properties.build = "$buildDir/classes"
-ant.properties.dist = "$buildDir/libs"
+ext.antBuildDir = '../ant/build'
+ant.properties.build = "$antBuildDir/classes"
+ant.properties.dist = "$antBuildDir/libs"
 
 task sourcesJar(type: Jar) {
     baseName = 'my-app'
