@@ -45,6 +45,10 @@
             "tasks": ["copyDependenciesToLocalDir"]
         },
         {
+            "dir": "listing_05_09-custom-maven-repository",
+            "tasks": ["dependencies"]
+        },
+        {
             "dir": "listing_05_10-ivy-repository",
             "tasks": ["dependencies"]
         },
