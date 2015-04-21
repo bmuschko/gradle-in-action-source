@@ -24,7 +24,7 @@ dependencies {
 
 repositories {
     maven {
-        name 'Custom Maven Repository',
+        name 'Custom Maven Repository'
         url 'http://repository-gradle-in-action.forge.cloudbees.com/release/'
     }
 }
