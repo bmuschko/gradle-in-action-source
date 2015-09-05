@@ -14,7 +14,7 @@ task deployToLocalTomcat << {
             deployable(type: 'war', file: 'todo.war')
         }
 
-        zipUrlInstaller(installUrl: 'http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.32/bin/apache-tomcat-7.0.32.zip')
+        zipUrlInstaller(installUrl: 'http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.50/bin/apache-tomcat-7.0.50.zip')
     }
 }
 
