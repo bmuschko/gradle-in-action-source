@@ -19,6 +19,10 @@
             "args": ["-PjsOptimize"]
         },
         {
+            "dir": "listing_11_06-07-todo-js-code-quality",
+            "tasks": ["clean", "jsHint"]
+        },
+        {
             "dir": "listing_11_08-09-todo-js-plugin",
             "tasks": ["clean", "minifyJs"]
         },
