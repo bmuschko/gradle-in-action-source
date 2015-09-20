@@ -7,6 +7,4 @@ dependencies {
     testCompile 'org.testng:testng:6.8'
 }
 
-test {
-    useTestNG()
-}
+test.useTestNG()
