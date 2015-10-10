@@ -10,6 +10,11 @@ dependencies {
     testCompile 'junit:junit:4.11'
 }
 
+test {
+    reports.html.destination = file("$reports.html.destination/unit")
+    reports.junitXml.destination = file("$reports.junitXml.destination/unit")
+}
+
 sourceSets {
     integrationTest {
         java.srcDir file('src/integTest/java')
@@ -24,6 +29,8 @@ task integrationTest(type: Test) {
     group = 'verification'
     testClassesDir = sourceSets.integrationTest.output.classesDir
     classpath = sourceSets.integrationTest.runtimeClasspath
+    reports.html.destination = file("$reports.html.destination/integration")
+    reports.junitXml.destination = file("$reports.junitXml.destination/integration")
     dependsOn startAndPrepareDatabase
     finalizedBy stopDatabase
 }
