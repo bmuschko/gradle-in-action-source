@@ -21,7 +21,7 @@ subprojects {
 idea {
     project {
         ipr.whenMerged { project ->
-            project.jdk = new Jdk('1.6', new IdeaLanguageLevel('1.5'))
+            project.jdk = new Jdk('1.6', new IdeaLanguageLevel('1.6'))
         }
     }
 }
