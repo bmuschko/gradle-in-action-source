@@ -11,7 +11,7 @@ class Grunt extends DefaultTask {
     @TaskAction
     void start() {
         project.exec {
-            executable isWindows() ? 'grunt.cmd' : '/usr/local/share/npm/bin/grunt'
+            executable isWindows() ? 'grunt.cmd' : '/usr/local/lib/node_modules/grunt-cli/bin/grunt'
             args commands
         }
     }
