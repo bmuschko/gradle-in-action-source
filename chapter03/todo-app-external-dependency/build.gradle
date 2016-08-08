@@ -7,3 +7,18 @@ repositories {
 dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.1'
 }
+
+// Run application with "application" plugin
+apply plugin: 'application'
+mainClassName = 'com.manning.gia.todo.ToDoApp'
+
+run {
+    standardInput = System.in
+}
+
+// Run application with JavaExec task
+task runWithJavaExec(type: JavaExec) {
+    classpath configurations.runtime, sourceSets.main.output.classesDir
+    main = 'com.manning.gia.todo.ToDoApp'
+    standardInput = System.in
+}
