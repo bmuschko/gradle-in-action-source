@@ -1,0 +1,26 @@
+import com.manning.gia.ProjectVersion
+import com.manning.gia.ReleaseVersionTask
+
+ext.versionFile = file('version.properties')
+project.version = readVersion()
+
+ProjectVersion readVersion() {
+    logger.quiet 'Reading the version file.'
+
+    if (!versionFile.exists()) {
+        throw new GradleException("Required version file does not exit: $versionFile.canonicalPath")
+    }
+
+    Properties versionProps = new Properties()
+
+    versionFile.withInputStream { stream ->
+        versionProps.load(stream)
+    }
+
+    new ProjectVersion(versionProps.major.toInteger(), versionProps.minor.toInteger(), versionProps.release.toBoolean())
+}
+
+task makeReleaseVersion(type: ReleaseVersionTask) {
+    release = version.release
+    destFile = versionFile
+}
