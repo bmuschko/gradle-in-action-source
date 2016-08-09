@@ -18,6 +18,7 @@ run {
 
 // Run application with JavaExec task
 task runWithJavaExec(type: JavaExec) {
+    dependsOn classes
     classpath configurations.runtime, sourceSets.main.output.classesDir
     main = 'com.manning.gia.todo.ToDoApp'
     standardInput = System.in
