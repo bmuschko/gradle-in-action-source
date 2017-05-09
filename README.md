@@ -1,6 +1,4 @@
-# Source code for ["Gradle in Action"](http://www.manning.com/muschko/)
-
-[![Build Status](https://snap-ci.com/bmuschko/gradle-in-action-source/branch/master/build_image)](https://snap-ci.com/bmuschko/gradle-in-action-source/branch/master)
+# Source code for ["Gradle in Action"](http://www.manning.com/muschko/) [![Build Status](https://travis-ci.org/bmuschko/gradle-in-action-source.svg?branch=master)](https://travis-ci.org/bmuschko/gradle-in-action-source)
 
 ## Building the code
 
