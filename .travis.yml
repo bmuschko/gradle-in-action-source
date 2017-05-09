@@ -1,9 +1,6 @@
 language: java
 install: true
 
-git:
-  depth: 150
-
 jdk:
   - oraclejdk7
 
