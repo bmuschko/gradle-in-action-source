@@ -1,7 +1,7 @@
 # Source code for ["Gradle in Action"](http://www.manning.com/muschko/) [![Build Status](https://travis-ci.org/bmuschko/gradle-in-action-source.svg?branch=master)](https://travis-ci.org/bmuschko/gradle-in-action-source)
 
 <kbd>
-    <img src="https://images.manning.com/100/125/resize/book/1/6cc6a8b-de8f-40be-b234-916cd230389a/muschko.png" alt="Book cover">
+    <a href="http://www.manning.com/muschko/"><img src="https://images.manning.com/100/125/resize/book/1/6cc6a8b-de8f-40be-b234-916cd230389a/muschko.png" alt="Book cover"></a>
 </kbd>
 
 ## Building the code
