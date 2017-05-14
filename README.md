@@ -1,5 +1,7 @@
 # Source code for ["Gradle in Action"](http://www.manning.com/muschko/) [![Build Status](https://travis-ci.org/bmuschko/gradle-in-action-source.svg?branch=master)](https://travis-ci.org/bmuschko/gradle-in-action-source)
 
+<img src="https://images-na.ssl-images-amazon.com/images/I/510zDHgUOuL._AC_US436_FMwebp_QL65_.jpg" alt="Book cover" style="width: 218px;height: 218px;"/>
+
 ## Building the code
 
 The source code is organized into individual chapters. Chapter 1 contains Ant and Maven build scripts. Please refer to the build tool's online manual for instructions to install the runtime and execute the build script. You can find more information here:
@@ -36,4 +38,4 @@ Unfortunately, I could not cover all topics readers were interested in. Here's a
 
 ## Continuous Integration
 
-Most of the source code listings are automatically executed with the help of the [Gradle tooling API](http://www.gradle.org/docs/current/userguide/embedding.html). Whenever there's a change to the code, a corresponding [job](https://snap-ci.com/bmuschko/gradle-in-action-source/branch/master) is triggered. Each build works through a list of predefined tasks for each chapter and verifies the expected outcome.
+Most of the source code listings are automatically executed with the help of the [Gradle tooling API](http://www.gradle.org/docs/current/userguide/embedding.html). Whenever there's a change to the code, a corresponding [job](https://travis-ci.org/bmuschko/gradle-in-action-source) is triggered. Each build works through a list of predefined tasks for each chapter and verifies the expected outcome.
