@@ -6,6 +6,8 @@
 
 ## Building the code
 
+All source code used in the book is based on Gradle 1.7. Please use the [checked-in Wrapper](https://github.com/bmuschko/gradle-in-action-source/blob/master/gradle/wrapper/gradle-wrapper.properties#L6) to execute the samples. Please be aware that a later version of Gradle might not be compatible with the source code. 
+
 The source code is organized into individual chapters. Chapter 1 contains Ant and Maven build scripts. Please refer to the build tool's online manual for instructions to install the runtime and execute the build script. You can find more information here:
 
 * [Apache Ant](http://ant.apache.org/)
