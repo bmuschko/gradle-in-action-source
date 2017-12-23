@@ -27,7 +27,7 @@ Starting with chapter 2, all source code can be run using the Gradle Wrapper whi
 
 ## Putting it all together
 
-Gradle in Action demonstrates how to implement build logic needed for various stages of a Continuous Delivery pipeline. While the book discusses specific functionality step by step, you might want to see it all put together. You can find the sample To Do application extended by typical project automation functionality (like testing strategies, publishing and deployment logic etc.) in a [dedicated repository](https://github.com/bmuschko/todo).
+Gradle in Action demonstrates how to implement build logic needed for various stages of a Continuous Delivery pipeline. While the book discusses specific functionality step by step, you might want to see it all put together. You can find the sample To Do application extended by typical project automation functionality (like testing strategies, publishing and deployment logic etc.) in a [dedicated repository](https://github.com/bmuschko/todo). Furthermore, you can find an updated version of the To Do application implemented with Spring Boot, built on declarative Jenkins pipeline and deployed to Heroku in the blog post ["Build pipelines with Jenkins 2 by example"](http://bmuschko.com/blog/jenkins-build-pipeline/).
 
 ## Going further
 
