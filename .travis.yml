@@ -1,5 +1,6 @@
 language: java
 install: true
+sudo: required
 
 jdk:
   - oraclejdk7
