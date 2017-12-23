@@ -1,9 +1,8 @@
 language: java
 install: true
-sudo: required
 
 jdk:
-  - oraclejdk7
+  - openjdk7
 
 script:
   - ./gradlew verifyListings -s
